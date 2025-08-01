@@ -15,9 +15,9 @@ print -e "\n$ansi_art\n"
 
 # sudo pacman -Sy --noconfirm --needed git
 
-echo -e "\nCloning Autarky..."
+print -e "\nCloning Autarky..."
 rm -rf ~/.local/share/autarky/
 git clone https://github.com/frivasa/autarky.git ~/.local/share/autarky >/dev/null
 
-echo -e "\nInstallation starting..."
+print -e "\nInstallation starting..."
 source ~/.local/share/autarky/install.sh
