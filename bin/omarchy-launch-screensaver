@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/zsh
 
-pkill -f "alacritty --class Screensaver" ||
-  alacritty --class Screensaver --title Screensaver -o 'colors.primary.background="#000000"' \
-    -e ~/.local/share/omarchy/bin/omarchy-cmd-screensaver
+pkill -f "kitty --class Screensaver" ||
+  kitty --class Screensaver --title Screensaver -o background=#000000 \
+    ~/.local/share/omarchy/bin/omarchy-cmd-screensaver

@@ -1,0 +1,14 @@
+# Oh My Zsh configuration
+source ~/.local/share/omarchy/default/zsh/omz-config
+
+# Omarchy-specific configuration
+source ~/.local/share/omarchy/default/zsh/shell
+source ~/.local/share/omarchy/default/zsh/aliases
+source ~/.local/share/omarchy/default/zsh/functions
+source ~/.local/share/omarchy/default/zsh/prompt
+source ~/.local/share/omarchy/default/zsh/init
+source ~/.local/share/omarchy/default/zsh/envs
+source ~/.local/share/omarchy/default/zsh/keybindings
+
+# Initialize Oh My Zsh
+source $ZSH/oh-my-zsh.sh

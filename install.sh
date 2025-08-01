@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Exit immediately if a command exits with a non-zero status
 set -e
@@ -8,7 +8,7 @@ OMARCHY_INSTALL=~/.local/share/omarchy/install
 # Give people a chance to retry running the installation
 catch_errors() {
   echo -e "\n\e[31mOmarchy installation failed!\e[0m"
-  echo "You can retry by running: bash ~/.local/share/omarchy/install.sh"
+  echo "You can retry by running: zsh ~/.local/share/omarchy/install.sh"
   echo "Get help from the community: https://discord.gg/tXFUdasqhY"
 }
 
@@ -33,6 +33,7 @@ source $OMARCHY_INSTALL/preflight/presentation.sh
 show_logo beams 240
 show_subtext "Let's install Omarchy! [1/5]"
 source $OMARCHY_INSTALL/config/identification.sh
+source $OMARCHY_INSTALL/config/zsh.sh
 source $OMARCHY_INSTALL/config/config.sh
 source $OMARCHY_INSTALL/config/detect-keyboard-layout.sh
 source $OMARCHY_INSTALL/config/fix-fkeys.sh

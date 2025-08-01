@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if ! command -v tzupdate &>/dev/null; then
   yay -S --noconfirm --needed tzupdate

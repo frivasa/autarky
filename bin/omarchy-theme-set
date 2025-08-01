@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # omarchy-theme-set: Set a theme, specified by its name.
 # Usage: omarchy-theme-set <theme-name>
@@ -32,8 +32,8 @@ else
   gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 fi
 
-# Trigger alacritty config reload
-touch "$HOME/.config/alacritty/alacritty.toml"
+# Trigger kitty config reload
+touch "$HOME/.config/kitty/kitty.conf"
 
 # Restart components to apply new theme
 pkill -SIGUSR2 btop

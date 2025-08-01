@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 conf="/etc/vconsole.conf"
 hyprconf="$HOME/.config/hypr/hyprland.conf"

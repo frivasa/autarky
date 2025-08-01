@@ -1,6 +1,6 @@
-# Omarchy
+# ~~Omarchy~~ Autarky
 
-Turn a fresh Arch installation into a fully-configured, beautiful, and modern web development system based on Hyprland by running a single command. That's the one-line pitch for Omarchy (like it was for Omakub). No need to write bespoke configs for every essential tool just to get started or to be up on all the latest command-line tools. Omarchy is an opinionated take on what Linux can be at its best.
+Blatant takeover of [Omarchy](https://github.com/basecamp/omarchy). Removing most things while switching to `zsh`+`kitty` with Oh My Zsh integration. There's only one branch because nothing goes wrong ever! muahahaha!
 
 Read more at [omarchy.org](https://omarchy.org).
 

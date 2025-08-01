@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if [ -z "$OMARCHY_BARE" ]; then
   yay -S --noconfirm --needed \

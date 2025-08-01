@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 if [[ "--remove" == "$1" ]]; then
   yay -Rns --noconfirm fprintd

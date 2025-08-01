@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer wiremix wireplumber \

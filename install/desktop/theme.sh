@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Use dark mode for QT apps too (like kdenlive)
 if ! yay -Q kvantum-qt5 &>/dev/null; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Install bluetooth controls
 yay -S --noconfirm --needed blueberry

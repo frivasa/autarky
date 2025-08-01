@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 font=$(
   fc-list :spacing=100 -f "%{family[0]}\n" |
@@ -8,5 +8,5 @@ font=$(
 )
 
 if [[ -n "$font" ]]; then
-  sed -i "s/family = \".*\"/family = \"$font\"/g" ~/.config/alacritty/alacritty.toml
+  sed -i "s/font_family .*/font_family $font/g" ~/.config/kitty/kitty.conf
 fi

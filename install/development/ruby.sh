@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Install Ruby using gcc-14 for compatibility
 yay -S --noconfirm --needed gcc14
