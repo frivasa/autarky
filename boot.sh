@@ -11,7 +11,7 @@ ansi_art='
                                                    ███    ███   ▀                   '
 
 clear
-echo -e "\n$ansi_art\n"
+print -e "\n$ansi_art\n"
 
 # sudo pacman -Sy --noconfirm --needed git
 
