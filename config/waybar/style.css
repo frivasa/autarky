@@ -1,4 +1,4 @@
-@import "../omarchy/current/theme/waybar.css";
+@import "../autarky/current/theme/waybar.css";
 
 * {
   background-color: @background;

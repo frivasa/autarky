@@ -1,6 +1,10 @@
 # Set complete path
-export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/omarchy/bin:$PATH"
+export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/autarky/bin:$PATH"
 set +h
 
-# Omarchy path
-export OMARCHY_PATH="/home/$USER/.local/share/omarchy"
+# Autarky path
+export AUTARKY_PATH="/home/$USER/.local/share/autarky"
+
+export OLLAMA_MODELS=/home/fdo/.ollama/models
+export OLLAMA_HOST=127.0.0.1:8090
+export PATH="$PATH:/home/fdo/.pixi/bin"

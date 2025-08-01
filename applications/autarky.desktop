@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Autarky
+Comment=Autarky TUI
+Exec=kitty --class=Autarky --title=Autarky -e zsh -c '$HOME/.local/share/autarky/bin/autarky'
+Icon=Arch
+Terminal=false
+Categories=System;Utility;
+StartupNotify=false 

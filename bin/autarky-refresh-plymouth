@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+if [[ "$1" == "-y" ]] || gum confirm "Refresh Plymouth theme? This will replace your current startup screen with Autarky defaults."; then
+  sudo cp ~/.local/share/autarky/default/plymouth/* /usr/share/plymouth/themes/autarky/
+  sudo plymouth-set-default-theme -R autarky
+fi

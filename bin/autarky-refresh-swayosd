@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+autarky-refresh-config swayosd/config.toml
+autarky-refresh-config swayosd/style.css
+
+pkill swayosd-server
+setsid uwsm app -- swayosd-server &>/dev/null &

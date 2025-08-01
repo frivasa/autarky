@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-pkill -f "kitty --class Screensaver" ||
-  kitty --class Screensaver --title Screensaver -o background=#000000 \
-    ~/.local/share/omarchy/bin/omarchy-cmd-screensaver

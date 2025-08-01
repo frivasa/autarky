@@ -1,9 +1,12 @@
 # Oh My Zsh Theme
-ZSH_THEME="omarchy"
+ZSH_THEME="autarky"
 
 # Oh My Zsh Plugins
 plugins=(
   git
+  vi-mode
+  timer
+  pixi-env
   docker
   zoxide
   fzf

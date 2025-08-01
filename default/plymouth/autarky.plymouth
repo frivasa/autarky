@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=Autarky
+Description=Autarky splash screen.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/autarky
+ScriptFile=/usr/share/plymouth/themes/autarky/autarky.script
+ConsoleLogBackgroundColor=0x1a1b26

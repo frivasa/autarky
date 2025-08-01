@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+# Copy and sync icon files
+mkdir -p ~/.local/share/icons/hicolor/48x48/apps/
+cp ~/.local/share/autarky/applications/icons/*.png ~/.local/share/icons/hicolor/48x48/apps/
+gtk-update-icon-cache ~/.local/share/icons/hicolor &>/dev/null
+
+# Copy .desktop declarations
+mkdir -p ~/.local/share/applications
+cp ~/.local/share/autarky/applications/*.desktop ~/.local/share/applications/
+cp ~/.local/share/autarky/applications/hidden/*.desktop ~/.local/share/applications/
+
+# Only copy xtras if user is not in bare mode
+if [[ ! -f ~/.local/state/autarky/bare.mode ]] && [ -z "$AUTARKY_BARE" ]; then
+  cp ~/.local/share/autarky/applications/xtras/*.desktop ~/.local/share/applications/
+fi
+
+update-desktop-database ~/.local/share/applications

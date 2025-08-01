@@ -1,9 +1,9 @@
 # Path to Oh My Zsh installation
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.config/ohmyzsh"
 
-# All the default Omarchy aliases and functions
+# All the default Autarky aliases and functions
 # (don't mess with these directly, just overwrite them here!)
-source ~/.local/share/omarchy/default/zsh/rc
+source ~/.local/share/autarky/default/zsh/rc
 
 # Add your own exports, aliases, and functions here.
 #
@@ -15,3 +15,25 @@ source ~/.local/share/omarchy/default/zsh/rc
 #
 # Set a custom prompt with the directory revealed (alternatively use https://starship.rs)
 # PS1="\W \[\e]0;\w\a\]$PS1"
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias publicip="curl -s ifconfig.me | awk '{print $1}'"
+alias runwebui="sudo systemctl start docker && sudo docker start -i -a open-webui-ollama"
+# arch update mirror list
+alias update_mirrors='sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
+
+function pixi_hook(){
+  eval "$(pixi shell-hook)"
+}
+# edit pixi env config to not alter ps1
+function pixi_trim_ps1(){
+  pixi config set shell.change-ps1 false
+}
+# change image for fastfetch
+function fastfetch_switch_waifu(){
+  # defaults to sfw/neko
+  kind=${1:-sfw}
+  repo=${2:-neko}
+  source ~/.config/fastfetch/change_waifu.sh $kind $repo
+}

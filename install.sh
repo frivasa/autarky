@@ -3,12 +3,12 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-OMARCHY_INSTALL=~/.local/share/omarchy/install
+AUTARKY_INSTALL=~/.local/share/autarky/install
 
 # Give people a chance to retry running the installation
 catch_errors() {
-  echo -e "\n\e[31mOmarchy installation failed!\e[0m"
-  echo "You can retry by running: zsh ~/.local/share/omarchy/install.sh"
+  echo -e "\n\e[31mAutarky installation failed!\e[0m"
+  echo "You can retry by running: zsh ~/.local/share/autarky/install.sh"
   echo "Get help from the community: https://discord.gg/tXFUdasqhY"
 }
 
@@ -16,7 +16,7 @@ trap catch_errors ERR
 
 show_logo() {
   clear
-  tte -i ~/.local/share/omarchy/logo.txt --frame-rate ${2:-120} ${1:-expand}
+  tte -i ~/.local/share/autarky/logo.txt --frame-rate ${2:-120} ${1:-expand}
   echo
 }
 
@@ -26,50 +26,49 @@ show_subtext() {
 }
 
 # Install prerequisites
-source $OMARCHY_INSTALL/preflight/aur.sh
-source $OMARCHY_INSTALL/preflight/presentation.sh
+source $AUTARKY_INSTALL/preflight/aur.sh
+source $AUTARKY_INSTALL/preflight/presentation.sh
 
 # Configuration
 show_logo beams 240
-show_subtext "Let's install Omarchy! [1/5]"
-source $OMARCHY_INSTALL/config/identification.sh
-source $OMARCHY_INSTALL/config/zsh.sh
-source $OMARCHY_INSTALL/config/config.sh
-source $OMARCHY_INSTALL/config/detect-keyboard-layout.sh
-source $OMARCHY_INSTALL/config/fix-fkeys.sh
-source $OMARCHY_INSTALL/config/network.sh
-source $OMARCHY_INSTALL/config/power.sh
-source $OMARCHY_INSTALL/config/timezones.sh
-source $OMARCHY_INSTALL/config/login.sh
-source $OMARCHY_INSTALL/config/nvidia.sh
+show_subtext "Let's install Autarky! [1/5]"
+source $AUTARKY_INSTALL/config/identification.sh
+source $AUTARKY_INSTALL/config/zsh.sh
+source $AUTARKY_INSTALL/config/config.sh
+source $AUTARKY_INSTALL/config/detect-keyboard-layout.sh
+source $AUTARKY_INSTALL/config/fix-fkeys.sh
+source $AUTARKY_INSTALL/config/network.sh
+source $AUTARKY_INSTALL/config/power.sh
+source $AUTARKY_INSTALL/config/timezones.sh
+source $AUTARKY_INSTALL/config/login.sh
+source $AUTARKY_INSTALL/config/nvidia.sh
 
 # Development
 show_logo decrypt 920
 show_subtext "Installing terminal tools [2/5]"
-source $OMARCHY_INSTALL/development/terminal.sh
-source $OMARCHY_INSTALL/development/development.sh
-source $OMARCHY_INSTALL/development/nvim.sh
-source $OMARCHY_INSTALL/development/ruby.sh
-source $OMARCHY_INSTALL/development/docker.sh
-source $OMARCHY_INSTALL/development/firewall.sh
+source $AUTARKY_INSTALL/development/terminal.sh
+source $AUTARKY_INSTALL/development/development.sh
+source $AUTARKY_INSTALL/development/nvim.sh
+source $AUTARKY_INSTALL/development/docker.sh
+source $AUTARKY_INSTALL/development/firewall.sh
 
 # Desktop
 show_logo slice 60
 show_subtext "Installing desktop tools [3/5]"
-source $OMARCHY_INSTALL/desktop/desktop.sh
-source $OMARCHY_INSTALL/desktop/hyprlandia.sh
-source $OMARCHY_INSTALL/desktop/theme.sh
-source $OMARCHY_INSTALL/desktop/bluetooth.sh
-source $OMARCHY_INSTALL/desktop/asdcontrol.sh
-source $OMARCHY_INSTALL/desktop/fonts.sh
-source $OMARCHY_INSTALL/desktop/printer.sh
+source $AUTARKY_INSTALL/desktop/desktop.sh
+source $AUTARKY_INSTALL/desktop/hyprlandia.sh
+source $AUTARKY_INSTALL/desktop/theme.sh
+source $AUTARKY_INSTALL/desktop/bluetooth.sh
+source $AUTARKY_INSTALL/desktop/asdcontrol.sh
+source $AUTARKY_INSTALL/desktop/fonts.sh
+source $AUTARKY_INSTALL/desktop/printer.sh
 
 # Apps
 show_logo expand
 show_subtext "Installing default applications [4/5]"
-source $OMARCHY_INSTALL/apps/webapps.sh
-source $OMARCHY_INSTALL/apps/xtras.sh
-source $OMARCHY_INSTALL/apps/mimetypes.sh
+source $AUTARKY_INSTALL/apps/webapps.sh
+source $AUTARKY_INSTALL/apps/xtras.sh
+source $AUTARKY_INSTALL/apps/mimetypes.sh
 
 # Updates
 show_logo highlight
