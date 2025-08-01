@@ -1,6 +1,14 @@
 # Oh My Zsh Theme
 ZSH_THEME="autarky"
 
+# vi-mode settings
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+# timer settings
+TIMER_PRECISION=1
+TIMER_FORMAT='\n[%d]'
+TIMER_THRESHOLD=0.5
+
 # Oh My Zsh Plugins
 plugins=(
   git
@@ -14,8 +22,6 @@ plugins=(
   colored-man-pages
   command-not-found
   history-substring-search
-  zsh-autosuggestions
-  zsh-syntax-highlighting
 )
 
 # Oh My Zsh Settings

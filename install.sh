@@ -51,6 +51,7 @@ source $AUTARKY_INSTALL/development/development.sh
 source $AUTARKY_INSTALL/development/nvim.sh
 source $AUTARKY_INSTALL/development/docker.sh
 source $AUTARKY_INSTALL/development/firewall.sh
+source $AUTARKY_INSTALL/development/pixi.sh
 
 # Desktop
 show_logo slice 60

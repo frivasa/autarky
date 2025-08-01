@@ -1,7 +1,7 @@
 #!/bin/zsh
 # dumping everything else here, don't judge me!
 sudo pacman -S --noconfirm keepassxc audacious tmux syncthing \
-  nodejs npm tree-sitter-cli unzip qbittorrent ollama keepassxc
+  nodejs npm tree-sitter-cli unzip qbittorrent ollama keepassxc python-json5
 
 
 yay -S --noconfirm --needed \
