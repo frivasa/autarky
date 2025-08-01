@@ -2,21 +2,34 @@
 
 THEMES_DIR="$HOME/.config/autarky/themes/"
 CURRENT_THEME_DIR="$HOME/.config/autarky/current/theme"
-CURRENT_THEME_NAME=$(basename "$(realpath "$CURRENT_THEME_DIR")")
+# CURRENT_THEME_NAME=$(basename "$(realpath "$CURRENT_THEME_DIR")")
+CURRENT_THEME_NAME="${${CURRENT_THEME_DIR:A}:t}"  # :A = resolve symlink, :t = tail/basename
 
 # Build themes list with pretty display names
-mapfile -t themes < <(
-  find "$THEMES_DIR" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | sort | while read -r path; do
-    filename=$(basename "$path")
-    display_name=$(echo "$filename" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')
+# mapfile -t themes < <(
+#   find "$THEMES_DIR" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | sort | while read -r path; do
+#     filename=$(basename "$path")
+#     display_name=$(echo "$filename" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')
+#
+#     if [[ "$filename" == "$CURRENT_THEME_NAME" ]]; then
+#       echo "<i>$display_name</i>"
+#     else
+#       echo "$display_name"
+#     fi
+#   done
+# )
+themes=()
+while IFS= read -r path; do
+  filename="${path:t}"  # basename
+  # Capitalize each word split by '-' (e.g. "dark-sky" → "Dark Sky")
+  display_name="${(C)${(j: :)${(s:-)filename}}}"  # split on '-', join with ' ', capitalize words
 
-    if [[ "$filename" == "$CURRENT_THEME_NAME" ]]; then
-      echo "<i>$display_name</i>"
-    else
-      echo "$display_name"
-    fi
-  done
-)
+  if [[ "$filename" == "$CURRENT_THEME_NAME" ]]; then
+    themes+=("<i>$display_name</i>")
+  else
+    themes+=("$display_name")
+  fi
+done < <(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | sort)
 
 # Show Walker menu
 selection=$(printf '%s\n' "${themes[@]}" | walker --dmenu --theme dmenu_250 2>/dev/null)
