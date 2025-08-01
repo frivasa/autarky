@@ -7,6 +7,6 @@ precmd() {
   print -Pn "\e]0;%~\a"
 }
 
-# Custom Omarchy theme (uncomment to use instead of Oh My Zsh theme)
+# Custom Autarky theme (uncomment to use instead of Oh My Zsh theme)
 # PROMPT='%{$fg[cyan]%}⚡%{$reset_color%} '
 # PROMPT="%{$fg[cyan]%}%c%{$reset_color%} $PROMPT"

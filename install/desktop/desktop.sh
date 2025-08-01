@@ -1,4 +1,8 @@
 #!/bin/zsh
+# dumping everything else here, don't judge me!
+sudo pacman -S --noconfirm keepassxc audacious tmux syncthing \
+  nodejs npm tree-sitter-cli unzip qbittorrent ollama keepassxc
+
 
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer wiremix wireplumber \
@@ -6,7 +10,7 @@ yay -S --noconfirm --needed \
   nautilus sushi ffmpegthumbnailer \
   slurp satty \
   mpv evince imv \
-  chromium
+  librewolf-bin chromium video-downloader 
 
 # Add screen recorder based on GPU
 if lspci | grep -qi 'nvidia'; then

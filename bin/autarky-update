@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+STATE_DIR="$HOME/.local/state/autarky/migrations"
+
+cd ~/.local/share/autarky
+
+# Create the migrations state directory, we will store an empty file for each migration that has already been performed.
+mkdir -p "$STATE_DIR"
+
+# Get the latest while trying to preserve any modifications
+git pull --autostash
+git diff --check || git reset --merge
+
+# Run any pending migrations
+for file in migrations/*.sh; do
+  filename=$(basename "$file")
+  migrate_at="${filename%.sh}"
+
+  # Migration already applied, to re-run it simply delete the state file and try again
+  [ -e "${STATE_DIR}/$filename" ] && continue
+
+  echo -e "\e[32m\nRunning migration (${filename%.sh})\e[0m"
+  source $file
+  touch "${STATE_DIR}/$filename"
+done
+
+# Update system packages
+echo -e "\e[32m\nUpdate system packages\e[0m"
+yay -Syu --noconfirm
+
+# Back to where we came from
+cd - >/dev/null
+

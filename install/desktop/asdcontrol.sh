@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Install asdcontrol for controlling brightness on Apple Displays
-if [ -z "$OMARCHY_BARE" ] && ! command -v asdcontrol &>/dev/null; then
+if [ -z "$AUTARKY_BARE" ] && ! command -v asdcontrol &>/dev/null; then
   git clone https://github.com/nikosdion/asdcontrol.git /tmp/asdcontrol
   cd /tmp/asdcontrol
   make

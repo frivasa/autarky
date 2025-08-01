@@ -2,9 +2,9 @@ app_launch_prefix = "uwsm app -- "
 terminal_title_flag = ""
 locale = ""
 close_when_open = true                                             # Toggle on reopen
-theme = "omarchy-default"
+theme = "autarky-default"
 theme_base = []
-theme_location = ["~/.local/share/omarchy/default/walker/themes/"]
+theme_location = ["~/.local/share/autarky/default/walker/themes/"]
 monitor = ""
 hotreload_theme = true
 as_window = false
@@ -100,14 +100,14 @@ url = "https://github.com/abenz1267/walker"
 keywords = ["walker", "github"]
 
 [[builtins.bookmarks.entries]]
-label = "Omarchy - Github"
-url = "https://github.com/basecamp/omarchy"
-keywords = ["omarchy", "github"]
+label = "Autarky - Github"
+url = "https://github.com/basecamp/autarky"
+keywords = ["autarky", "github"]
 
 [[builtins.bookmarks.entries]]
-label = "Omarchy Manual"
-url = "https://manuals.omamix.org/2/the-omarchy-manual"
-keywords = ["omarchy"]
+label = "Autarky Manual"
+url = "https://manuals.omamix.org/2/the-autarky-manual"
+keywords = ["autarky"]
 
 [builtins.xdph_picker]
 hidden = true
