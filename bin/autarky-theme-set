@@ -33,7 +33,7 @@ else
 fi
 
 # Trigger kitty config reload
-touch "$HOME/.config/kitty/kitty.conf"
+kitty @ load-config
 
 # Restart components to apply new theme
 pkill -SIGUSR2 btop

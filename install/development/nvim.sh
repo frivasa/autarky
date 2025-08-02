@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if ! command -v nvim &>/dev/null; then
-  yay -S --noconfirm --needed nvim luarocks tree-sitter-cli
+  yay -S --noconfirm --needed neovim luarocks tree-sitter-cli
 
   # Install own vim
   rm -rf ~/.config/nvim
