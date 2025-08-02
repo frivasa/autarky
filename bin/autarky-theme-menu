@@ -2,27 +2,13 @@
 
 THEMES_DIR="$HOME/.config/autarky/themes/"
 CURRENT_THEME_DIR="$HOME/.config/autarky/current/theme"
-# CURRENT_THEME_NAME=$(basename "$(realpath "$CURRENT_THEME_DIR")")
-CURRENT_THEME_NAME="${${CURRENT_THEME_DIR:A}:t}"  # :A = resolve symlink, :t = tail/basename
+CURRENT_THEME_NAME=$(basename "$(realpath "$CURRENT_THEME_DIR")")
 
-# Build themes list with pretty display names
-# mapfile -t themes < <(
-#   find "$THEMES_DIR" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | sort | while read -r path; do
-#     filename=$(basename "$path")
-#     display_name=$(echo "$filename" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')
-#
-#     if [[ "$filename" == "$CURRENT_THEME_NAME" ]]; then
-#       echo "<i>$display_name</i>"
-#     else
-#       echo "$display_name"
-#     fi
-#   done
-# )
 themes=()
 while IFS= read -r path; do
-  filename="${path:t}"  # basename
-  # Capitalize each word split by '-' (e.g. "dark-sky" → "Dark Sky")
-  display_name="${(C)${(j: :)${(s:-)filename}}}"  # split on '-', join with ' ', capitalize words
+  filename=$(/bin/basename "$path")
+  # Capitalise after start or hyphen, replace hyphen with space
+  display_name=$(echo "$filename" | /bin/sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')
 
   if [[ "$filename" == "$CURRENT_THEME_NAME" ]]; then
     themes+=("<i>$display_name</i>")
@@ -35,10 +21,10 @@ done < <(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | s
 selection=$(printf '%s\n' "${themes[@]}" | walker --dmenu --theme dmenu_250 2>/dev/null)
 
 # Remove any Pango markup before converting back to filename
-clean_selection=$(echo "$selection" | sed -E 's/<[^>]+>//g')
+clean_selection=$(echo "$selection" | /bin/sed -E 's/<[^>]+>//g')
 
 # Convert to lowercase and dash-separated: "Tokyo Night" -> "tokyo-night"
-selected_theme=$(echo "$clean_selection" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+selected_theme=$(echo "$clean_selection" | /bin/tr '[:upper:]' '[:lower:]' | /bin/tr ' ' '-')
 
 # Apply the selected theme
 "$HOME/.local/share/autarky/bin/autarky-theme-set" "$selected_theme"

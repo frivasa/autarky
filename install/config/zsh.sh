@@ -16,7 +16,7 @@ ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.config/ohmyzsh/custom}"
 
 # Install custom Autarky theme
 mkdir -p "$ZSH_CUSTOM/themes"
-cp ~/.local/share/autarky/themes/autarky.zsh-theme "$ZSH_CUSTOM/themes/"
+cp ~/.local/share/autarky/default/zsh/autarky.zsh-theme "$ZSH_CUSTOM/themes/"
 
 # Install pixi plugin
 mkdir -p "$ZSH_CUSTOM/plugins"

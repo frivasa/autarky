@@ -16,9 +16,8 @@ fi
 
 # Find current theme index
 INDEX=0
-for i in "${!THEMES[@]}"; do
-  THEMES[$i]=$(realpath "${THEMES[$i]}")
-
+for i in {1..$TOTAL}; do
+  THEMES[i]=$(realpath "${THEMES[$i]}")
   if [[ "${THEMES[$i]}" == "$CURRENT_THEME" ]]; then
     INDEX=$i
     break
@@ -27,7 +26,7 @@ done
 
 # Get next theme (wrap around)
 NEXT_INDEX=$(((INDEX + 1) % TOTAL))
-NEW_THEME=${THEMES[$NEXT_INDEX]}
+NEW_THEME=${THEMES[($NEXT_INDEX + 1)]}
 NEW_THEME_NAME=$(basename "$NEW_THEME")
 
 "$HOME/.local/share/autarky/bin/autarky-theme-set" $NEW_THEME_NAME
