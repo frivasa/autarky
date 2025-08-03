@@ -14,6 +14,10 @@ return {
 		"nvim-treesitter",
 	},
 	opts = {
+		legacy_commands = false,
+		checkbox = {
+			order = { " ", "x" },
+		},
 		workspaces = {
 			{
 				name = "al-amin",
@@ -22,15 +26,15 @@ return {
 		},
 		notes_subdir = "_nvim-temps",
 		new_notes_location = "notes_subdir",
-		mappings = {
-			-- Smart action depending on context, either follow link or toggle checkbox.
-			["<cr>"] = {
-				action = function()
-					return require("obsidian").util.smart_action()
-				end,
-				opts = { buffer = true, expr = true },
-			},
-		},
+		-- mappings = {
+		-- 	-- Smart action depending on context, either follow link or toggle checkbox.
+		-- 	["<cr>"] = {
+		-- 		action = function()
+		-- 			return require("obsidian").util.smart_action()
+		-- 		end,
+		-- 		opts = { buffer = true, expr = true },
+		-- 	},
+		-- },
 		preferred_link_style = "wiki",
 		wiki_link_func = "prepend_note_path",
 		disable_frontmatter = true, -- true: disable plugin from editing frontmatter
