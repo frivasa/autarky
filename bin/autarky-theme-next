@@ -24,10 +24,8 @@ for i in {1..$TOTAL}; do
   fi
 done
 
-# Get next theme (wrap around)
-NEXT_INDEX=$(((INDEX + 1) % TOTAL))
+NEXT_INDEX=$((INDEX % TOTAL))
 NEW_THEME=${THEMES[($NEXT_INDEX + 1)]}
 NEW_THEME_NAME=$(basename "$NEW_THEME")
-
 "$HOME/.local/share/autarky/bin/autarky-theme-set" $NEW_THEME_NAME
 notify-send "Theme changed to $NEW_THEME_NAME" -t 2000

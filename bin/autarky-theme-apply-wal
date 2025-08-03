@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 hex_to_rgb() {
     local hex="$1"
     hex="${hex#?}"
@@ -183,4 +182,28 @@ theme[download_end]="${colors[2]}"
 theme[upload_start]="${colors[7]}"
 theme[upload_mid]="${colors[4]}"
 theme[upload_end]="${colors[2]}"
+EOF
+
+FILE="$THEME_LINK/kitty.conf"
+cat << EOF > "$FILE"
+foreground   ${colors[8]}
+background   ${colors[1]}
+cursor       ${colors[8]}
+
+color0       ${colors[1]} 
+color8       ${colors[9]}
+color1       ${colors[2]}
+color9       ${colors[10]}
+color2       ${colors[3]}
+color10      ${colors[11]}
+color3       ${colors[4]}
+color11      ${colors[12]}
+color4       ${colors[5]}
+color12      ${colors[13]}
+color5       ${colors[6]}
+color13      ${colors[14]}
+color6       ${colors[7]}
+color14      ${colors[15]}
+color7       ${colors[8]}
+color15      ${colors[16]}
 EOF
