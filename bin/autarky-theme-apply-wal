@@ -184,6 +184,25 @@ theme[upload_mid]="${colors[4]}"
 theme[upload_end]="${colors[2]}"
 EOF
 
+FILE="$THEME_LINK/mpv.osdcolor.conf"
+cat << EOF > "$FILE"
+osd-color="${colors[6]}"
+EOF
+
+FILE="$THEME_LINK/mpv.osc.conf"
+cat << EOF > "$FILE"
+background_color=${colors[1]}
+timecode_color=${colors[5]}
+title_color=${colors[5]}
+time_pos_color=${colors[5]}
+buttons_color=${colors[6]}
+small_buttonsL_color=${colors[6]}
+small_buttonsR_color=${colors[6]}
+top_buttons_color=${colors[6]}
+held_element_color=${colors[8]}
+time_pos_outline_color=${colors[1]}
+EOF
+
 FILE="$THEME_LINK/kitty.conf"
 cat << EOF > "$FILE"
 foreground   ${colors[8]}
