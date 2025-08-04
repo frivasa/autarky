@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=CMUS
+GenericName=Music Player
+Comment=TUI player with vim keys, playlists, and media library
+Exec=cmus
+StartupNotify=true
+Terminal=true
+Icon=multimedia-player-symbolic
+Type=Application
+Categories=MediaPlayer;
