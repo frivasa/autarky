@@ -2,7 +2,7 @@
 # dumping everything else here, don't judge me!
 sudo pacman -S --noconfirm keepassxc audacious tmux syncthing \
   nodejs npm tree-sitter-cli unzip qbittorrent ollama keepassxc \
-  python-json5 python-pywal python-pywalfox cmus
+  python-json5 python-pywal python-pywalfox cmus fcitx5-configtool
 
 
 yay -S --noconfirm --needed \
