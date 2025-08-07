@@ -12,6 +12,8 @@ fi
 
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+# "darken" icons by using the ones that look like the sidebar ones.
+gsettings set org.gnome.desktop.interface icon-theme "hicolor"
 
 # Setup theme links
 mkdir -p ~/.config/autarky/themes

@@ -11,7 +11,7 @@ yay -S --noconfirm --needed \
   nautilus sushi ffmpegthumbnailer \
   slurp satty \
   mpv evince imv \
-  librewolf-bin chromium video-downloader
+  zen-browser-bin chromium video-downloader
 
 # Add screen recorder based on GPU
 if lspci | grep -qi 'nvidia'; then

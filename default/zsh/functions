@@ -41,7 +41,7 @@ web2app() {
 Version=1.0
 Name=$APP_NAME
 Comment=$APP_NAME
-Exec=librewolf --new-window --kiosk "$APP_URL"
+Exec=zen-browser --new-window --ozone-platform=wayland --app="$APP_URL" --name="$APP_NAME" --class="$APP_NAME"
 Terminal=false
 Type=Application
 Icon=$ICON_PATH
@@ -50,8 +50,6 @@ EOF
 
   chmod +x "$DESKTOP_FILE"
 }
-# librewolf does not support --name --class so this might break!
-# Exec=chromium --new-window --ozone-platform=wayland --app="$APP_URL" --name="$APP_NAME" --class="$APP_NAME"
 
 web2app-remove() {
   if [ "$#" -ne 1 ]; then
