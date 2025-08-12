@@ -22,7 +22,7 @@ for f in ~/.local/share/autarky/themes/*; do ln -nfs "$f" ~/.config/autarky/them
 # Set initial theme
 mkdir -p ~/.config/autarky/current
 ln -snf ~/.config/autarky/themes/dark ~/.config/autarky/current/theme
-ln -snf ~/.config/autarky/current/theme/backgrounds/1-scenery-pink-lakeside-sunset-lake-landscape-scenic-panorama-7680x3215-144.png ~/.config/autarky/current/background
+ln -snf ~/.config/autarky/current/theme/backgrounds/01-fill-scenery-pink-lakeside-sunset-lake-landscape-scenic-panorama-7680x3215-144.png ~/.config/autarky/current/background
 
 # init colorscheme for nvim and theme
 wal --backend colorz -i ~/.config/autarky/current/background

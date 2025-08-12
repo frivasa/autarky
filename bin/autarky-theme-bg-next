@@ -5,8 +5,6 @@
 BACKGROUNDS_DIR="$HOME/.config/autarky/current/theme/backgrounds/"
 CURRENT_BACKGROUND_LINK="$HOME/.config/autarky/current/background"
 
-# mapfile -d '' -t BACKGROUNDS < <(find "$BACKGROUNDS_DIR" -type f -print0 | sort -z)
-# growing pains with zsh :(
 BACKGROUNDS=()
 while IFS= read -r -d '' file; do
   BACKGROUNDS+=("$file")
@@ -35,13 +33,16 @@ else
     fi
   done
 
-  # Get next background (wrap around)
+  # Get next backgroun (wrap around)
+  MODE="fill"
   if [[ $INDEX -eq -1 ]]; then
     # Use the first background when no match is found
     NEW_BACKGROUND="${BACKGROUNDS[1]}"
   else
     NEXT_INDEX=$((INDEX % TOTAL))
     NEW_BACKGROUND="${BACKGROUNDS[($NEXT_INDEX + 1)]}"
+    IFS='-' read -A parts <<< "$NEW_BACKGROUND"
+    MODE="$parts[2]"
   fi
 
   # Set new background symlink
@@ -57,5 +58,5 @@ else
   kitty @ load-config
   # Relaunch swaybg
   pkill -x swaybg
-  setsid uwsm app -- swaybg -i "$CURRENT_BACKGROUND_LINK" -m fill >/dev/null 2>&1 &
+  setsid uwsm app -- swaybg -i "$CURRENT_BACKGROUND_LINK" -m "$MODE" >/dev/null 2>&1 &
 fi
