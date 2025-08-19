@@ -104,9 +104,12 @@ return {
 				"pyright",
 				"jsonls",
 				"black",
-				"ruff-lsp",
+				"ruff",
 				"isort",
 				"prettier",
+				"cpplint",
+				"clangd",
+				"clang-format",
 			},
 		})
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -156,9 +159,38 @@ return {
 				client.server_capabilities.hoverProvider = false
 			end,
 		}
+		lspconfig.clangd.setup({
+			settings = {
+				UseSdk = true, -- Highly recommended
+				IncludeArgs = {
+					"-isystem",
+					-- "/path/to/your/include/directory", -- Add necessary include paths
+				},
+				DefineNames = true, -- Enable macro definition handling
+				UsePredefinedIncludePaths = true,
+				Pipes = false,
+				DiagnosticsFormat = "json",
+			},
+			-- -- Optional:  Configure Treesitter (recommended for better performance)
+			-- setup = function(server)
+			-- 	server:registerTables({
+			--
+			-- 		--  You can add specific treesitter configurations here if needed.
+			-- 	})
+			-- end,
+		})
+		-- Configure clang-format
+		lspconfig.clangd.server_args = {
+			-- clang-format options
+			flags = {
+				"-clang-format",
+				"--format-style=file", -- Adjust to your desired style (e.g., "sln", "sln_google")
+				"--ansi-aware=no",
+			},
+		}
 
-		-- leaving this in because this motherfucking loop destroys any config from the "servers" table that
-		-- used to be in this cursed fucking config. There's something wrong with the tbl_deep_extend args
+		-- leaving this in because this loop destroys any config from the "servers" table that
+		-- used to be in this cursed config. There's something wrong with the tbl_deep_extend args
 		-- that wipes anything you tell it to do. fuck this.
 		-- require("mason-lspconfig").setup({
 		-- 	ensure_installed = {},
