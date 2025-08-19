@@ -4,10 +4,7 @@
 # using walker for an interactive search menu.
 
 USER_HYPRLAND_CONF="$HOME/.config/hypr/hyprland.conf"
-AUTARKY_BINDINGS_CONF="$HOME/.local/share/autarky/default/hypr/bindings.conf \
-$HOME/.local/share/autarky/default/hypr/bindings/tiling.conf \
-$HOME/.local/share/autarky/default/hypr/bindings/utilities.conf \
-$HOME/.local/share/autarky/default/hypr/bindings/media.conf"
+AUTARKY_BINDINGS_CONF=($HOME/.local/share/autarky/default/hypr/bindings/*.conf)
 
 # Process the configuration file to extract and format keybindings
 # 1. `grep` finds all lines starting with 'bind' (allowing for leading spaces).
@@ -19,7 +16,7 @@ $HOME/.local/share/autarky/default/hypr/bindings/media.conf"
 #    - It joins the command that the key executes.
 #    - It prints everything in a nicely aligned format.
 # 4. The final `sed` cleans up any leftover commas from the end of lines.
-grep -h '^[[:space:]]*bind' $USER_HYPRLAND_CONF $AUTARKY_BINDINGS_CONF |
+grep -h '^[[:space:]]*bind' $USER_HYPRLAND_CONF ${AUTARKY_BINDINGS_CONF[@]} |
   sed 's/#.*//' |
   sed '/^[[:space:]]*$/d' |
   sort -u |
