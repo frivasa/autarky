@@ -1,13 +1,6 @@
-# Oh My Zsh configuration
-source ~/.local/share/autarky/default/zsh/omz-config
-
 # Autarky-specific configuration
 source ~/.local/share/autarky/default/zsh/shell
 source ~/.local/share/autarky/default/zsh/aliases
 source ~/.local/share/autarky/default/zsh/functions
-# source ~/.local/share/autarky/default/zsh/prompt
 source ~/.local/share/autarky/default/zsh/init
 source ~/.local/share/autarky/default/zsh/envs
-
-# Initialize Oh My Zsh
-source $ZSH/oh-my-zsh.sh
