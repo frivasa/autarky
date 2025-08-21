@@ -2,8 +2,8 @@
 ZSH_THEME="autarky"
 
 # vi-mode settings
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
+# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+# VI_MODE_SET_CURSOR=true
 # timer settings
 TIMER_PRECISION=1
 TIMER_FORMAT='\n[%d]'

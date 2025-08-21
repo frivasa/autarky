@@ -1,20 +1,8 @@
-# Path to Oh My Zsh installation
-export ZSH="$HOME/.config/ohmyzsh"
-
 # All the default Autarky aliases and functions
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/autarky/default/zsh/rc
 
 # Add your own exports, aliases, and functions here.
-#
-# Make an alias for invoking commands you use constantly
-# alias p='python'
-#
-# Use VSCode instead of neovim as your default editor
-# export EDITOR="code"
-#
-# Set a custom prompt with the directory revealed (alternatively use https://starship.rs)
-# PS1="\W \[\e]0;\w\a\]$PS1"
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -37,3 +25,6 @@ function fastfetch_switch_waifu(){
   repo=${2:-neko}
   source ~/.config/fastfetch/change_waifu.sh $kind $repo
 }
+
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+eval "$(starship init zsh)"

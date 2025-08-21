@@ -1,0 +1,106 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+format = '''
+$hostname$directory
+$pixi$git_branch$git_status$time$cmd_duration
+$character
+'''
+
+[character]
+success_symbol = '[](bold white)'
+error_symbol = '[](bold red)'
+vimcmd_symbol = '[](bold green)'
+
+[hostname]
+disabled = false
+ssh_only = false
+format = '[$ssh_symbol$hostname]($style) '
+style = 'bold red'
+
+[directory]
+disabled = false
+truncation_length = 10
+truncate_to_repo = true
+truncation_symbol = '󱀝/'
+format = '[$path]($style)[$read_only]($read_only_style) '
+style = 'bold cyan'
+
+[pixi]
+disabled = false
+format = '[\(pixi:$environment\)]($style)'
+style = 'bold yellow'
+
+[git_branch]
+disabled = false
+always_show_remote = true
+format = '[\(git:$branch\)]($style)'
+style = 'bold green'
+
+[git_status]
+disabled = false
+format = '[\[$all_status\]]($style)'
+style = 'bold green'
+
+[time]
+disabled = false
+format = '[\[$time\]]($style)'
+time_format = '%b %e %R'
+style = 'bold cyan'
+
+[cmd_duration]
+disabled = false
+min_time = 500
+show_milliseconds = true
+format = '[\(last:$duration\)]($style)'
+style = 'bold cyan'
+
+[cmake]
+disabled = false
+format = '$symbol($version)'
+
+[cpp]
+disabled = false
+format = '$symbol($version)'
+
+[c]
+disabled = false
+format = '$symbol($version)'
+
+[python]
+disabled = false
+format = '$symbol($version)'
+
+[conda]
+disabled = false
+format = '$symbol($version)'
+
+[lua]
+disabled = false
+format = '$symbol($version)'
+
+[typst]
+disabled = false
+format = '$symbol($version)'
+
+[rlang]
+disabled = false
+format = '$symbol($version)'
+
+[zig]
+disabled = false
+format = '$symbol($version)'
+
+[rust]
+disabled = false
+format = '$symbol($version)'
+
+[quarto]
+disabled = false
+format = '$symbol($version)'
+
+[package]
+disabled = true
