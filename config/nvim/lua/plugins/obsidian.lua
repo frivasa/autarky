@@ -1,4 +1,4 @@
-local vault_path = "/home/fdo/burbs/31.obsee/al-amin/"
+local vault_path = "/home/fdo/burbs/87.obsee/al-amin/"
 return {
 	"obsidian-nvim/obsidian.nvim",
 	version = "*", -- recommended, use latest release instead of latest commit

@@ -65,6 +65,7 @@ anchor=top-right
 outer-margin=20
 default-timeout=5000
 max-icon-size=32
+border-radius=16
 
 [app-name=Spotify]
 invisible=1

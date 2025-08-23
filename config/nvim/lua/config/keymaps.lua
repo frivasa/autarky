@@ -16,7 +16,7 @@ local function toggle_gutter()
 		vim.wo.signcolumn = "no"
 	else
 		vim.wo.number = true
-		vim.wo.relativenumber = true
+		vim.wo.relativenumber = false
 		vim.wo.signcolumn = "auto"
 	end
 end
@@ -143,6 +143,7 @@ wk.add({
 	{ "<leader>d", group = "Debug", icon = { icon = "󰨰 ", color = "purple" } },
 	{ "<leader>dqq", vim.diagnostic.setloclist, desc = "Diagnostics List", nor },
 	{ "<leader>dqf", vim.diagnostic.open_float, desc = "Diagnostics List (float)", nor },
+	{ "<leader>e", group = "Harpoon", icon = { icon = "󰛢", color = "purple" } },
 	{ "<leader>q", group = "Quarto", icon = { icon = "󱡓 ", color = "purple" } },
 	{ "<leader>qp", "<CMD>QuartoPreview<CR>", desc = "Preview", nor },
 	{ "<leader>qa", "<CMD>QuartoSendAbove<CR>", desc = "Run Above", nor },

@@ -1,9 +1,9 @@
 #!/bin/zsh
 # dumping everything else here, don't judge me!
-sudo pacman -S --noconfirm keepassxc audacious tmux syncthing \
-  nodejs npm tree-sitter-cli unzip qbittorrent ollama keepassxc \
+sudo pacman -S --noconfirm keepassxc tmux syncthing \
+  nodejs npm tree-sitter-cli unzip qbittorrent ollama \
   python-json5 python-pywal python-pywalfox cmus fcitx5-configtool \
-  hplip okular baobab android-file-transfer
+  hplip okular baobab android-file-transfer gthumb
 
 
 yay -S --noconfirm --needed \
