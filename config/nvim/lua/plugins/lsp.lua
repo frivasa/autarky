@@ -120,8 +120,6 @@ return {
 			settings = {
 				Lua = {
 					runtime = {
-						-- Tell the language server which version of Lua you're using
-						-- (most likely LuaJIT in the case of Neovim)
 						version = "LuaJIT",
 					},
 					diagnostics = {
@@ -135,7 +133,6 @@ return {
 						-- Make the server aware of Neovim runtime files
 						library = vim.api.nvim_get_runtime_file("", true),
 					},
-					-- Do not send telemetry data containing a randomized but unique identifier
 					telemetry = {
 						enable = false,
 					},
@@ -160,34 +157,36 @@ return {
 			end,
 		}
 		lspconfig.clangd.setup({
-			settings = {
-				UseSdk = true, -- Highly recommended
-				IncludeArgs = {
-					"-isystem",
-					-- "/path/to/your/include/directory", -- Add necessary include paths
-				},
-				DefineNames = true, -- Enable macro definition handling
-				UsePredefinedIncludePaths = true,
-				Pipes = false,
-				DiagnosticsFormat = "json",
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				if client.supports_method("textDocument/formatting") then
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						callback = function()
+							vim.lsp.buf.format({ bufnr = bufnr })
+						end,
+					})
+				end
+			end,
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--completion-style=detailed",
+				"--pch-storage=memory",
+				"--cross-file-rename",
+				"--header-insertion=iwyu",
 			},
-			-- -- Optional:  Configure Treesitter (recommended for better performance)
-			-- setup = function(server)
-			-- 	server:registerTables({
-			--
-			-- 		--  You can add specific treesitter configurations here if needed.
-			-- 	})
-			-- end,
 		})
-		-- Configure clang-format
-		lspconfig.clangd.server_args = {
-			-- clang-format options
-			flags = {
-				"-clang-format",
-				"--format-style=file", -- Adjust to your desired style (e.g., "sln", "sln_google")
-				"--ansi-aware=no",
-			},
-		}
+		-- -- Configure clang-format
+		-- lspconfig.clangd.server_args = {
+		-- 	-- clang-format options
+		-- 	flags = {
+		-- 		"-clang-format",
+		-- 		"--format-style=file", -- Adjust to your desired style (e.g., "sln", "sln_google")
+		-- 		"--ansi-aware=no",
+		-- 	},
+		-- }
 
 		-- leaving this in because this loop destroys any config from the "servers" table that
 		-- used to be in this cursed config. There's something wrong with the tbl_deep_extend args

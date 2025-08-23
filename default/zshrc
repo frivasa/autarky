@@ -2,6 +2,9 @@
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/autarky/default/zsh/rc
 
+HISTFILE=~/.zhistfile
+HISTSIZE=1000
+SAVEHIST=1000
 # Add your own exports, aliases, and functions here.
 alias v='nvim'
 alias vi='nvim'

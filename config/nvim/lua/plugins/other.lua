@@ -13,14 +13,14 @@ return {
 				function()
 					require("which-key").show({ global = false, loop = true })
 				end,
-				desc = "Buffer Local Keymaps (which-key)",
+				desc = "Buffer Local Keymaps",
 			},
 			{
 				"<leader>hg",
 				function()
 					require("which-key").show({ global = true, loop = true })
 				end,
-				desc = "Buffer Local Keymaps (which-key)",
+				desc = "Buffer Global Keymaps",
 			},
 		},
 	},
@@ -53,7 +53,7 @@ return {
 			ft = { "markdown", "Avante" },
 		},
 	},
-	{ -- see your undo/redos + diff, oh god this is beautiful
+	{ -- see your undo/redos + diff. This is beautiful
 		"mbbill/undotree",
 		lazy = false,
 		config = function()
@@ -121,8 +121,4 @@ return {
 			},
 		},
 	},
-	-- { -- show 1234 only in line numbers (does not work well with hidding-gutter)
-	-- 	"mluders/comfy-line-numbers.nvim",
-	-- 	opts = {},
-	-- },
 }
