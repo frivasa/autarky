@@ -3,9 +3,10 @@
 # Copy over Autarky configs
 cp -R ~/.local/share/autarky/config/* ~/.config/
 
-# Use default zshrc and starship.toml from Autarky
+# zshrc, tmux.conf and starship.toml
 cp ~/.local/share/autarky/default/zshrc ~/.zshrc
-# cp ~/.local/share/autarky/default/starship.toml ~/.config/starship.toml
+cp ~/.local/share/autarky/default/tmux.conf ~/.tmux.conf
+cp ~/.local/share/autarky/default/starship.toml ~/.config/starship.toml
 
 # Ensure application directory exists for update-desktop-database
 mkdir -p ~/.local/share/applications

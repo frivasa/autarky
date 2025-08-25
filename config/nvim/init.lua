@@ -18,7 +18,8 @@ require("lazy").setup({
 	require("plugins.telescope"), -- file search and grep
 	require("plugins.gitsigns"), -- git symbols along gutter (change-add-delete symbols)
 	require("plugins.oil"), -- git symbols along gutter (change-add-delete symbols)
-	require("plugins.vim-tmux-navigator"), -- move around nvim+tmux splits
+	-- require("plugins.vim-tmux-navigator"), -- move around nvim+tmux splits
+	require("plugins.vim-kitty-navigator"), -- move around nvim+kitty splits
 	require("plugins.lualine"), -- bottom bar config/colors
 	require("plugins.harpoon"), -- buffer tabbing
 	require("plugins.greeter"), -- add ascii poster and recent files on startup
