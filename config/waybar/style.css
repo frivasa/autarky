@@ -1,47 +1,79 @@
 @import "../autarky/current/theme/waybar.css";
 
 * {
-  background-color: @background;
+  /* make it a solid bar: */
+  /* background-color: @background; */
+  /* background-color: transparent; */
   color: @foreground;
-
-  border: none;
-  border-radius: 0;
   min-height: 0;
   font-family: CaskaydiaMono Nerd Font Propo;
-  font-size: 12px;
-}
-
-.modules-left {
-  margin-left: 8px;
-}
-
-.modules-right {
-  margin-right: 8px;
-}
-
-#workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
-}
-
-#tray,
-#cpu,
-#battery,
-#network,
-#bluetooth,
-#pulseaudio,
-#clock,
-#custom-power-menu {
-  min-width: 12px;
-  margin: 0 7.5px;
-}
-
-#custom-expand-icon {
-  margin-right: 12px;
+  font-size: 18px;
 }
 
 tooltip {
   padding: 2px;
 }
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 2px;
+  min-width: 9px;
+}
+
+#waybar,
+.modules-left,
+.modules-center,
+.modules-right {
+  margin-top: 9px;
+  background-color: transparent;
+}
+
+.modules-left {
+  margin-left: 200px;
+  margin-right: 0;
+}
+
+.modules-center {
+  margin-right: 800px;
+}
+
+.modules-right {
+  margin-right: 300px;
+}
+
+#bluetooth,
+#network,
+#pulseaudio,
+#tray,
+#cpu {
+  padding: 0px 0px;
+  margin: 0px 6px;
+}
+
+#blob {
+  margin: 0px 6px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  background-color: @background;
+  border: 3px solid @foreground;
+}
+
+.popup-menu {
+  margin: 0px 6px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  background-color: @background;
+  border: 3px solid @foreground;
+}
+
+#workspaces,
+#clock {
+  padding: 4px 10px;
+  border-radius: 10px;
+  background-color: @background;
+  min-width: 12px;
+  margin: 0 6px;
+  border: 3px solid @foreground;
+}
+

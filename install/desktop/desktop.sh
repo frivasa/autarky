@@ -1,6 +1,6 @@
 #!/bin/zsh
 # dumping everything else here, don't judge me!
-sudo pacman -S --noconfirm keepassxc tmux syncthing \
+sudo pacman -S --noconfirm keepassxc syncthing \
   nodejs npm tree-sitter-cli unzip qbittorrent ollama \
   python-json5 python-pywal python-pywalfox cmus fcitx5-configtool \
   hplip okular baobab android-file-transfer gthumb
