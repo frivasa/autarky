@@ -96,14 +96,11 @@ wk.add({
 
 -- "local" keymaps
 wk.add({
+	-- deprecated (tmux/kitty-nvim plugins also move nvim panes)
 	-- { "<C-h>", "<CMD>wincmd h<CR>", desc = "Move Left", nor },
-	-- { "<C-j>", "<CMD>wincmd j<CR>", desc = "Move Down", nor },
-	-- { "<C-k>", "<CMD>wincmd k<CR>", desc = "Move Up", nor },
-	-- { "<C-l>", "<CMD>wincmd l<CR>", desc = "Move Right", nor },
-	{ "<C-h>", "<CMD>KittyNavigateLeft <CR>", desc = "Move Left", nor },
-	{ "<C-j>", "<CMD>KittyNavigateDown <CR>", desc = "Move Down", nor },
-	{ "<C-k>", "<CMD>KittyNavigateUp <CR>", desc = "Move Up", nor },
-	{ "<C-l>", "<CMD>KittyNavigateRight <CR>", desc = "Move Right", nor },
+	-- tmux/kitty-nvim keybinds are set @setup
+	-- { "<C-h>", "<CMD><C-U>TmuxNavigateLeft <CR>", desc = "Move Left", nor },
+	-- { "<C-h>", "<CMD>KittyNavigateLeft <CR>", desc = "Move Left", nor },
 	{ "<C-q>", "<CMD>q<CR>", desc = "Quit File", nor },
 	{ "<C-s>", "<CMD>w<CR>", desc = "Save File", nor },
 	{ "<S-Tab>", "<CMD>bprevious<CR>", desc = "Prev Buffer", nor },

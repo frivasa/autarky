@@ -4,11 +4,11 @@ return {
 	lazy = false,
 	---@type snacks.Config
 	opts = {
-		image = { enabled = true }, -- render images,pdfs,md,and others
+		-- image = { enabled = true }, -- render images,pdfs,md,and others
 		bigfile = { enabled = true }, -- disable lsp when opening a big file
 		indent = { enabled = true }, -- draw indents
-		notify = { enabled = true },
-		scroll = { enabled = true },
-		statuscolumn = { enabled = true },
+		-- notify = { enabled = true },
+		-- scroll = { enabled = true }, -- smoother scrolling
+		statuscolumn = { enabled = false },
 	},
 }
