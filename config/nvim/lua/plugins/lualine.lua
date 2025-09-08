@@ -40,6 +40,7 @@ return { -- bottom bar config
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
+				-- theme = "pywal-nvim",
 				-- theme = "gruvbox-material", -- Set theme based on environment variable
 				-- comment to inherit colorscheme from vim
 				-- Some useful glyphs:

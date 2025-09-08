@@ -1,5 +1,8 @@
 return {
 	"jbyuki/venn.nvim",
+	-- l-tv toggles canvas (needs free lines to play with)
+	-- shift hjkl draws arrows
+	-- l-b builds a box around a square selection (cannot be linear)
 	keys = {
 		{ "<leader>tv", "<cmd>lua Toggle_venn()<CR>", desc = "Toggle Venn" },
 	},

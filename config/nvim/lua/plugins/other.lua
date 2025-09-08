@@ -1,5 +1,4 @@
--- Standalone plugins with less than 10 lines of config go here
-return {
+return { -- Standalone plugins other than snacks or mini
 	{ -- keybind hints
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -24,10 +23,6 @@ return {
 			},
 		},
 	},
-	{ -- rename word under cursor based on context
-		"smjonas/inc-rename.nvim",
-		opts = {},
-	},
 	{ -- autoclose brackets
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -45,12 +40,12 @@ return {
 	},
 	{ -- markdown highlight/rendering on normal mode
 		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
 		opts = {
 			callout = {
 				note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
 			},
-			ft = { "markdown", "Avante" },
+			ft = { "Avante" },
 		},
 	},
 	{ -- see your undo/redos + diff. This is beautiful
@@ -94,30 +89,6 @@ return {
 					require("flash").treesitter()
 				end,
 				desc = "Flash Treesitter",
-			},
-			{
-				"r",
-				mode = "o",
-				function()
-					require("flash").remote()
-				end,
-				desc = "Remote Flash",
-			},
-			{
-				"R",
-				mode = { "o", "x" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Treesitter Search",
-			},
-			{
-				"<c-s>",
-				mode = { "c" },
-				function()
-					require("flash").toggle()
-				end,
-				desc = "Toggle Flash Search",
 			},
 		},
 	},
