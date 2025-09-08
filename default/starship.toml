@@ -3,60 +3,56 @@
 
 # Inserts a blank line between shell prompts
 add_newline = false
-
-format = '''
-$hostname$directory
-$pixi$git_branch$git_status$time$cmd_duration
-$character
+format = '''$directory$pixi$git_branch$git_status$cmd_duration$fill
 '''
-
-[character]
-success_symbol = '[](bold white)'
-error_symbol = '[](bold red)'
-vimcmd_symbol = '[](bold green)'
-
-[hostname]
-disabled = false
-ssh_only = false
-format = '[$ssh_symbol$hostname]($style) '
-style = 'bold red'
+right_format = ''''''
 
 [directory]
+format = '[ $path ]($style)'
+style = 'fg:black bg:cyan'
 disabled = false
 truncation_length = 10
 truncate_to_repo = true
 truncation_symbol = '󱀝/'
-format = '[$path]($style)[$read_only]($read_only_style) '
-style = 'bold cyan'
+
+[character]
+success_symbol = '[ I ](fg:black bg:cyan)'
+error_symbol= '[ I ](fg:black bg:cyan)'
+vimcmd_symbol = '[ N ](fg:black bg:cyan)'
+# [character]
+# success_symbol = '[](bold cyan)'
+# error_symbol = '[](bold red)'
+# vimcmd_symbol = '[](bold green)'
+
+[fill]
+# [](cyan)[ 󱞩](fg:black bg:cyan)[█](cyan) 
+# symbol = '█ '
+# symbol = '  █  '
+symbol = ' '
+style = 'blue'
 
 [pixi]
 disabled = false
-format = '[\(pixi:$environment\)]($style)'
-style = 'bold yellow'
+format = '[ 󰾡󰧲 $environment ]($style)'
+style = 'fg:black bg:red'
 
 [git_branch]
 disabled = false
 always_show_remote = true
-format = '[\(git:$branch\)]($style)'
-style = 'bold green'
+format = '[  $branch]($style)'
+style = 'fg:black bg:green'
 
 [git_status]
 disabled = false
-format = '[\[$all_status\]]($style)'
-style = 'bold green'
-
-[time]
-disabled = false
-format = '[\[$time\]]($style)'
-time_format = '%b %e %R'
-style = 'bold cyan'
+format = '[\[$all_status\] ]($style)'
+style = 'fg:black bg:green'
 
 [cmd_duration]
 disabled = false
-min_time = 500
-show_milliseconds = true
-format = '[\(last:$duration\)]($style)'
-style = 'bold cyan'
+min_time = 1_000
+show_milliseconds = false
+format = '[ $duration ]($style)'
+style = 'fg:black bg:cyan'
 
 [cmake]
 disabled = false
@@ -104,3 +100,15 @@ format = '$symbol($version)'
 
 [package]
 disabled = true
+
+[hostname]
+disabled = true
+ssh_only = false
+format = '[$ssh_symbol$hostname]($style) '
+style = 'bold red'
+
+[time]
+disabled = true
+format = '[\[$time\]]($style)'
+time_format = '%b %e %R'
+style = 'bold cyan'

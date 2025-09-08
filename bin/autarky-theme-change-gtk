@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+prog=$(basename "$0")
+
+if [[ $1 == "--help" || $# -eq 0 ]]; then
+  cat <<EOF
+setup a gtk colorscheme (Orchis black + highlight color)
+Usage: $prog red
+Possible colors:
+  default|purple|pink|red |orange
+   yellow|green |teal|grey|all (Default: blue)
+EOF
+  exit 0
+fi
+
+
+~/.local/share/orchis-gtk-theme/install.sh -n systheme -t $1
+if [[ $1 == "default" ]]; then
+  gsettings set org.gnome.desktop.interface gtk-theme "systheme-Dark-Compact"
+else
+  gsettings set org.gnome.desktop.interface gtk-theme "systheme-${(C)1}-Dark-Compact"
+fi
+
+nwg-look
+

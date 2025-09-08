@@ -38,8 +38,8 @@ done < "$PYWAL_CACHE_COLORS"
 FILE="$THEME_LINK/hyprland.conf"
 cat << EOF > "$FILE"
 general {
-    col.active_border = rgba(${colors[2]:1}ff)
-    col.inactive_border = rgba(${colors[9]:1}88)
+    col.active_border = rgba(${colors[5]:1}ff)
+    col.inactive_border = rgba(${colors[2]:1}bf)
 }
 EOF
 
