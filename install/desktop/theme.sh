@@ -10,10 +10,13 @@ if ! yay -Q gnome-themes-extra &>/dev/null; then
   yay -S --noconfirm gnome-themes-extra # Adds Adwaita-dark theme
 fi
 
-gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+# clone theme repo and init a bland color
+git clone https://github.com/vinceliuice/Orchis-theme.git ~/.local/share/orchis-gtk-theme
+~/.local/share/orchis-gtk-theme/install.sh -n Systheme -t grey
+
+gsettings set org.gnome.desktop.interface gtk-theme "Systheme-Grey-Dark-Compact"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-# "darken" icons by using the ones that look like the sidebar ones.
-gsettings set org.gnome.desktop.interface icon-theme "breeze-dark"
+gsettings set org.gnome.desktop.interface icon-theme "HighContrast"
 
 # Setup theme links
 mkdir -p ~/.config/autarky/themes

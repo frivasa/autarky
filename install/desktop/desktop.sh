@@ -3,16 +3,20 @@
 sudo pacman -S --noconfirm keepassxc syncthing \
   nodejs npm tree-sitter-cli unzip qbittorrent ollama \
   python-json5 python-pywal python-pywalfox cmus fcitx5-configtool \
-  hplip okular baobab android-file-transfer gthumb
+  hplip baobab android-file-transfer gthumb nemo nemo-fileroller \
+  nwg-look
 
 
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer wiremix wireplumber \
   fcitx5 fcitx5-gtk fcitx5-qt wl-clip-persist \
-  nautilus sushi ffmpegthumbnailer \
+  sushi ffmpegthumbnailer \
   slurp satty \
   mpv evince imv \
   zen-browser-bin chromium video-downloader
+
+# load nemo defaults
+dconf load /org/nemo/ < ~/.local/share/autarky/default/nemo.dconf
 
 # Add screen recorder based on GPU
 if lspci | grep -qi 'nvidia'; then

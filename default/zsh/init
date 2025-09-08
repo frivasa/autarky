@@ -5,7 +5,7 @@ if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
-# FZF integration (fallback if Oh My Zsh plugin not available)
+# FZF integration
 if command -v fzf &> /dev/null; then
   if [[ -f /usr/share/fzf/completion.zsh ]]; then
     source /usr/share/fzf/completion.zsh
