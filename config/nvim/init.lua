@@ -18,8 +18,7 @@ require("lazy").setup({
 	require("plugins.telescope"), -- file search and grep
 	require("plugins.gitsigns"), -- git symbols along gutter (change-add-delete symbols)
 	require("plugins.oil"), -- git symbols along gutter (change-add-delete symbols)
-	-- require("plugins.vim-tmux-navigator"), -- move around nvim+tmux splits
-	require("plugins.vim-kitty-navigator"), -- move around nvim+kitty splits
+	require("plugins.vim-tmux-navigator"), -- move around nvim+tmux splits
 	require("plugins.lualine"), -- bottom bar config/colors
 	require("plugins.harpoon"), -- buffer tabbing
 	require("plugins.greeter"), -- add ascii poster and recent files on startup
@@ -28,13 +27,14 @@ require("lazy").setup({
 	require("plugins.autocompletion"), -- lsp companion, fills in if-elses, for-loops, etc
 	require("plugins.formatting"), -- fix spacing/indents on a per-lang basis
 	require("plugins.dap"), -- debugger
-	require("plugins.obsidian"), -- obsidian manager (enable when vault is configured)
+	require("plugins.obsidian"), -- obsidian manager
 	require("plugins.ai-avante"), -- bot wrangler
 	require("plugins.quarto"), -- quarto document/webpage dev
 	require("plugins.snacks"), -- group of QoL plugins
 	require("plugins.mini"), -- shitload of plugins
 	require("plugins.other"), -- any other few-line plugins
 	require("plugins.venn"), -- draw diagrams
+	require("plugins.auto-session"), -- draw diagrams
 })
 
 require("config.keymaps")
