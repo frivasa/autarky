@@ -179,4 +179,8 @@ wk.add({
 	{ "<leader>tp", "<CMD>BufferLineTogglePin <CR>", desc = "Toggle Pinned", mode = { "n", "v" }, opts },
 	{ "<leader>tw", "<CMD>set wrap!<CR>", desc = "Toggle Wrap", nor },
 	{ "<leader>tz", "<CMD>setlocal spell!<CR>", desc = "Toggle Spellcheck", nor },
+	{ "<leader>w", group = "Sessions", icon = { icon = " ", color = "purple" } },
+	{ "<leader>wr", "<CMD>AutoSession search<CR>", desc = "Session search", nor },
+	{ "<leader>ws", "<CMD>AutoSession save<CR>", desc = "Save session", nor },
+	{ "<leader>wa", "<CMD>AutoSession toggle<CR>", desc = "Toggle autosave", nor },
 })

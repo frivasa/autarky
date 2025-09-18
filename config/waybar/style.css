@@ -6,7 +6,7 @@
   /* background-color: transparent; */
   color: @foreground;
   min-height: 0;
-  font-family: CaskaydiaMono Nerd Font Propo;
+  font-family: JetBrainsMono Nerd Font Mono;
   font-size: 18px;
 }
 
