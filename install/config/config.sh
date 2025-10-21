@@ -48,8 +48,8 @@ if [[ -n "${AUTARKY_USER_EMAIL//[[:space:]]/}" ]]; then
 fi
 
 # Set default XCompose that is triggered with CapsLock
-tee ~/.XCompose >/dev/null <<EOF
-include "%H/.local/share/autarky/default/xcompose"
+# tee ~/.XCompose >/dev/null <<EOF
+# include "%H/.local/share/autarky/default/xcompose"
 
 # Identification
 <Multi_key> <space> <n> : "$AUTARKY_USER_NAME"

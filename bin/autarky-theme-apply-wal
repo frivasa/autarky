@@ -90,12 +90,9 @@ EOF
 
 FILE="$THEME_LINK/walker.css"
 cat << EOF > "$FILE"
-@define-color selected-text ${colors[3]};
-@define-color text ${colors[8]};
-@define-color base ${colors[1]};
-@define-color border ${colors[2]};
-@define-color foreground ${colors[8]};
-@define-color background ${colors[1]};
+@define-color window_bg_color ${colors[1]};
+@define-color accent_bg_color ${colors[2]};
+@define-color theme_fg_color ${colors[8]};
 EOF
 
 FILE="$THEME_LINK/waybar.css"
