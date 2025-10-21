@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-autarky-refresh-config walker/config.toml
+# autarky-refresh-config walker/config.toml
 
 pkill walker
 setsid uwsm app -- walker --gapplication-service &

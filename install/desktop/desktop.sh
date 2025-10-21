@@ -10,9 +10,9 @@ sudo pacman -S --noconfirm keepassxc syncthing \
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer wiremix wireplumber \
   fcitx5 fcitx5-gtk fcitx5-qt wl-clip-persist \
-  sushi ffmpegthumbnailer \
+  ffmpegthumbnailer \
   slurp satty \
-  mpv evince imv \
+  mpv xreader imv \
   zen-browser-bin chromium video-downloader
 
 # load nemo defaults
