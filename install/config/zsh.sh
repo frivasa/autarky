@@ -7,7 +7,7 @@ sudo pacman -S --noconfirm starship tmux keyd
 yay -S --noconfirm --needed zsh zsh-syntax-highlighting zsh-autosuggestions zsh-vi-mode kitty
 
 # copy config and enable keyd bindings
-sudo mkdir /etc/keyd
+sudo mkdir -p /etc/keyd
 sudo cp ~/.local/share/autarky/default/default.conf /etc/keyd/default.conf
 if ! systemctl is-enabled keyd.service | grep -q enabled; then
   sudo systemctl enable keyd
