@@ -2,7 +2,7 @@
 # dumping everything else here, don't judge me!
 sudo pacman -S --noconfirm keepassxc syncthing \
   nodejs npm tree-sitter-cli unzip qbittorrent ollama \
-  python-json5 python-pywal python-pywalfox cmus fcitx5-configtool \
+  python-json5 python-pywal fcitx5-configtool \
   hplip baobab android-file-transfer gthumb nemo nemo-fileroller \
   nwg-look
 
@@ -10,7 +10,7 @@ sudo pacman -S --noconfirm keepassxc syncthing \
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer wiremix wireplumber \
   fcitx5 fcitx5-gtk fcitx5-qt wl-clip-persist \
-  ffmpegthumbnailer \
+  ffmpegthumbnailer python-pywalfox \
   slurp satty \
   mpv xreader imv \
   zen-browser-bin chromium video-downloader

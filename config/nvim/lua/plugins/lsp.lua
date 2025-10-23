@@ -112,35 +112,28 @@ return {
 				"clang-format",
 			},
 		})
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		local lspconfig = require("lspconfig")
 
-		lspconfig.lua_ls.setup({
+		-- Get enhanced completion capabilities from blink.cmp
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+		-- Define each server configuration
+		vim.lsp.config.lua_ls = {
 			capabilities = capabilities,
 			settings = {
 				Lua = {
-					runtime = {
-						version = "LuaJIT",
-					},
+					runtime = { version = "LuaJIT" },
 					diagnostics = {
-						-- Get the language server to recognize the `vim` global
-						globals = {
-							"vim",
-							"require",
-						},
+						globals = { "vim", "require" },
 					},
 					workspace = {
-						-- Make the server aware of Neovim runtime files
 						library = vim.api.nvim_get_runtime_file("", true),
 					},
-					telemetry = {
-						enable = false,
-					},
+					telemetry = { enable = false },
 				},
 			},
-		})
+		}
 
-		lspconfig.pyright.setup({
+		vim.lsp.config.pyright = {
 			settings = {
 				pyright = {
 					python = {
@@ -148,16 +141,25 @@ return {
 					},
 				},
 			},
-		})
+		}
 
-		lspconfig.ruff_lsp = {
+		vim.lsp.config.ruff_lsp = {
 			on_attach = function(client, _)
-				-- Optional: turn off hover/docs from Ruff
 				client.server_capabilities.hoverProvider = false
 			end,
 		}
-		lspconfig.clangd.setup({
+
+		vim.lsp.config.clangd = {
 			capabilities = capabilities,
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--completion-style=detailed",
+				"--pch-storage=memory",
+				"--cross-file-rename",
+				"--header-insertion=iwyu",
+			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -168,38 +170,82 @@ return {
 					})
 				end
 			end,
-			cmd = {
-				"clangd",
-				"--background-index",
-				"--clang-tidy",
-				"--completion-style=detailed",
-				"--pch-storage=memory",
-				"--cross-file-rename",
-				"--header-insertion=iwyu",
-			},
-		})
-		-- -- Configure clang-format
-		-- lspconfig.clangd.server_args = {
-		-- 	-- clang-format options
-		-- 	flags = {
-		-- 		"-clang-format",
-		-- 		"--format-style=file", -- Adjust to your desired style (e.g., "sln", "sln_google")
-		-- 		"--ansi-aware=no",
-		-- 	},
-		-- }
+		}
 
-		-- leaving this in because this loop destroys any config from the "servers" table that
-		-- used to be in this cursed config. There's something wrong with the tbl_deep_extend args
-		-- that wipes anything you tell it to do. fuck this.
-		-- require("mason-lspconfig").setup({
-		-- 	ensure_installed = {},
-		-- 	automatic_installation = false,
-		-- 	handlers = {
-		-- 		function(server_name)
-		-- 			local server = servers[server_name] or {}
-		-- 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-		-- 			require("lspconfig")[server_name].setup(server)
-		-- 		end,
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "lua", "python", "c", "cpp" },
+			callback = function()
+				local ft = vim.bo.filetype
+				local config = vim.lsp.config[ft == "cpp" and "clangd" or ft .. "_ls"] or vim.lsp.config[ft]
+				if config then
+					vim.lsp.start(config)
+				end
+			end,
+		})
+		-- local capabilities = require("blink.cmp").get_lsp_capabilities()
+		-- local lspconfig = require("lspconfig")
+		--
+		-- lspconfig.lua_ls.setup({
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		Lua = {
+		-- 			runtime = {
+		-- 				version = "LuaJIT",
+		-- 			},
+		-- 			diagnostics = {
+		-- 				-- Get the language server to recognize the `vim` global
+		-- 				globals = {
+		-- 					"vim",
+		-- 					"require",
+		-- 				},
+		-- 			},
+		-- 			workspace = {
+		-- 				-- Make the server aware of Neovim runtime files
+		-- 				library = vim.api.nvim_get_runtime_file("", true),
+		-- 			},
+		-- 			telemetry = {
+		-- 				enable = false,
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+		--
+		-- lspconfig.pyright.setup({
+		-- 	settings = {
+		-- 		pyright = {
+		-- 			python = {
+		-- 				analysis = { typeCheckingMode = "basic" },
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+		--
+		-- lspconfig.ruff_lsp = {
+		-- 	on_attach = function(client, _)
+		-- 		-- Optional: turn off hover/docs from Ruff
+		-- 		client.server_capabilities.hoverProvider = false
+		-- 	end,
+		-- }
+		-- lspconfig.clangd.setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = function(client, bufnr)
+		-- 		if client.supports_method("textDocument/formatting") then
+		-- 			vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 				buffer = bufnr,
+		-- 				callback = function()
+		-- 					vim.lsp.buf.format({ bufnr = bufnr })
+		-- 				end,
+		-- 			})
+		-- 		end
+		-- 	end,
+		-- 	cmd = {
+		-- 		"clangd",
+		-- 		"--background-index",
+		-- 		"--clang-tidy",
+		-- 		"--completion-style=detailed",
+		-- 		"--pch-storage=memory",
+		-- 		"--cross-file-rename",
+		-- 		"--header-insertion=iwyu",
 		-- 	},
 		-- })
 	end,
