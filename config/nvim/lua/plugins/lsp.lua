@@ -107,16 +107,47 @@ return {
 				"ruff",
 				"isort",
 				"prettier",
-				"cpplint",
-				"clangd",
-				"clang-format",
+				"rust_analyzer",
+				-- "cpplint",
+				-- "clangd",
+				-- "clang-format",
 			},
 		})
 
 		-- Get enhanced completion capabilities from blink.cmp
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
-
 		-- Define each server configuration
+		vim.lsp.config.rust_analyzer = {
+			capabilities = capabilities,
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						allFeatures = true, -- enables all cargo features
+						loadOutDirsFromCheck = true,
+					},
+					checkOnSave = {
+						command = "clippy", -- use clippy for linting
+					},
+					diagnostics = {
+						enable = true,
+						experimental = { enable = true },
+					},
+					procMacro = {
+						enable = true, -- enable procedural macros
+					},
+					inlayHints = {
+						enable = true,
+						typeHints = true,
+						parameterHints = true,
+						chainingHints = true,
+					},
+					workspace = {
+						symbol = { search = { kind = "all_symbols" } },
+					},
+				},
+			},
+		}
+
 		vim.lsp.config.lua_ls = {
 			capabilities = capabilities,
 			settings = {
@@ -149,28 +180,28 @@ return {
 			end,
 		}
 
-		vim.lsp.config.clangd = {
-			capabilities = capabilities,
-			cmd = {
-				"clangd",
-				"--background-index",
-				"--clang-tidy",
-				"--completion-style=detailed",
-				"--pch-storage=memory",
-				"--cross-file-rename",
-				"--header-insertion=iwyu",
-			},
-			on_attach = function(client, bufnr)
-				if client.supports_method("textDocument/formatting") then
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						buffer = bufnr,
-						callback = function()
-							vim.lsp.buf.format({ bufnr = bufnr })
-						end,
-					})
-				end
-			end,
-		}
+		-- vim.lsp.config.clangd = {
+		-- 	capabilities = capabilities,
+		-- 	cmd = {
+		-- 		"clangd",
+		-- 		"--background-index",
+		-- 		"--clang-tidy",
+		-- 		"--completion-style=detailed",
+		-- 		"--pch-storage=memory",
+		-- 		"--cross-file-rename",
+		-- 		"--header-insertion=iwyu",
+		-- 	},
+		-- 	on_attach = function(client, bufnr)
+		-- 		if client.supports_method("textDocument/formatting") then
+		-- 			vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 				buffer = bufnr,
+		-- 				callback = function()
+		-- 					vim.lsp.buf.format({ bufnr = bufnr })
+		-- 				end,
+		-- 			})
+		-- 		end
+		-- 	end,
+		-- }
 
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = { "lua", "python", "c", "cpp" },

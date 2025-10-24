@@ -1,4 +1,4 @@
-local vault_path = "/home/fdo/burbs/87.obsee/al-amin/"
+local vault_path = "/run/media/fdo/Burbidge/87.obsee/al-amin/"
 return {
 	"obsidian-nvim/obsidian.nvim",
 	version = "*", -- recommended, use latest release instead of latest commit
@@ -37,7 +37,9 @@ return {
 		-- },
 		preferred_link_style = "wiki",
 		wiki_link_func = "prepend_note_path",
-		disable_frontmatter = true, -- true: disable plugin from editing frontmatter
+		frontmatter = {
+			enabled = false,
+		},
 		picker = {
 			name = "telescope.nvim",
 			note_mappings = {
