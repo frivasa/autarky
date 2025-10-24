@@ -58,4 +58,4 @@ grep -h '^[[:space:]]*bind' $USER_HYPRLAND_CONF ${AUTARKY_BINDINGS_CONF[@]} |
         printf "%-35s → %s\n", key_combo, action;
     }
 }' |
-  walker --dmenu --theme keybindings -p 'Keybindings'
+  walker --dmenu --theme autarky -p 'Keybindings'
