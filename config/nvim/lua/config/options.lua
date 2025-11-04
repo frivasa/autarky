@@ -47,7 +47,7 @@ vim.o.completeopt = "menuone,noselect" -- Set completeopt to have a better compl
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- Don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode. (default: 'croql')
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- Separate Vim plugins from Neovim in case Vim still in use (default: includes this path if Vim is installed)
 vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "▸ ", trail = "·", nbsp = "␣" }
 vim.o.hlsearch = true
 vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -55,3 +55,4 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 -- vim.o.conceallevel = 0 -- So that `` is visible in markdown files (default: 1)
 vim.o.conceallevel = 2
+vim.o.winborder = "none" -- default is none, but can be useful in the future...

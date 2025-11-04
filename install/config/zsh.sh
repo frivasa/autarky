@@ -3,10 +3,11 @@
 echo "Installing/Configuring Zsh, Starship, and Tmux"
 
 # Install zsh and related packages
-sudo pacman -S --noconfirm starship tmux keyd
+sudo pacman -S --noconfirm --needed starship tmux keyd
 yay -S --noconfirm --needed zsh zsh-syntax-highlighting zsh-autosuggestions zsh-vi-mode kitty
 
 # enable plugins for tmux
+rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # copy config and enable keyd bindings

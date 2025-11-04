@@ -6,7 +6,7 @@ return { -- Autoformat
 		{
 			"<leader>if",
 			function()
-				require("conform").format({ async = true, lsp_format = "fallback" })
+				require("conform").format({ async = true })
 			end,
 			mode = "",
 			desc = "[F]ormat buffer",
@@ -22,17 +22,14 @@ return { -- Autoformat
 			if disable_filetypes[vim.bo[bufnr].filetype] then
 				return nil
 			else
-				return {
-					timeout_ms = 500,
-					lsp_format = "fallback",
-				}
+				return { timeout_ms = 500 }
 			end
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "isort", "black" }, -- run in sequence
+			python = { "ruff", "black" },
 			rust = { "rustfmt", lsp_format = "fallback" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
+			markdown = { "prettier" },
 		},
 	},
 }

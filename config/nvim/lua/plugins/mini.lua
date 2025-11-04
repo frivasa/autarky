@@ -9,5 +9,12 @@ return {
 		require("mini.splitjoin").setup()
 		-- pick bracketed stuff, delete/add brackets
 		require("mini.surround").setup()
+		-- show current indent
+		require("mini.indentscope").setup({
+			symbol = "|",
+			options = {
+				n_lines = 3000,
+			},
+		})
 	end,
 }

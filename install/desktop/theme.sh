@@ -10,7 +10,8 @@ if ! yay -Q gnome-themes-extra &>/dev/null; then
   yay -S --noconfirm gnome-themes-extra # Adds Adwaita-dark theme
 fi
 
-# clone theme repo and init a bland color
+# clone theme repo and init a neutral color
+rm -rf ~/.local/share/orchis-gtk-theme
 git clone https://github.com/vinceliuice/Orchis-theme.git ~/.local/share/orchis-gtk-theme
 ~/.local/share/orchis-gtk-theme/install.sh -n Systheme -t grey
 

@@ -10,7 +10,7 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias publicip="curl -s ifconfig.me | awk '{print $1}'"
-alias runwebui="sudo systemctl start docker && sudo docker start -i -a open-webui-ollama"
+# alias runwebui="sudo systemctl start docker && sudo docker start -i -a open-webui-ollama"
 # arch update mirror list
 alias update_mirrors='sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
 

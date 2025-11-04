@@ -38,17 +38,7 @@ return { -- Standalone plugins other than snacks or mini
 			require("colorizer").setup()
 		end,
 	},
-	{ -- markdown highlight/rendering on normal mode
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
-		opts = {
-			callout = {
-				note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
-			},
-			ft = { "Avante" },
-		},
-	},
-	{ -- see your undo/redos + diff. This is beautiful
+	{ -- see your undo/redos like a git (diff and history).
 		"mbbill/undotree",
 		lazy = false,
 		config = function()
@@ -61,6 +51,21 @@ return { -- Standalone plugins other than snacks or mini
 	{ -- drag starting indent lines with pane (like always see the definition of a function)
 		"nvim-treesitter/nvim-treesitter-context",
 		opts = {},
+	},
+	{ -- code-folding
+		"kevinhwang91/nvim-ufo",
+		dependencies = { "kevinhwang91/promise-async" },
+		config = function()
+			require("ufo").setup({
+				provider_selector = function(bufnr, filetype, buftype)
+					-- return { "treesitter", "indent" }
+					return { "treesitter" }
+				end,
+				-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+				vim.keymap.set("n", "zR", require("ufo").openAllFolds),
+				vim.keymap.set("n", "zM", require("ufo").closeAllFolds),
+			})
+		end,
 	},
 	{
 		"folke/flash.nvim",
