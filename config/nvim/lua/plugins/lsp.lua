@@ -1,15 +1,19 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ "williamboman/mason.nvim", opts = {} },
+		{ "williamboman/mason.nvim", opts = {} }, -- need this to check deps before loading anything else
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"saghen/blink.cmp",
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+			group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 			callback = function(event)
+				local buf = event.buf
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				vim.api.nvim_set_option_value("updatetime", 300, {})
+
 				local map = function(keys, func, desc, mode)
 					mode = mode or "n"
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -23,47 +27,40 @@ return {
 				map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
 				map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
 				map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
-				local function client_supports_method(client, method, bufnr)
-					if vim.fn.has("nvim-0.11") == 1 then
-						return client:supports_method(method, bufnr)
-					else
-						return client.supports_method(method, { bufnr = bufnr })
+
+				-- for some reason obsidian-ls breaks with docHighlight but supports the method x.x
+				-- this is a belt-and-suspenders function to avoid the obs plugin from constantly warning
+				local function safe_document_highlight()
+					local clients = vim.lsp.get_clients({ bufnr = buf })
+					for _, c in pairs(clients) do
+						if c.server_capabilities.documentHighlightProvider then
+							vim.lsp.buf.document_highlight()
+							return
+						end
 					end
 				end
-				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				if
-					client
-					and client_supports_method(
-						client,
-						vim.lsp.protocol.Methods.textDocument_documentHighlight,
-						event.buf
-					)
-				then
-					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-						buffer = event.buf,
-						group = highlight_augroup,
-						callback = vim.lsp.buf.document_highlight,
-					})
 
-					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-						buffer = event.buf,
-						group = highlight_augroup,
+				if client and client.supports_method("textDocument_documentHighlight", buf) then
+					local hl_group = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
+					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, { -- hl all refs when static
+						buffer = buf,
+						group = hl_group,
+						callback = safe_document_highlight,
+					})
+					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { -- clear hl on move
+						buffer = buf,
+						group = hl_group,
 						callback = vim.lsp.buf.clear_references,
 					})
-
-					vim.api.nvim_create_autocmd("LspDetach", {
-						group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-						callback = function(event2)
+					vim.api.nvim_create_autocmd("LspDetach", { -- clear hl on detatch
+						group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
+						callback = function(ev)
 							vim.lsp.buf.clear_references()
-							vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+							vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = ev.buf })
 						end,
 					})
 				end
-				if
-					client
-					and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
-				then
+				if client and client.supports_method("textDocument_inlayHint", buf) then
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, "[T]oggle Inlay [H]ints")
@@ -108,12 +105,10 @@ return {
 				"isort",
 				"prettier",
 				"rust_analyzer",
-				-- "cpplint",
-				-- "clangd",
-				-- "clang-format",
+				-- "rustfmt", install with rustup component add rustfmt
+				-- "clippy", install with rustup component add clippy
 			},
 		})
-
 		-- Get enhanced completion capabilities from blink.cmp
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		-- Define each server configuration
@@ -125,7 +120,7 @@ return {
 						allFeatures = true, -- enables all cargo features
 						loadOutDirsFromCheck = true,
 					},
-					checkOnSave = {
+					check = {
 						command = "clippy", -- use clippy for linting
 					},
 					diagnostics = {
@@ -180,104 +175,35 @@ return {
 			end,
 		}
 
-		-- vim.lsp.config.clangd = {
-		-- 	capabilities = capabilities,
-		-- 	cmd = {
-		-- 		"clangd",
-		-- 		"--background-index",
-		-- 		"--clang-tidy",
-		-- 		"--completion-style=detailed",
-		-- 		"--pch-storage=memory",
-		-- 		"--cross-file-rename",
-		-- 		"--header-insertion=iwyu",
-		-- 	},
-		-- 	on_attach = function(client, bufnr)
-		-- 		if client.supports_method("textDocument/formatting") then
-		-- 			vim.api.nvim_create_autocmd("BufWritePre", {
-		-- 				buffer = bufnr,
-		-- 				callback = function()
-		-- 					vim.lsp.buf.format({ bufnr = bufnr })
-		-- 				end,
-		-- 			})
-		-- 		end
-		-- 	end,
-		-- }
-
+		local lsp_lookup = {
+			lua = vim.lsp.config.lua_ls,
+			python = vim.lsp.config.pyright,
+			rust = vim.lsp.config.rust_analyzer,
+		}
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "lua", "python", "c", "cpp" },
+			pattern = vim.tbl_keys(lsp_lookup),
 			callback = function()
 				local ft = vim.bo.filetype
-				local config = vim.lsp.config[ft == "cpp" and "clangd" or ft .. "_ls"] or vim.lsp.config[ft]
+				local config = lsp_lookup[ft]
 				if config then
 					vim.lsp.start(config)
 				end
 			end,
 		})
-		-- local capabilities = require("blink.cmp").get_lsp_capabilities()
-		-- local lspconfig = require("lspconfig")
-		--
-		-- lspconfig.lua_ls.setup({
-		-- 	capabilities = capabilities,
-		-- 	settings = {
-		-- 		Lua = {
-		-- 			runtime = {
-		-- 				version = "LuaJIT",
-		-- 			},
-		-- 			diagnostics = {
-		-- 				-- Get the language server to recognize the `vim` global
-		-- 				globals = {
-		-- 					"vim",
-		-- 					"require",
-		-- 				},
-		-- 			},
-		-- 			workspace = {
-		-- 				-- Make the server aware of Neovim runtime files
-		-- 				library = vim.api.nvim_get_runtime_file("", true),
-		-- 			},
-		-- 			telemetry = {
-		-- 				enable = false,
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
-		--
-		-- lspconfig.pyright.setup({
-		-- 	settings = {
-		-- 		pyright = {
-		-- 			python = {
-		-- 				analysis = { typeCheckingMode = "basic" },
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
-		--
-		-- lspconfig.ruff_lsp = {
-		-- 	on_attach = function(client, _)
-		-- 		-- Optional: turn off hover/docs from Ruff
-		-- 		client.server_capabilities.hoverProvider = false
-		-- 	end,
-		-- }
-		-- lspconfig.clangd.setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = function(client, bufnr)
-		-- 		if client.supports_method("textDocument/formatting") then
-		-- 			vim.api.nvim_create_autocmd("BufWritePre", {
-		-- 				buffer = bufnr,
-		-- 				callback = function()
-		-- 					vim.lsp.buf.format({ bufnr = bufnr })
-		-- 				end,
-		-- 			})
-		-- 		end
-		-- 	end,
-		-- 	cmd = {
-		-- 		"clangd",
-		-- 		"--background-index",
-		-- 		"--clang-tidy",
-		-- 		"--completion-style=detailed",
-		-- 		"--pch-storage=memory",
-		-- 		"--cross-file-rename",
-		-- 		"--header-insertion=iwyu",
-		-- 	},
-		-- })
+
+		vim.api.nvim_create_user_command("CheckInlayHints", function()
+			local buf = vim.api.nvim_get_current_buf()
+			local clients = vim.lsp.get_clients({ bufnr = buf })
+
+			if #clients == 0 then
+				print("No LSP attached to this buffer")
+				return
+			end
+
+			for _, client in ipairs(clients) do
+				local inlay = vim.lsp.inlay_hint.is_enabled({ bufnr = buf })
+				print(string.format("LSP: %s | Inlay hints: %s", client.name, inlay and "ENABLED" or "DISABLED"))
+			end
+		end, { desc = "Check if LSP and inlay hints are active for current buffer" })
 	end,
 }

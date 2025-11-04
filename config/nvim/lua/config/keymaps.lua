@@ -21,6 +21,17 @@ local function toggle_gutter()
 	end
 end
 
+function ToggleAutocomplete()
+	if vim.b.completion == nil then
+		vim.b.completion = true
+	end
+	if vim.b.completion then
+		vim.b.completion = false
+	else
+		vim.b.completion = true
+	end
+end
+
 local function trim(s)
 	return s:match("^%s*(.-)%s*$")
 end
@@ -173,6 +184,7 @@ wk.add({
 	{ "<leader>xx", "<CMD>bdelete!<CR>", desc = "Close Buffer", nor },
 	{ "<leader>xs", "<CMD>close<CR>", desc = "Close Split", nor },
 	{ "<leader>t", group = "Toggles", icon = { icon = "󰨚 ", color = "purple" } },
+	{ "<leader>ta", ToggleAutocomplete, desc = "Toggle Autocomplete", nor },
 	{ "<leader>tg", toggle_gutter, desc = "Toggle Gutter (line numbers, git symbols, etc)", nor },
 	{ "<leader>tc", "<CMD>Obsidian toggle_checkbox<CR>", desc = "Obsidian Toggle Checkbox", nor },
 	{ "<leader>te", "<C-w>=", desc = "Equalize Splits", nor },

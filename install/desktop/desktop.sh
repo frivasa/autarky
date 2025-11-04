@@ -1,6 +1,5 @@
 #!/bin/zsh
-# dumping everything else here, don't judge me!
-sudo pacman -S --noconfirm keepassxc syncthing \
+sudo pacman -S --noconfirm --needed keepassxc syncthing \
   nodejs npm tree-sitter-cli unzip qbittorrent ollama \
   python-json5 python-pywal fcitx5-configtool \
   hplip baobab android-file-transfer gthumb nemo nemo-fileroller \

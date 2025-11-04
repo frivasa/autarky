@@ -7,6 +7,5 @@ export ZSH_COMPDUMP="$ZSH/cache/completions/.zcompdump-$HOST"
 # Autarky path
 export AUTARKY_PATH="/home/$USER/.local/share/autarky"
 
-export OLLAMA_MODELS=/home/fdo/.ollama/models
-export OLLAMA_HOST=127.0.0.1:8090
+export OLLAMA_HOST=0.0.0.0:8090
 export PATH="$PATH:/home/fdo/.pixi/bin"

@@ -58,7 +58,7 @@ return {
 		},
 		sort_by = "modified", -- path/accessed/created
 		sort_reversed = true,
-		open_notes_in = "vsplit",
+		open_notes_in = "current",
 		attachments = { img_folder = "_files/_img" },
 	},
 }
