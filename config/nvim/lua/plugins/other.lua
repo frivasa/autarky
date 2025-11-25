@@ -52,22 +52,7 @@ return { -- Standalone plugins other than snacks or mini
 		"nvim-treesitter/nvim-treesitter-context",
 		opts = {},
 	},
-	{ -- code-folding
-		"kevinhwang91/nvim-ufo",
-		dependencies = { "kevinhwang91/promise-async" },
-		config = function()
-			require("ufo").setup({
-				provider_selector = function(bufnr, filetype, buftype)
-					-- return { "treesitter", "indent" }
-					return { "treesitter" }
-				end,
-				-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-				vim.keymap.set("n", "zR", require("ufo").openAllFolds),
-				vim.keymap.set("n", "zM", require("ufo").closeAllFolds),
-			})
-		end,
-	},
-	{
+	{ -- flash (jump cursor)
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		opts = {

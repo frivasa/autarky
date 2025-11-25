@@ -7,21 +7,22 @@ local nor = { mode = "n", opts }
 -- Aux Functions
 local function toggle_gutter()
 	local number = vim.wo.number
-	local relativenumber = vim.wo.relativenumber
 	local signcolumn = vim.wo.signcolumn
 
-	if number or relativenumber or signcolumn ~= "no" then
+	if number then
 		vim.wo.number = false
-		vim.wo.relativenumber = false
-		vim.wo.signcolumn = "no"
 	else
 		vim.wo.number = true
-		vim.wo.relativenumber = false
-		vim.wo.signcolumn = "auto"
+	end
+
+	if signcolumn == "no" then
+		vim.wo.signcolumn = "yes"
+	else
+		vim.wo.signcolumn = "no"
 	end
 end
 
-function ToggleAutocomplete()
+local function toggle_autocomplete()
 	if vim.b.completion == nil then
 		vim.b.completion = true
 	end
@@ -184,7 +185,7 @@ wk.add({
 	{ "<leader>xx", "<CMD>bdelete!<CR>", desc = "Close Buffer", nor },
 	{ "<leader>xs", "<CMD>close<CR>", desc = "Close Split", nor },
 	{ "<leader>t", group = "Toggles", icon = { icon = "󰨚 ", color = "purple" } },
-	{ "<leader>ta", ToggleAutocomplete, desc = "Toggle Autocomplete", nor },
+	{ "<leader>ta", toggle_autocomplete, desc = "Toggle Autocomplete", nor },
 	{ "<leader>tg", toggle_gutter, desc = "Toggle Gutter (line numbers, git symbols, etc)", nor },
 	{ "<leader>tc", "<CMD>Obsidian toggle_checkbox<CR>", desc = "Obsidian Toggle Checkbox", nor },
 	{ "<leader>te", "<C-w>=", desc = "Equalize Splits", nor },

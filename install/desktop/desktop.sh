@@ -3,7 +3,8 @@ sudo pacman -S --noconfirm --needed keepassxc syncthing \
   nodejs npm tree-sitter-cli unzip qbittorrent ollama \
   python-json5 python-pywal fcitx5-configtool \
   hplip baobab android-file-transfer gthumb nemo nemo-fileroller \
-  nwg-look
+  gnome-disk-utility nautilus \
+  nwg-look inkscape gnumeric
 
 
 yay -S --noconfirm --needed \

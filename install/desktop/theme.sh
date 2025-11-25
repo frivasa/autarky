@@ -33,9 +33,10 @@ ln -snf ~/.config/autarky/current/theme/backgrounds/01-center-default.png ~/.con
 wal --backend colorz -i ~/.config/autarky/current/background
 
 # Set specific app links for current theme
+# osc.conf includes current theme osc config, leaving these folder paths just in case
 mkdir -p ~/.config/mpv
 mkdir -p ~/.config/mpv/script-opts/
-ln -snf ~/.config/autarky/current/theme/mpv.osc.conf osc.conf
+# ln -snf ~/.config/autarky/current/theme/mpv.osc.conf osc.conf
 
 mkdir -p ~/.config/btop/themes
 ln -snf ~/.config/autarky/current/theme/btop.theme ~/.config/btop/themes/current.theme

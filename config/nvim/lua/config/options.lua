@@ -3,7 +3,10 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 -- vim.g.slime_bracketed_paste = 1
 vim.g.slime_python_ipython = 0
-vim.o.number = true
+-- start with no gutter
+vim.o.number = false
+vim.o.signcolumn = "no"
+-- vim.o.foldcolumn = "0"
 vim.o.confirm = true
 vim.o.relativenumber = false -- relative line numbers
 vim.o.clipboard = "unnamedplus" -- sync os and nvim clipboard
@@ -31,7 +34,6 @@ vim.o.swapfile = false -- Creates a swapfile (default: true)
 vim.o.smartindent = true -- Make indenting smarter again (default: false)
 vim.o.showtabline = 0 -- Always show tabs (default: 1)
 vim.o.pumheight = 10 -- Pop up menu height (default: 0)
-vim.o.signcolumn = "yes" -- Keep signcolumn on by default (default: 'auto')
 vim.o.fileencoding = "utf-8" -- The encoding written to a file (default: 'utf-8')
 vim.o.cmdheight = 1 -- More space in the Neovim command line for displaying messages (default: 1)
 vim.o.inccommand = "split" -- preview substitutions live
@@ -49,10 +51,12 @@ vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- Separate Vim plugins fr
 vim.o.list = true
 vim.opt.listchars = { tab = "▸ ", trail = "·", nbsp = "␣" }
 vim.o.hlsearch = true
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevel = 99
+-- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.o.foldlevelstart = 99
+-- vim.o.foldenable = true
 -- vim.o.conceallevel = 0 -- So that `` is visible in markdown files (default: 1)
 vim.o.conceallevel = 2
 vim.o.winborder = "none" -- default is none, but can be useful in the future...
