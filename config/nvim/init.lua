@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 -- colorschemes are inherited from kitty via pywal
 require("lazy").setup({
 	require("plugins.colorscheme-pywal"), -- pywal colorscheme integration
-	require("plugins.ufo-folding"), -- code folding
 	require("plugins.treesitter"), -- reference finding ("open file with var/function")
 	require("plugins.telescope"), -- file search and grep
 	require("plugins.gitsigns"), -- git symbols along gutter (change-add-delete symbols)
@@ -26,14 +25,11 @@ require("lazy").setup({
 	require("plugins.lsp"), -- language-specific hints and structures
 	require("plugins.autocompletion"), -- lsp companion, fills in if-elses, for-loops, etc
 	require("plugins.formatting"), -- fix spacing/indents on a per-lang basis
-	require("plugins.dap"), -- debugger
-	require("plugins.obsidian"), -- obsidian manager
-	require("plugins.ai-avante"), -- bot wrangler
+	-- require("plugins.obsidian"), -- obsidian manager
 	require("plugins.quarto"), -- quarto document/webpage dev
 	require("plugins.snacks"), -- group of QoL plugins
 	require("plugins.mini"), -- shitload of plugins
 	require("plugins.other"), -- any other few-line plugins
-	require("plugins.venn"), -- draw diagrams
 	require("plugins.auto-session"), -- draw diagrams
 })
 

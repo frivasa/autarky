@@ -3,7 +3,7 @@
 if [ -z "$AUTARKY_BARE" ]; then
   yay -S --noconfirm --needed \
     gnome-calculator gnome-keyring vesktop-bin \
-    obsidian-bin libreoffice obs-studio kdenlive \
+    obsidian-bin obs-studio kdenlive \
     xournalpp localsend-bin
 
   # Packages known to be flaky or having key signing issues are run one-by-one
