@@ -1,4 +1,12 @@
 #!/bin/zsh
+
+# takes pre-made pywal colors and writes config files to .config/autarky/template
+# wal use:
+# light theme
+#   wal --backend colorz -l -i <input_image>
+# dark theme
+#   wal --backend colorz -i <input_image>
+
 hex_to_rgb() {
     local hex="$1"
     hex="${hex#?}"
@@ -12,7 +20,8 @@ hex_to_rgb() {
 # rgb=$(hex_to_rgb "#1a1b26") >> 26,27,38
 
 PYWAL_CACHE_COLORS="$HOME/.cache/wal/colors"
-THEME_LINK="$HOME/.config/autarky/current/theme"
+THEME_LINK="$HOME/.config/autarky/template"
+mkdir -p "$THEME_LINK"
 
 # Check if file exists
 if [[ ! -f "$PYWAL_CACHE_COLORS" ]]; then
@@ -234,4 +243,30 @@ inactive_tab_background ${colors[1]}
 inactive_tab_foreground ${colors[3]}
 tab_bar_background      ${colors[1]}
 tab_bar_foreground      ${colors[3]}
+EOF
+
+FILE="$THEME_LINK/nvim.vim"
+cat << EOF > "$FILE"
+" Special
+let foreground  = "${colors[8]}"
+let background  = "${colors[1]}"
+let cursor      = "${colors[8]}"
+
+" Colors
+let color0   = "${colors[1]}"
+let color1   = "${colors[2]}"
+let color2   = "${colors[3]}"
+let color3   = "${colors[4]}"
+let color4   = "${colors[5]}"
+let color5   = "${colors[6]}"
+let color6   = "${colors[7]}"
+let color7   = "${colors[8]}"
+let color8   = "${colors[9]}"
+let color9   = "${colors[10]}"
+let color10  = "${colors[11]}"
+let color11  = "${colors[12]}"
+let color12  = "${colors[13]}"
+let color13  = "${colors[14]}"
+let color14  = "${colors[15]}"
+let color15  = "${colors[16]}"
 EOF

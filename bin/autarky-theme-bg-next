@@ -33,7 +33,7 @@ else
     fi
   done
 
-  # Get next backgroun (wrap around)
+  # Get next background (wrap around)
   MODE="fill"
   if [[ $INDEX -eq -1 ]]; then
     # Use the first background when no match is found
@@ -48,14 +48,14 @@ else
   # Set new background symlink
   ln -nsf "$NEW_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
   # Refresh pywal
-  if [[ -f ~/.config/autarky/current/theme/light.mode ]]; then
-    wal --backend colorz -l -i $NEW_BACKGROUND
-  else
-    wal --backend colorz -i $NEW_BACKGROUND
-  fi
-  autarky-theme-apply-wal
+  # if [[ -f ~/.config/autarky/current/theme/light.mode ]]; then
+  #   wal --backend colorz -l -i $NEW_BACKGROUND
+  # else
+  #   wal --backend colorz -i $NEW_BACKGROUND
+  # fi
+  # autarky-theme-apply-wal
   # Trigger kitty config reload
-  kitty @ load-config
+  # kitty @ load-config
   # Relaunch swaybg
   pkill -x swaybg
   setsid uwsm app -- swaybg -i "$CURRENT_BACKGROUND_LINK" -m "$MODE" >/dev/null 2>&1 &

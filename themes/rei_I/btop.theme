@@ -1,11 +1,11 @@
 # Main bg
-theme[main_bg]="#f2f3f4"
+theme[main_bg]="#0e1e25"
 
 # Main text color
-theme[main_fg]="#b5b6b7"
+theme[main_fg]="#4a565b"
 
 # Title color for boxes
-theme[title]="#b5b6b7"
+theme[title]="#4a565b"
 
 # Highlight color for keyboard shortcuts
 theme[hi_fg]="#7fa5c7"
@@ -14,7 +14,7 @@ theme[hi_fg]="#7fa5c7"
 theme[selected_bg]="#4797be"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#b5b6b7"
+theme[selected_fg]="#4a565b"
 
 # Color of inactive/disabled text
 theme[inactive_fg]="#4797be"
