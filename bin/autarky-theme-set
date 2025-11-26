@@ -41,4 +41,4 @@ makoctl reload
 hyprctl reload
 
 # Set new background
-"$HOME/.local/share/autarky/bin/autarky-theme-bg-next"
+# "$HOME/.local/share/autarky/bin/autarky-theme-bg-next"

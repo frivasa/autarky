@@ -1,0 +1,272 @@
+#!/bin/zsh
+
+# takes pre-made pywal colors and writes config files to .config/autarky/template
+# wal use:
+# light theme
+#   wal --backend colorz -l -i <input_image>
+# dark theme
+#   wal --backend colorz -i <input_image>
+
+hex_to_rgb() {
+    local hex="$1"
+    hex="${hex#?}"
+    [[ ${#hex} -ne 6 ]] && echo "Error: Invalid hex color: $hex" >&2 && return 1
+    local r="${hex:0:2}"
+    local g="${hex:2:2}"
+    local b="${hex:4:2}"
+    printf "%d,%d,%d\n" "$((16#$r))" "$((16#$g))" "$((16#$b))"
+}
+# Example usage:
+# rgb=$(hex_to_rgb "#1a1b26") >> 26,27,38
+
+PYWAL_CACHE_COLORS="$HOME/.cache/wal/colors"
+THEME_LINK="$HOME/.config/autarky/template"
+mkdir -p "$THEME_LINK"
+
+# Check if file exists
+if [[ ! -f "$PYWAL_CACHE_COLORS" ]]; then
+    echo "Error: File '$PYWAL_CACHE_COLORS' not found." >&2
+    return 1
+fi
+
+# Read colors from the base colors from pywal (these are ordered)
+colors=()
+while IFS= read -r line || [[ -n "$line" ]]; do
+  # Skip empty lines and lines starting with #
+  [[ -z "$line" ]] && continue
+  # Trim whitespace
+  line="${line#"${line%%[![:space:]]*}"}"
+  line="${line%"${line##*[![:space:]]}"}"
+  # Add non-empty lines to colors array
+  [[ -n "$line" ]] && colors+=("$line")
+done < "$PYWAL_CACHE_COLORS"
+
+# Let's get dirty AF. We're gonna simply add every file structure 
+# and plug in the picked palette (mind that colors[0] is empty).
+# EOF expands, "EOF" does not (verbatim)
+FILE="$THEME_LINK/hyprland.conf"
+cat << EOF > "$FILE"
+general {
+    col.active_border = rgba(${colors[5]:1}ff)
+    col.inactive_border = rgba(${colors[2]:1}bf)
+}
+EOF
+
+FILE="$THEME_LINK/hyprlock.conf"
+cat << EOF > "$FILE"
+\$color       = rgba($(hex_to_rgb "${colors[1]}"),1.0)
+\$inner_color = rgba($(hex_to_rgb "${colors[1]}"),0.8)
+\$outer_color = rgba($(hex_to_rgb "${colors[7]}"),1.0)
+\$font_color  = rgba($(hex_to_rgb "${colors[8]}"),1.0)
+\$check_color = rgba($(hex_to_rgb "${colors[2]}"),1.0)
+EOF
+
+FILE="$THEME_LINK/mako.ini"
+cat << EOF > "$FILE"
+text-color=${colors[8]}
+border-color=${colors[2]}
+background-color=${colors[1]}
+width=420
+height=110
+padding=10
+border-size=5
+font=Liberation Sans 11
+anchor=top-right
+outer-margin=20
+default-timeout=5000
+max-icon-size=32
+border-radius=10
+
+[app-name=Spotify]
+invisible=1
+
+[mode=do-not-disturb]
+invisible=true
+
+[mode=do-not-disturb app-name=notify-send]
+invisible=false
+
+EOF
+
+FILE="$THEME_LINK/swayosd.css"
+cat << EOF > "$FILE"
+@define-color background-color ${colors[1]};
+@define-color border-color ${colors[2]};
+@define-color label ${colors[8]};
+@define-color image ${colors[8]};
+@define-color progress ${colors[8]};
+EOF
+
+FILE="$THEME_LINK/walker.css"
+cat << EOF > "$FILE"
+@define-color window_bg_color ${colors[1]};
+@define-color accent_bg_color ${colors[2]};
+@define-color theme_fg_color ${colors[8]};
+EOF
+
+FILE="$THEME_LINK/waybar.css"
+cat << EOF > "$FILE"
+@define-color foreground ${colors[2]};
+@define-color background ${colors[1]};
+EOF
+
+FILE="$THEME_LINK/btop.theme"
+cat << EOF > "$FILE"
+# Main bg
+theme[main_bg]="${colors[1]}"
+
+# Main text color
+theme[main_fg]="${colors[9]}"
+
+# Title color for boxes
+theme[title]="${colors[9]}"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="${colors[3]}"
+
+# Background color of selected item in processes box
+theme[selected_bg]="${colors[2]}"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="${colors[9]}"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="${colors[2]}"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="${colors[3]}"
+
+# Cpu box outline color
+theme[cpu_box]="${colors[2]}"
+
+# Memory/disks box outline color
+theme[mem_box]="${colors[2]}"
+
+# Net up/down box outline color
+theme[net_box]="${colors[2]}"
+
+# Processes box outline color
+theme[proc_box]="${colors[2]}"
+
+# Box divider line and small boxes line color
+theme[div_line]="${colors[2]}"
+
+# Temperature graph colors
+theme[temp_start]="${colors[7]}"
+theme[temp_mid]="${colors[4]}"
+theme[temp_end]="${colors[2]}"
+
+# CPU graph colors
+theme[cpu_start]="${colors[7]}"
+theme[cpu_mid]="${colors[4]}"
+theme[cpu_end]="${colors[2]}"
+
+# Mem/Disk free meter
+theme[free_start]="${colors[7]}"
+theme[free_mid]="${colors[4]}"
+theme[free_end]="${colors[2]}"
+
+# Mem/Disk cached meter
+theme[cached_start]="${colors[7]}"
+theme[cached_mid]="${colors[4]}"
+theme[cached_end]="${colors[2]}"
+
+# Mem/Disk available meter
+theme[available_start]="${colors[7]}"
+theme[available_mid]="${colors[4]}"
+theme[available_end]="${colors[2]}"
+
+# Mem/Disk used meter
+theme[used_start]="${colors[7]}"
+theme[used_mid]="${colors[4]}"
+theme[used_end]="${colors[2]}"
+
+# Download graph colors
+theme[download_start]="${colors[7]}"
+theme[download_mid]="${colors[4]}"
+theme[download_end]="${colors[2]}"
+
+# Upload graph colors
+theme[upload_start]="${colors[7]}"
+theme[upload_mid]="${colors[4]}"
+theme[upload_end]="${colors[2]}"
+EOF
+
+FILE="$THEME_LINK/mpv.osdcolor.conf"
+cat << EOF > "$FILE"
+osd-color="${colors[6]}"
+EOF
+
+FILE="$THEME_LINK/mpv.osc.conf"
+cat << EOF > "$FILE"
+background_color=${colors[1]}
+timecode_color=${colors[5]}
+title_color=${colors[5]}
+time_pos_color=${colors[5]}
+buttons_color=${colors[6]}
+small_buttonsL_color=${colors[6]}
+small_buttonsR_color=${colors[6]}
+top_buttons_color=${colors[6]}
+held_element_color=${colors[8]}
+time_pos_outline_color=${colors[1]}
+EOF
+
+FILE="$THEME_LINK/kitty.conf"
+cat << EOF > "$FILE"
+foreground   ${colors[8]}
+background   ${colors[1]}
+cursor       ${colors[8]}
+
+color0       ${colors[1]}
+color8       ${colors[9]}
+color1       ${colors[2]}
+color9       ${colors[10]}
+color2       ${colors[3]}
+color10      ${colors[11]}
+color3       ${colors[4]}
+color11      ${colors[12]}
+color4       ${colors[5]}
+color12      ${colors[13]}
+color5       ${colors[6]}
+color13      ${colors[14]}
+color6       ${colors[7]}
+color14      ${colors[15]}
+color7       ${colors[8]}
+color15      ${colors[16]}
+
+active_border_color ${colors[2]}
+inactive_border_color ${colors[1]}
+
+active_tab_background   ${colors[1]}
+active_tab_foreground   ${colors[8]}
+inactive_tab_background ${colors[1]}
+inactive_tab_foreground ${colors[3]}
+tab_bar_background      ${colors[1]}
+tab_bar_foreground      ${colors[3]}
+EOF
+
+FILE="$THEME_LINK/nvim.vim"
+cat << EOF > "$FILE"
+" Special
+let foreground  = "${colors[8]}"
+let background  = "${colors[1]}"
+let cursor      = "${colors[8]}"
+
+" Colors
+let color0   = "${colors[1]}"
+let color1   = "${colors[2]}"
+let color2   = "${colors[3]}"
+let color3   = "${colors[4]}"
+let color4   = "${colors[5]}"
+let color5   = "${colors[6]}"
+let color6   = "${colors[7]}"
+let color7   = "${colors[8]}"
+let color8   = "${colors[9]}"
+let color9   = "${colors[10]}"
+let color10  = "${colors[11]}"
+let color11  = "${colors[12]}"
+let color12  = "${colors[13]}"
+let color13  = "${colors[14]}"
+let color14  = "${colors[15]}"
+let color15  = "${colors[16]}"
+EOF

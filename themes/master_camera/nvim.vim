@@ -1,0 +1,22 @@
+" Special
+let background =  "#211007"
+let foreground =  "#c7c3c1"
+let cursor = "#c7c3c1"
+
+" Colors
+let color0 = "#211007"
+let color1 = "#aa5228"
+let color2 = "#aa7853"
+let color3 = "#aa9975"
+let color4 = "#c1bc98"
+let color5 = "#a6a78e"
+let color6 = "#6f96a4"
+let color7 = "#c7c3c1"
+let color8 = "#584b45"
+let color9 = "#aa5228"
+let color10 =  "#aa7853"
+let color11 =  "#aa9975"
+let color12 =  "#c1bc98"
+let color13 =  "#a6a78e"
+let color14 =  "#6f96a4"
+let color15 =  "#c7c3c1"
