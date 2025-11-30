@@ -1,3 +1,6 @@
-@define-color window_bg_color #211007;
-@define-color accent_bg_color #aa5228;
-@define-color theme_fg_color #c7c3c1;
+@define-color selected-text #aa5228;
+@define-color text #c7c3c1;
+@define-color base #211007;
+@define-color border #aa5228;
+@define-color foreground #c7c3c1;
+@define-color background #211007;
