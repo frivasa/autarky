@@ -1,5 +1,5 @@
 #!/bin/zsh
-sudo pacman -S --noconfirm --needed udisks2 usb_modeswitch
+sudo pacman -S --noconfirm --needed udisks2 usb_modeswitch tree
 
 yay -S --noconfirm --needed \
   wget curl unzip inetutils impala \

@@ -10,30 +10,26 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- colorschemes are inherited from kitty via pywal
 require("lazy").setup({
-	require("plugins.colorscheme-pywal"), -- pywal colorscheme integration
-	require("plugins.treesitter"), -- reference finding ("open file with var/function")
+	require("plugins.treesitter"), -- syntax parser (coding context generator)
 	require("plugins.telescope"), -- file search and grep
 	require("plugins.gitsigns"), -- git symbols along gutter (change-add-delete symbols)
-	require("plugins.oil"), -- git symbols along gutter (change-add-delete symbols)
+	require("plugins.oil"), -- text-block file manager
 	require("plugins.vim-tmux-navigator"), -- move around nvim+tmux splits
 	require("plugins.lualine"), -- bottom bar config/colors
-	require("plugins.harpoon"), -- buffer tabbing
 	require("plugins.greeter"), -- add ascii poster and recent files on startup
-	-- require("plugins.bufferline"), -- top bar configuration ("show tabs")
 	require("plugins.lsp"), -- language-specific hints and structures
-	require("plugins.autocompletion"), -- lsp companion, fills in if-elses, for-loops, etc
 	require("plugins.formatting"), -- fix spacing/indents on a per-lang basis
-	-- require("plugins.obsidian"), -- obsidian manager
+	require("plugins.autocompletion"), -- lsp companion, fills in if-elses, for-loops, etc
 	require("plugins.quarto"), -- quarto document/webpage dev
-	require("plugins.snacks"), -- group of QoL plugins
-	require("plugins.mini"), -- shitload of plugins
-	require("plugins.other"), -- any other few-line plugins
-	require("plugins.auto-session"), -- draw diagrams
+	require("plugins.mini"), -- QoL plugin-package
+	require("plugins.other"), -- any other QoL plugins
+	require("plugins.obsidian"), -- obsidian manager
+	require("plugins.auto-session"), -- save opened buffers for restarts
+	require("plugins.harpoon"), -- buffer tabbing
 })
 
 require("config.keymaps")
 require("config.commands")
 require("config.autocommands")
-require("config.highlights").setup()
+require("colorscheme.colorscheme").setup()
