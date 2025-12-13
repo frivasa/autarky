@@ -14,6 +14,8 @@ alias publicip="curl -4s ifconfig.me | awk '{print $1}'"
 # arch update mirror list
 alias update_mirrors='sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 function pixi_hook(){
   eval "$(pixi shell-hook)"
 }
@@ -29,5 +31,19 @@ function fastfetch_switch_waifu(){
   source ~/.config/fastfetch/change_waifu.sh $kind $repo
 }
 
+# FZF testing
+export FZF_COMPLETION_TRIGGER='=='
+export FZF_DEFAULT_OPTS="
+--layout reverse
+--border
+--color=fg:7,bg:0,fg+:0,bg+:7,hl:6,hl+:6,info:6,prompt:6,\
+pointer:5,marker:5,spinner:5,border:5,separator:0
+"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow"
+
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
 eval "$(starship init zsh)"
