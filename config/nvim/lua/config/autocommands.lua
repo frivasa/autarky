@@ -13,12 +13,27 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 	command = "checktime",
 })
 
+-- vim.api.nvim_create_autocmd({ "TermOpen" }, {
+-- 	pattern = { "*" },
+-- 	callback = function(_)
+-- 		vim.cmd.setlocal("nonumber")
+-- 		vim.wo.signcolumn = "no"
+-- 		set_terminal_keymaps()
+-- 	end,
+-- })
+
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
 	pattern = { "*" },
-	callback = function(_)
+	callback = function(args)
 		vim.cmd.setlocal("nonumber")
 		vim.wo.signcolumn = "no"
 		set_terminal_keymaps()
+		local buf = args.buf
+		local name = vim.api.nvim_buf_get_name(buf)
+
+		if name:match("quarto") and name:match("preview") then
+			vim.api.nvim_buf_set_name(buf, "Quarto Preview")
+		end
 	end,
 })
 

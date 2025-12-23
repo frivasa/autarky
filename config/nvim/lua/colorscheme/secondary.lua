@@ -68,6 +68,11 @@ function M.setup()
 	vim.api.nvim_set_hl(0, "FlashPrompt", { link = "CurSearch" })
 	vim.api.nvim_set_hl(0, "FlashPromptIcon", { link = "CurSearch" })
 	-- vim.api.nvim_set_hl(0, "FlashCursor", { link = "Comment" })
+
+	vim.api.nvim_set_hl(0, "ObsidianRefText", { link = "Todo" })
+	vim.api.nvim_set_hl(0, "ObsidianTodo", { link = "Todo" })
+	vim.api.nvim_set_hl(0, "ObsidianDone", { link = "Normal" })
+	vim.api.nvim_set_hl(0, "ObsidianBullet", { link = "NonText" })
 end
 
 -- guifg=#c9c8c8 guibg=#c7b7b5
