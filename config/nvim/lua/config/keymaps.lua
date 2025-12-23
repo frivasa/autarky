@@ -22,6 +22,11 @@ local function toggle_gutter()
 	end
 end
 
+local function go_home()
+	vim.cmd("cd -")
+	vim.cmd("echo 'cwd → " .. vim.fn.expand("~") .. "'")
+end
+
 local function toggle_autocomplete()
 	if vim.b.completion == nil then
 		vim.b.completion = true
@@ -63,12 +68,26 @@ function QuoteAndCommaVisual()
 end
 
 local function new_terminal(lang)
-	vim.cmd("split term://" .. lang)
-	vim.cmd("wincmd k")
+	local cwd = vim.loop.cwd()
+	vim.cmd("enew")
+	vim.cmd("lcd " .. cwd)
+	if lang and #lang > 0 then
+		vim.cmd("terminal " .. lang)
+	else
+		vim.cmd("terminal")
+		lang = "zeesh"
+	end
+
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_set_name(buf, "term://" .. lang)
 end
 
 local function new_terminal_python()
 	new_terminal("python")
+end
+
+local function new_terminal_R()
+	new_terminal("R")
 end
 
 local slime_send_region_cmd = ":<C-u>call slime#send_op(visualmode(), 1)<CR>"
@@ -108,11 +127,6 @@ wk.add({
 
 -- "local" keymaps
 wk.add({
-	-- deprecated (tmux/kitty-nvim plugins also move nvim panes)
-	-- { "<C-h>", "<CMD>wincmd h<CR>", desc = "Move Left", nor },
-	-- tmux/kitty-nvim keybinds are set @setup
-	-- { "<C-h>", "<CMD><C-U>TmuxNavigateLeft <CR>", desc = "Move Left", nor },
-	-- { "<C-h>", "<CMD>KittyNavigateLeft <CR>", desc = "Move Left", nor },
 	{ "<C-q>", "<CMD>q<CR>", desc = "Quit File", nor },
 	{ "<C-s>", "<CMD>w<CR>", desc = "Save File", nor },
 	{ "<S-Tab>", "<CMD>bprevious<CR>", desc = "Prev Buffer", nor },
@@ -170,8 +184,7 @@ wk.add({
 	{ "<leader>sv", "<CMD>Obsidian search<CR>", desc = "Grep Vault (Obsidian)", nor },
 	{ "<leader>m", group = "Mvmt", icon = { icon = "󰜎 ", color = "purple" } },
 	{ "<leader>ml", "<CMD>Obsidian follow_link vsplit<CR>", desc = "Obsidian Follow Link", nor },
-	-- { "<leader>mn", "<CMD>tabn<CR>", desc = "Next Tab", nor },
-	-- { "<leader>mp", "<CMD>tabp<CR>", desc = "Prev Tab", nor },
+	{ "<leader>mh", go_home, desc = "Return cwd to home", nor },
 	{ "<leader>o", group = "Open/Splits", icon = { icon = "󰠜 ", color = "purple" } },
 	{ "<leader>on", "<CMD>Obsidian new<CR>", desc = "Open a New Page (Obsidian)", nor },
 	{ "<leader>ob", "<CMD>enew<CR>", desc = "New Scratch Buffer", nor },
@@ -179,6 +192,8 @@ wk.add({
 	{ "<leader>ov", "<C-w>v", desc = "Vertical Split", nor },
 	{ "<leader>oh", "<C-w>s", desc = "Horizontal Split", nor },
 	{ "<leader>op", new_terminal_python, desc = "new [p]ython terminal", nor },
+	{ "<leader>or", new_terminal_R, desc = "new [r]-code terminal", nor },
+	{ "<leader>oz", new_terminal, desc = "new [z]sh", nor },
 	{ "<leader>of", ":lua MiniFiles.open()<CR>", desc = "File Browser (MiniFiles)", nor },
 	{ "<leader>x", group = "Close", icon = { icon = "󰰰 ", color = "purple" } },
 	{ "<leader>xt", "<CMD>tabclose<CR>", desc = "Close Tab", nor },

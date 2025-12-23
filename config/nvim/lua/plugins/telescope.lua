@@ -14,13 +14,24 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
 	config = function()
+		local actions = require("telescope.actions")
 		require("telescope").setup({
 			defaults = {
 				mappings = {
 					i = {
-						["<C-k>"] = require("telescope.actions").move_selection_previous, -- move to prev result
-						["<C-j>"] = require("telescope.actions").move_selection_next, -- move to next result
-						["<C-l>"] = require("telescope.actions").select_default, -- open file
+						["<C-k>"] = actions.move_selection_previous, -- move to prev result
+						["<C-j>"] = actions.move_selection_next, -- move to next result
+						["<C-l>"] = actions.select_default, -- open file
+						["<C-g>"] = function(prompt_bufnr)
+							local selection = require("telescope.actions.state").get_selected_entry()
+							actions.close(prompt_bufnr)
+							if selection and selection.path then
+								local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+								vim.cmd("cd " .. vim.fn.fnameescape(dir))
+								vim.cmd("edit " .. selection.path)
+								vim.cmd("echo 'cwd → " .. dir .. "'")
+							end
+						end, -- open and cwd to it
 					},
 				},
 			},
