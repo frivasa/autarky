@@ -56,8 +56,10 @@ return {
 			blink = true,
 			min_chars = 2,
 		},
-		sort_by = "modified", -- path/accessed/created
-		sort_reversed = true,
+		search = {
+			sort_by = "modified", -- path/accessed/created
+			sort_reversed = true,
+		},
 		open_notes_in = "current",
 		attachments = { img_folder = "_files/_img" },
 	},
