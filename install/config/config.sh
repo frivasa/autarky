@@ -5,6 +5,7 @@ cp -R ~/.local/share/autarky/config/* ~/.config/
 
 # bashrc, tmux.conf and starship.toml
 cp ~/.local/share/autarky/default/bashrc ~/.bashrc
+cp ~/.local/share/autarky/default/inputrc ~/.inputrc
 cp ~/.local/share/autarky/default/tmux.conf ~/.tmux.conf
 cp ~/.local/share/autarky/default/starship.toml ~/.config/starship.toml
 
