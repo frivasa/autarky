@@ -6,8 +6,9 @@ HISTFILE=~/.bash_history
 HISTSIZE=1000
 HISTFILESIZE=1000
 
-shopt -s histappend
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+shopt -s histappend # append instead of overwrite
+shopt -s checkwinsize # recalculate window size
+# PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # Add your own exports, aliases, and functions here.
 alias v='nvim'
@@ -36,7 +37,7 @@ function fastfetch_switch_waifu(){
 }
 
 # FZF testing
-export FZF_COMPLETION_TRIGGER='=='
+export FZF_COMPLETION_TRIGGER='**'
 export FZF_DEFAULT_OPTS="
 --layout reverse
 --border
@@ -55,3 +56,4 @@ export TEXMFCONFIG=/var/empty
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 eval "$(starship init bash)"
+

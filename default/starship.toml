@@ -3,9 +3,11 @@
 
 # Inserts a blank line between shell prompts
 add_newline = false
-format = '''$directory$pixi$git_branch$git_status$hostname$cmd_duration
-'''
-right_format = ''''''
+# format = """$directory$pixi$git_branch$git_status$hostname$cmd_duration
+# $character
+# """
+format = "$directory$pixi$git_branch$git_status$hostname$cmd_duration\n\u200B"
+right_format = ""
 
 [directory]
 format = '[ $path ]($style)'
@@ -16,9 +18,13 @@ truncate_to_repo = true
 truncation_symbol = '󱀝/'
 
 [character]
-success_symbol = '[ I ](fg:black bg:cyan)'
-error_symbol= '[ I ](fg:black bg:cyan)'
-vimcmd_symbol = '[ N ](fg:black bg:cyan)'
+disabled = true
+success_symbol = ""
+error_symbol = ""
+# [character]
+# success_symbol = '[ I ](fg:black bg:cyan)'
+# error_symbol= '[ I ](fg:black bg:cyan)'
+# vimcmd_symbol = '[ N ](fg:black bg:cyan)'
 # [character]
 # success_symbol = '[](bold cyan)'
 # error_symbol = '[](bold red)'
@@ -28,8 +34,8 @@ vimcmd_symbol = '[ N ](fg:black bg:cyan)'
 # [](cyan)[ 󱞩](fg:black bg:cyan)[█](cyan) 
 # symbol = '█ '
 # symbol = '  █  '
-symbol = ' '
-style = 'blue'
+symbol = '-'
+style = "fg:blue"
 
 [pixi]
 disabled = false
