@@ -4,7 +4,7 @@ sudo pacman -S --noconfirm --needed keepassxc syncthing \
   python-json5 python-pywal fcitx5-configtool \
   hplip baobab android-file-transfer gthumb nemo nemo-fileroller \
   gnome-disk-utility nautilus \
-  nwg-look inkscape gnumeric
+  nwg-look inkscape gnumeric evince
 
 
 yay -S --noconfirm --needed \
@@ -12,7 +12,7 @@ yay -S --noconfirm --needed \
   fcitx5 fcitx5-gtk fcitx5-qt wl-clip-persist \
   ffmpegthumbnailer python-pywalfox \
   slurp satty \
-  mpv xreader imv \
+  mpv imv \
   zen-browser-bin chromium video-downloader
 
 # load nemo defaults
