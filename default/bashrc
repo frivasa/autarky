@@ -6,6 +6,7 @@ HISTFILE=~/.bash_history
 HISTSIZE=1000
 HISTFILESIZE=1000
 
+shopt -s nullglob # get null instead of "*.JPG"
 shopt -s histappend # append instead of overwrite
 shopt -s checkwinsize # recalculate window size
 # PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
