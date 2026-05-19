@@ -1,39 +1,62 @@
--- NONE YET (2026/05)
--- leaving this for future tweaking or if any of the rules below actually made a difference
---
--- # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
--- windowrule = suppress_event maximize, match:class .*
---
--- # Force chromium into a tile to deal with --app bug
--- windowrule = tile on, match:class ^(Chromium)$
---
--- # Float and center settings and previews
--- windowrule = float on, match:class ^(blueberry.py|Impala|Wiremix|Autarky|About)$
--- windowrule = center on, match:class ^(blueberry.py|Impala|Wiremix|Autarky|About)$
--- windowrule = size 800 600, match:class ^(blueberry.py|Impala|Wiremix|com.gabm.satty)$
--- windowrule = size 590 450, match:class Autarky
--- windowrule = size 700 470, match:class About
---
--- # Float and center file pickers
--- windowrule = float on, match:class xdg-desktop-portal-gtk, match:title ^(Open.*Files?|Save.*Files?|All Files|Save)
--- windowrule = center on, match:class xdg-desktop-portal-gtk, match:title ^(Open.*Files?|Save.*Files?|All Files|Save)
---
--- # Float Steam, fullscreen RetroArch
--- windowrule = float on, match:class steam
--- windowrule = center on, match:class steam, match:title Steam
--- windowrule = fullscreen on, match:class ^(com.libretro.RetroArch)$
---
--- # Fullscreen screensaver
--- windowrule = fullscreen on, match:class Screensaver
--- windowrule = rounding 0, fullscreen on
---
--- # Just dash of opacity
--- # windowrule = opacity 0.97 0.9, class:.*
--- windowrule = opacity 1 1, match:class ^(Chromium|chromium|google-chrome|google-chrome-unstable)$
--- windowrule = opacity 1 1, match:class ^(?i)(zen|zen-browser)$
--- windowrule = opacity 1 1, match:title ^.*YouTube.*$ # Youtube
--- windowrule = opacity 1 1, match:class ^(zoom|vlc|mpv|org.kde.kdenlive|com.obsproject.Studio|com.github.PintaProject.Pinta|imv)$
--- windowrule = opacity 1 1, match:class ^(com.libretro.RetroArch|steam)$
---
--- # Fix some dragging issues with XWayland
--- # windowrule = nofocus, match:class ^$, match:title ^$, xwayland:1,floating:1,fullscreen off,pinned:0
+hl.window_rule({
+	name = "prevent maximize on all windows?",
+	match = { class = ".*" },
+	suppress_event = "maximize",
+})
+
+-- float auxiliary apps (bluetooth, wifi, sound)
+hl.window_rule({
+	match = { class = "^(blueberry.py|Impala|Wiremix|Autarky|About)$" },
+	float = true,
+	center = true,
+	size = { 800, 600 },
+})
+
+-- Float and center file pickers
+hl.window_rule({
+	match = { class = "xdg-desktop-portal-gtk", title = "^(Open.*Files?|Save.*Files?|All Files|Save)" },
+	float = true,
+	center = true,
+})
+
+-- Float and center steam
+hl.window_rule({
+	match = { class = "steam", title = "Steam" },
+	float = true,
+	center = true,
+	opacity = "1.0 1.0 1.0",
+})
+
+-- Fullscreen screensaver
+hl.window_rule({
+	match = { class = "Screensaver" },
+	fullscreen = true,
+})
+
+-- Opacity rules
+hl.window_rule({
+	match = { class = ".*" },
+	opacity = "0.98 0.85 1.0",
+})
+hl.window_rule({
+	match = { class = "^(?i)(zen|zen-browser)$" },
+	opacity = "1.0 1.0 1.0",
+})
+
+hl.window_rule({
+	match = { title = "^.*YouTube.*$" },
+	opacity = "1.0 1.0 1.0",
+})
+
+hl.window_rule({
+	match = { class = "^(zoom|vlc|mpv|org.kde.kdenlive|com.obsproject.Studio|com.github.PintaProject.Pinta|imv)$" },
+	opacity = "1.0 1.0 1.0",
+})
+
+hl.window_rule({
+	match = { xwayland = true },
+	no_focus = true,
+	float = true,
+	fullscreen = false,
+	pin = false,
+})
