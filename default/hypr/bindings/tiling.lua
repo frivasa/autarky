@@ -15,7 +15,7 @@ hl.bind(mod .. " + down", hl.dsp.window.swap({ direction = "down" }))
 hl.bind("ALT + TAB", hl.dsp.window.cycle_next())
 hl.bind("ALT + TAB", hl.dsp.window.bring_to_top())
 
-hl.bind(mod .. " + W", hl.dsp.window.kill())
+hl.bind(mod .. " + W", hl.dsp.window.close())
 hl.bind(mod .. " + R", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mod .. " + Y", function()
 	hl.dispatch(hl.dsp.window.pin({ action = "toggle" }))
