@@ -49,6 +49,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow"
 
+# this is to prevent quarto from updating latex packages by itself, which clashes with arch's handling of them
 export TEXMFHOME=/var/empty
 export TEXMFVAR=/var/empty
 export TEXMFCONFIG=/var/empty

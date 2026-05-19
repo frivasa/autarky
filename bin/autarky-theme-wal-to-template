@@ -46,10 +46,12 @@ done < "$PYWAL_CACHE_COLORS"
 # EOF expands, "EOF" does not (verbatim)
 FILE="$THEME_LINK/hyprland.conf"
 cat << EOF > "$FILE"
-general {
-    col.active_border = rgba(${colors[5]:1}ff)
-    col.inactive_border = rgba(${colors[2]:1}bf)
-}
+local M = {}
+
+M.active_border = "rgba(${colors[5]:1}ff)"
+M.inactive_border = "rgba(${colors[2]:1}bf)"
+
+return M
 EOF
 
 FILE="$THEME_LINK/hyprlock.conf"
