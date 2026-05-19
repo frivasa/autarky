@@ -9,7 +9,8 @@ window {
 }
 
 label {
-  font-family: 'JetBrainsMono Nerd Font', monospace;
+  /* font-family: 'JetBrainsMono Nerd Font', monospace; */
+  font-family: 'Iosevka NF', monospace;
   font-size: 11pt;
 
   color: @label;
