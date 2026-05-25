@@ -1,3 +1,4 @@
+-- windowrule = suppress_event maximize, match:class .*
 hl.window_rule({
 	name = "prevent maximize on all windows?",
 	match = { class = ".*" },
@@ -36,10 +37,16 @@ hl.window_rule({
 -- Opacity rules
 hl.window_rule({
 	match = { class = ".*" },
+	-- opacity = "0.98 0.85 1.0",
 	opacity = "0.98 0.85 1.0",
 })
 hl.window_rule({
 	match = { class = "^(?i)(zen|zen-browser)$" },
+	opacity = "1.0 1.0 1.0",
+})
+
+hl.window_rule({
+	match = { title = "^.*MultiViewer.*$" },
 	opacity = "1.0 1.0 1.0",
 })
 
@@ -49,7 +56,9 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	match = { class = "^(zoom|vlc|mpv|org.kde.kdenlive|com.obsproject.Studio|com.github.PintaProject.Pinta|imv)$" },
+	match = {
+		class = "^(zoom|mpv|org.kde.kdenlive|com.obsproject.Studio|com.github.PintaProject.Pinta|imv)$",
+	},
 	opacity = "1.0 1.0 1.0",
 })
 

@@ -40,7 +40,7 @@ return {
 					end
 				end
 
-				if client and client.supports_method("textDocument_documentHighlight", buf) then
+				if client and client:supports_method("textDocument_documentHighlight", buf) then
 					local hl_group = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, { -- hl all refs when static
 						buffer = buf,
@@ -60,7 +60,7 @@ return {
 						end,
 					})
 				end
-				if client and client.supports_method("textDocument_inlayHint", buf) then
+				if client and client:supports_method("textDocument_inlayHint", buf) then
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 					end, "[T]oggle Inlay [H]ints")
@@ -184,12 +184,35 @@ return {
 			pattern = vim.tbl_keys(lsp_lookup),
 			callback = function()
 				local ft = vim.bo.filetype
-				local config = lsp_lookup[ft]
-				if config then
-					vim.lsp.start(config)
+				local config = vim.deepcopy(lsp_lookup[ft])
+				if not config then
+					return
 				end
+				-- go back if there's nothing to do
+				-- If not shoehorn hypr autocompletions into the Lua LSP
+				-- check first for .lua and being in the hyprland config folder
+
+				local file = vim.api.nvim_buf_get_name(0)
+
+				if ft == "lua" and file:match(vim.fn.expand("~/.config/hypr")) then
+					local hypr_stub = "/usr/share/hypr/stubs/hl.meta.lua"
+					config.settings.Lua.workspace.library =
+						vim.list_extend(config.settings.Lua.workspace.library, { hypr_stub })
+				end
+
+				vim.lsp.start(config)
 			end,
 		})
+		-- vim.api.nvim_create_autocmd("FileType", {
+		-- 	pattern = vim.tbl_keys(lsp_lookup),
+		-- 	callback = function()
+		-- 		local ft = vim.bo.filetype
+		-- 		local config = lsp_lookup[ft]
+		-- 		if config then
+		-- 			vim.lsp.start(config)
+		-- 		end
+		-- 	end,
+		-- })
 
 		vim.api.nvim_create_user_command("CheckInlayHints", function()
 			local buf = vim.api.nvim_get_current_buf()

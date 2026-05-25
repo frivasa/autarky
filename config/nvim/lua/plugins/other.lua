@@ -32,12 +32,13 @@ return { -- Standalone plugins other than snacks or mini
 			mode = "foreground",
 		},
 	},
-	{ -- color highlighter
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
-	},
+	-- plugin deprecated due to vim.tbl_flatten being deprecated
+	-- { -- color highlighter
+	-- 	"norcalli/nvim-colorizer.lua",
+	-- 	config = function()
+	-- 		require("colorizer").setup()
+	-- 	end,
+	-- },
 	{ -- see your undo/redos like a git (diff and history).
 		"mbbill/undotree",
 		lazy = false,
@@ -66,7 +67,8 @@ return { -- Standalone plugins other than snacks or mini
 		keys = {
 			{
 				"s",
-				mode = { "n", "x", "o" },
+				-- mode = { "n", "x", "o" },
+				mode = { "n", "o" },
 				function()
 					require("flash").jump()
 				end,

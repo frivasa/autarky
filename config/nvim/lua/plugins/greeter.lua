@@ -47,7 +47,12 @@ return {
 			hl = "Constant",
 		}
 		dashboard.section.buttons.val = {
-			dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+			dashboard.button(
+				"e",
+				"  Scratch Page",
+				-- ":enew | setlocal buftype=nofile bufhidden=hide noswapfile | startinsert <CR>"
+				":enew | setlocal buftype=nofile bufhidden=hide noswapfile <CR>"
+			),
 			dashboard.button("f", "󰍉  Find file", ":Telescope find_files <CR>"),
 			dashboard.button("s", "  Search Sessions", ":AutoSession search<CR>"),
 			dashboard.button("l", "󰒲  Lazy Plugin Manager", ":Lazy<CR>"),
