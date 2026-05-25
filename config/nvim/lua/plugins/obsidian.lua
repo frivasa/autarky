@@ -35,8 +35,11 @@ return {
 		-- 		opts = { buffer = true, expr = true },
 		-- 	},
 		-- },
-		preferred_link_style = "wiki",
-		wiki_link_func = "prepend_note_path",
+		link = {
+			format = "shortest",
+			style = "markdown",
+			auto_update = "true",
+		},
 		frontmatter = {
 			enabled = false,
 		},
@@ -61,6 +64,6 @@ return {
 			sort_reversed = true,
 		},
 		open_notes_in = "current",
-		attachments = { img_folder = "_files/_img" },
+		attachments = { folder = "_files/_img" },
 	},
 }

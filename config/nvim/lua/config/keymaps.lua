@@ -1,98 +1,10 @@
 local wk = require("which-key")
+local fn = require("functions.helpers")
 -- local icons = require("mini.icons")
 local opts = { noremap = true, silent = true }
 local nor = { mode = "n", opts }
 -- local vis = { mode = "v", opts }
 -- noremap = nor+vis+select+operator (allows "repeatability")
--- Aux Functions
-local function toggle_gutter()
-	local number = vim.wo.number
-	local signcolumn = vim.wo.signcolumn
-
-	if number then
-		vim.wo.number = false
-	else
-		vim.wo.number = true
-	end
-
-	if signcolumn == "no" then
-		vim.wo.signcolumn = "yes"
-	else
-		vim.wo.signcolumn = "no"
-	end
-end
-
-local function go_home()
-	vim.cmd("cd -")
-	vim.cmd("echo 'cwd → " .. vim.fn.expand("~") .. "'")
-end
-
-local function toggle_autocomplete()
-	if vim.b.completion == nil then
-		vim.b.completion = true
-	end
-	if vim.b.completion then
-		vim.b.completion = false
-	else
-		vim.b.completion = true
-	end
-end
-
-local function trim(s)
-	return s:match("^%s*(.-)%s*$")
-end
--- convert a column of values to a quoted list
-function QuoteAndCommaVisual()
-	-- '<,'> picks the last visual start and end
-	-- this does not work when used before the visual marks are set!
-	local mode = vim.fn.mode()
-	local start_line, end_line
-
-	if mode == "v" or mode == "V" then
-		local _, start_row, _, _ = unpack(vim.fn.getpos("v"))
-		local _, end_row, _, _ = unpack(vim.fn.getpos("."))
-		start_line = math.min(start_row, end_row) - 1
-		end_line = math.max(start_row, end_row)
-	else
-		start_line = vim.fn.line("'<") - 1
-		end_line = vim.fn.line("'>")
-	end
-	local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
-
-	for i, line in ipairs(lines) do
-		local trimmed = trim(line)
-		lines[i] = '"' .. trimmed .. '",'
-	end
-	vim.api.nvim_buf_set_lines(0, start_line, end_line, false, lines)
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-end
-
-local function new_terminal(lang)
-	local cwd = vim.loop.cwd()
-	vim.cmd("enew")
-	vim.cmd("lcd " .. cwd)
-	if lang and #lang > 0 then
-		vim.cmd("terminal " .. lang)
-	else
-		vim.cmd("terminal")
-		lang = "zeesh"
-	end
-
-	local buf = vim.api.nvim_get_current_buf()
-	vim.api.nvim_buf_set_name(buf, "term://" .. lang)
-end
-
-local function new_terminal_python()
-	new_terminal("python")
-end
-
-local function new_terminal_ipython()
-	new_terminal("ipython")
-end
-
-local function new_terminal_R()
-	new_terminal("R")
-end
 
 local slime_send_region_cmd = ":<C-u>call slime#send_op(visualmode(), 1)<CR>"
 slime_send_region_cmd = vim.api.nvim_replace_termcodes(slime_send_region_cmd, true, false, true)
@@ -127,11 +39,10 @@ local function send_region()
 		vim.cmd("normal" .. slime_send_region_cmd)
 	end
 end
-
 -- command is really picky, put it close to the function so that it works
 wk.add({
-	{ "<CR>", send_region, desc = "Run Code Region", mode = "v" },
-	{ "<leader>iq", QuoteAndCommaVisual, desc = "Quote lines", mode = "v" },
+	{ "<CR>", fn.send_region, desc = "Run Code Region", mode = "v" },
+	{ "<leader>iq", fn.QuoteAndCommaVisual, desc = "Quote lines", mode = "v" },
 })
 
 -- "local" keymaps
@@ -187,31 +98,30 @@ wk.add({
 	{ "<leader>qe", require("otter").export, desc = "[E]xport code to file", nor },
 	{ "<leader>g", group = "Guardar", icon = { icon = " ", color = "purple" } },
 	{ "<leader>gn", "<CMD>noautocmd w<CR>", desc = "Save w/o Formatting", nor },
-	-- { "<leader>r", group = "Run", icon = { icon = " ", color = "purple" } },
+	{ "<leader>gg", fn.save_scratch_to_dl, desc = "Save Scratch to Downloads", nor },
 	{ "<leader>s", group = "Search (Telescope)", icon = { icon = " ", color = "purple" } },
 	{ "<leader>so", "<CMD>Obsidian quick_switch<CR>", desc = "Search Vault Pages (Obsidian)", nor },
 	{ "<leader>sv", "<CMD>Obsidian search<CR>", desc = "Grep Vault (Obsidian)", nor },
 	{ "<leader>m", group = "Mvmt", icon = { icon = "󰜎 ", color = "purple" } },
 	{ "<leader>ml", "<CMD>Obsidian follow_link vsplit<CR>", desc = "Obsidian Follow Link", nor },
-	{ "<leader>mh", go_home, desc = "Return cwd to home", nor },
+	{ "<leader>mu", fn.go_up, desc = "Move up in :pwd", nor },
 	{ "<leader>o", group = "Open/Splits", icon = { icon = "󰠜 ", color = "purple" } },
 	{ "<leader>on", "<CMD>Obsidian new<CR>", desc = "Open a New Page (Obsidian)", nor },
 	{ "<leader>ob", "<CMD>enew<CR>", desc = "New Scratch Buffer", nor },
-	{ "<leader>ot", "<CMD>tabnew<CR>", desc = "New Tab", nor },
+	-- { "<leader>ot", "<CMD>tabnew<CR>", desc = "New Tab", nor },
 	{ "<leader>ov", "<C-w>v", desc = "Vertical Split", nor },
 	{ "<leader>oh", "<C-w>s", desc = "Horizontal Split", nor },
-	{ "<leader>op", new_terminal_python, desc = "new [p]ython terminal", nor },
-	{ "<leader>or", new_terminal_R, desc = "new [r]-code terminal", nor },
-	{ "<leader>oz", new_terminal, desc = "new [z]sh", nor },
-	{ "<leader>oi", new_terminal_ipython, desc = "new [i]python", nor },
+	{ "<leader>op", fn.new_terminal("python"), desc = "new [p]ython terminal", nor },
+	{ "<leader>or", fn.new_terminal("R"), desc = "new [r]-code terminal", nor },
+	{ "<leader>oi", fn.new_terminal("ipython"), desc = "new [i]python", nor },
 	{ "<leader>of", ":lua MiniFiles.open()<CR>", desc = "File Browser (MiniFiles)", nor },
 	{ "<leader>x", group = "Close", icon = { icon = "󰰰 ", color = "purple" } },
 	{ "<leader>xt", "<CMD>tabclose<CR>", desc = "Close Tab", nor },
 	{ "<leader>xx", "<CMD>bdelete!<CR>", desc = "Close Buffer", nor },
 	{ "<leader>xs", "<CMD>close<CR>", desc = "Close Split", nor },
 	{ "<leader>t", group = "Toggles", icon = { icon = "󰨚 ", color = "purple" } },
-	{ "<leader>ta", toggle_autocomplete, desc = "Toggle Autocomplete", nor },
-	{ "<leader>tg", toggle_gutter, desc = "Toggle Gutter (line numbers, git symbols, etc)", nor },
+	{ "<leader>ta", fn.toggle_autocomplete, desc = "Toggle Autocomplete", nor },
+	{ "<leader>tg", fn.toggle_gutter, desc = "Toggle Gutter (line numbers, git symbols, etc)", nor },
 	{ "<leader>tc", "<CMD>Obsidian toggle_checkbox<CR>", desc = "Obsidian Toggle Checkbox", nor },
 	{ "<leader>te", "<C-w>=", desc = "Equalize Splits", nor },
 	{ "<leader>tp", "<CMD>BufferLineTogglePin <CR>", desc = "Toggle Pinned", mode = { "n", "v" }, opts },
