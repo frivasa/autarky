@@ -4,10 +4,8 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 scan_timeout = 100
-# format = """$directory$pixi$git_branch$git_status$hostname$cmd_duration
-# $character
-# """
-format = "$directory$pixi$git_branch$git_status$hostname$cmd_duration\n\u200B"
+# format = "$directory$pixi$git_branch$git_status$hostname$cmd_duration\n\u200B"
+format = "$directory$pixi$git_branch$git_status$hostname$cmd_duration "
 right_format = ""
 
 [directory]

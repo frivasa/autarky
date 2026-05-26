@@ -35,6 +35,7 @@ vim.o.swapfile = false -- Creates a swapfile (default: true)
 vim.o.smartindent = true -- Make indenting smarter again (default: false)
 vim.o.showtabline = 0 -- Always show tabs (default: 1)
 vim.o.pumheight = 10 -- Pop up menu height (default: 0)
+vim.o.encoding = "utf-8" -- The encoding written to a file (default: 'utf-8')
 vim.o.fileencoding = "utf-8" -- The encoding written to a file (default: 'utf-8')
 vim.o.cmdheight = 1 -- More space in the Neovim command line for displaying messages (default: 1)
 vim.o.inccommand = "split" -- preview substitutions live
