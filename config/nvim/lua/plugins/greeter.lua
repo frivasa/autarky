@@ -53,6 +53,7 @@ return {
 				-- ":enew | setlocal buftype=nofile bufhidden=hide noswapfile | startinsert <CR>"
 				":enew | setlocal buftype=nofile bufhidden=hide noswapfile <CR>"
 			),
+			dashboard.button("o", "󰍉  Obsidian page search", ":Obsidian search main <CR>"),
 			dashboard.button("f", "󰍉  Find file", ":Telescope find_files <CR>"),
 			dashboard.button("s", "  Search Sessions", ":AutoSession search<CR>"),
 			dashboard.button("l", "󰒲  Lazy Plugin Manager", ":Lazy<CR>"),

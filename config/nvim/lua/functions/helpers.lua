@@ -71,7 +71,7 @@ function M.new_terminal(lang)
 		if lang and #lang > 0 then
 			vim.cmd("terminal " .. lang)
 		else
-			vim.cmd("terminal")
+			vim.cmd("terminal bash")
 			lang = "bash"
 		end
 
