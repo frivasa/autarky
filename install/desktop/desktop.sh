@@ -4,7 +4,7 @@ sudo pacman -S --noconfirm --needed keepassxc syncthing \
   python-json5 python-pywal fcitx5-configtool \
   hplip baobab android-file-transfer gthumb nemo nemo-fileroller \
   gnome-disk-utility nautilus \
-  nwg-look inkscape gnumeric evince
+  nwg-look inkscape gnumeric evince evolution
 
 
 yay -S --noconfirm --needed \

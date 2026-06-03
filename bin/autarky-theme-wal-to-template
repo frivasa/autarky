@@ -44,7 +44,7 @@ done < "$PYWAL_CACHE_COLORS"
 # Let's get dirty AF. We're gonna simply add every file structure 
 # and plug in the picked palette (mind that colors[0] is empty).
 # EOF expands, "EOF" does not (verbatim)
-FILE="$THEME_LINK/hyprland.conf"
+FILE="$THEME_LINK/hyprland_colors.lua"
 cat << EOF > "$FILE"
 local M = {}
 

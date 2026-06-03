@@ -54,8 +54,5 @@ export TEXMFHOME=/var/empty
 export TEXMFVAR=/var/empty
 export TEXMFCONFIG=/var/empty
 
-# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-
 eval "$(starship init bash)"
 

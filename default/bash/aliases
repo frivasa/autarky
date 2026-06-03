@@ -1,7 +1,7 @@
 # File system
-alias l='eza'
-alias ls='eza -lha --group-directories-first --icons=auto'
-alias lt='eza --tree --level=2 --long --icons --git'
+alias l='eza --icons'
+alias ls='eza -lha --group-directories-first --icons=never'
+alias lt='eza --tree --header --level=2 --long --icons --git'
 alias lta='lt -a'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 

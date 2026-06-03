@@ -13,15 +13,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 	command = "checktime",
 })
 
--- vim.api.nvim_create_autocmd({ "TermOpen" }, {
--- 	pattern = { "*" },
--- 	callback = function(_)
--- 		vim.cmd.setlocal("nonumber")
--- 		vim.wo.signcolumn = "no"
--- 		set_terminal_keymaps()
--- 	end,
--- })
-
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
 	pattern = { "*" },
 	callback = function(args)
@@ -36,6 +27,26 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 		end
 	end,
 })
+
+-- -- .qmd filetype + treesitter + LSP support (decoupled from quarto-nvim)
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+-- 	pattern = { "*.qmd" },
+-- 	callback = function()
+-- 		vim.bo.filetype = "quarto"
+-- 		vim.treesitter.language.register("markdown", "quarto")
+-- 	end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({ "CursorHold", "BufWritePost" }, {
+-- 	pattern = { "*.qmd" },
+-- 	callback = function()
+-- 		local fn = require("functions.helpers")
+-- 		local block = fn.quarto_code_block_at_cursor()
+-- 		if block then
+-- 			fn.quarto_get_virtual_buf(block.lang)
+-- 		end
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
