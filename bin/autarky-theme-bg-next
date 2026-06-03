@@ -47,16 +47,6 @@ fi
 
   # Set new background symlink
   ln -nsf "$NEW_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
-  # Refresh pywal
-  # if [[ -f ~/.config/autarky/current/theme/light.mode ]]; then
-  #   wal --backend colorz -l -i $NEW_BACKGROUND
-  # else
-  #   wal --backend colorz -i $NEW_BACKGROUND
-  # fi
-  # autarky-theme-apply-wal
-  # Trigger kitty config reload
-  # kitty @ load-config
-  # Relaunch swaybg
   pkill -x swaybg
   setsid uwsm app -- swaybg -i "$CURRENT_BACKGROUND_LINK" -m "$MODE" >/dev/null 2>&1 &
 fi

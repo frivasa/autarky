@@ -6,40 +6,6 @@ local nor = { mode = "n", opts }
 -- local vis = { mode = "v", opts }
 -- noremap = nor+vis+select+operator (allows "repeatability")
 
-local slime_send_region_cmd = ":<C-u>call slime#send_op(visualmode(), 1)<CR>"
-slime_send_region_cmd = vim.api.nvim_replace_termcodes(slime_send_region_cmd, true, false, true)
-local function send_region()
-	-- save location before sending the chunk
-	local _, line, col, _ = unpack(vim.fn.getpos("."))
-
-	-- if filetype is not quarto, just send_region
-	if vim.bo.filetype ~= "quarto" or vim.b["quarto_is_r_mode"] == nil then
-		-- vim.cmd("normal" .. slime_send_region_cmd)
-		local _, start_row, _, _ = unpack(vim.fn.getpos("v"))
-		local _, end_row, _, _ = unpack(vim.fn.getpos("."))
-		start_line = math.min(start_row, end_row) - 1
-		end_line = math.max(start_row, end_row)
-		local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
-		vim.fn["slime#send"]('exec("""\n' .. table.concat(lines, "\n") .. '""")\n\r')
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
-		-- vim.cmd("normal! <Esc>") does not fucking work!
-		return
-	end
-	if vim.b["quarto_is_r_mode"] == true then
-		vim.g.slime_python_ipython = 0
-		local is_python = require("otter.tools.functions").is_otter_language_context("python")
-		if is_python and not vim.b["reticulate_running"] then
-			vim.fn["slime#send"]("reticulate::repl_python()" .. "\r")
-			vim.b["reticulate_running"] = true
-		end
-		if not is_python and vim.b["reticulate_running"] then
-			vim.fn["slime#send"]("exit" .. "\r")
-			vim.b["reticulate_running"] = false
-		end
-		vim.cmd("normal" .. slime_send_region_cmd)
-	end
-end
--- command is really picky, put it close to the function so that it works
 wk.add({
 	{ "<CR>", fn.send_region, desc = "Run Code Region", mode = "v" },
 	{ "<leader>iq", fn.QuoteAndCommaVisual, desc = "Quote lines", mode = "v" },
@@ -85,17 +51,20 @@ wk.add({
 	{ "<leader>iz", "<CMD>Telescope spell_suggest<CR>", desc = "Spell Suggestions", nor },
 	{ "<leader>is", group = "Snippets", icon = { icon = "󰅩 ", color = "yellow" } },
 	{ "<leader>isl", "<ESC>i```{lua}<cr>```<ESC>O", desc = "Lua", nor },
-	{ "<leader>isp", "<ESC>i```{python,python.reticulate=FALSE}<cr>```<ESC>O", desc = "Python", nor },
+	{ "<leader>isp", "<ESC>i```{python}<cr>```<ESC>O", desc = "Python", nor },
 	{ "<leader>isr", "<ESC>i```{r}<cr>```<ESC>O", desc = "R", nor },
 	{ "<leader>d", group = "Debug", icon = { icon = "󰨰 ", color = "purple" } },
 	{ "<leader>dqq", vim.diagnostic.setloclist, desc = "Diagnostics List", nor },
 	{ "<leader>dqf", vim.diagnostic.open_float, desc = "Diagnostics List (float)", nor },
 	{ "<leader>e", group = "Harpoon", icon = { icon = "󰛢", color = "purple" } },
 	{ "<leader>q", group = "Quarto", icon = { icon = "󱡓 ", color = "purple" } },
-	{ "<leader>qp", "<CMD>QuartoPreview --no-clean<CR>", desc = "[P]review", nor },
-	{ "<leader>qa", "<CMD>QuartoSendAbove<CR>", desc = "Run [A]bove", nor },
-	{ "<leader>qc", "<CMD>QuartoSend<CR>", desc = "Run [C]ell", nor },
-	{ "<leader>qe", require("otter").export, desc = "[E]xport code to file", nor },
+	-- { "<leader>qp", '<CMD>!quarto preview "%" --no-clean &<CR>', desc = "[P]review", nor },
+	{ "<leader>qa", fn.quarto_run_up_to_cell, desc = "run [A]ll cells up to cursor", nor },
+	{ "<leader>qp", fn.quarto_prev_cell, desc = "[P]revious cell", nor },
+	{ "<leader>qn", fn.quarto_next_cell, desc = "[N]ext cell", nor },
+	{ "<leader>qc", fn.quarto_send_cell, desc = "Run [C]ell", nor },
+	{ "<leader>qy", fn.quarto_open_repl("ipython"), desc = "Start P[y]thon REPL", nor },
+	{ "<leader>qr", fn.quarto_open_repl("R"), desc = "Start [R] REPL", nor },
 	{ "<leader>g", group = "Guardar", icon = { icon = " ", color = "purple" } },
 	{ "<leader>gn", "<CMD>noautocmd w<CR>", desc = "Save w/o Formatting", nor },
 	{ "<leader>gg", fn.save_scratch_to_dl, desc = "Save Scratch to Downloads", nor },
