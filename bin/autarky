@@ -30,11 +30,10 @@ main_menu() {
 
 update_menu() {
   show_ascii_art
-  local menu=("autarky" "Waybar" "Walker" "Plymouth" "SwayOSD" "Desktop apps" "Back")
+  local menu=("autarky" "Waybar" "Plymouth" "SwayOSD" "Desktop apps" "Back")
   local commands=(
     "autarky-update"
     "autarky-refresh-waybar"
-    "autarky-refresh-walker"
     "autarky-refresh-plymouth"
     "autarky-refresh-swayosd"
     "autarky-refresh-applications"

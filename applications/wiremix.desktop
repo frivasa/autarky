@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Audio Settings
 Comment=Using Wiremix
-Exec=kitty --class=Wiremix --title=Wiremix -e wiremix
+Exec=foot --app-id=Wiremix -e wiremix
 Icon=audio-card
 Type=Application
 Terminal=false

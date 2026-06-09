@@ -99,13 +99,6 @@ cat << EOF > "$FILE"
 @define-color progress ${colors[8]};
 EOF
 
-FILE="$THEME_LINK/walker.css"
-cat << EOF > "$FILE"
-@define-color window_bg_color ${colors[1]};
-@define-color accent_bg_color ${colors[2]};
-@define-color theme_fg_color ${colors[8]};
-EOF
-
 FILE="$THEME_LINK/waybar.css"
 cat << EOF > "$FILE"
 @define-color foreground ${colors[2]};
@@ -213,39 +206,51 @@ held_element_color=${colors[8]}
 time_pos_outline_color=${colors[1]}
 EOF
 
-FILE="$THEME_LINK/kitty.conf"
+FILE="$THEME_LINK/foot_colors.ini"
 cat << EOF > "$FILE"
-foreground   ${colors[8]}
-background   ${colors[1]}
-cursor       ${colors[8]}
+[colors-dark]
+foreground=${colors[8]#?}
+background=${colors[1]#?}
 
-color0       ${colors[1]}
-color8       ${colors[9]}
-color1       ${colors[2]}
-color9       ${colors[10]}
-color2       ${colors[3]}
-color10      ${colors[11]}
-color3       ${colors[4]}
-color11      ${colors[12]}
-color4       ${colors[5]}
-color12      ${colors[13]}
-color5       ${colors[6]}
-color13      ${colors[14]}
-color6       ${colors[7]}
-color14      ${colors[15]}
-color7       ${colors[8]}
-color15      ${colors[16]}
+regular0=${colors[1]#?}
+regular1=${colors[2]#?}
+regular2=${colors[3]#?}
+regular3=${colors[4]#?}
+regular4=${colors[5]#?}
+regular5=${colors[6]#?}
+regular6=${colors[7]#?}
+regular7=${colors[8]#?}
 
-active_border_color ${colors[2]}
-inactive_border_color ${colors[1]}
-
-active_tab_background   ${colors[1]}
-active_tab_foreground   ${colors[8]}
-inactive_tab_background ${colors[1]}
-inactive_tab_foreground ${colors[3]}
-tab_bar_background      ${colors[1]}
-tab_bar_foreground      ${colors[3]}
+bright0=${colors[9]#?}
+bright1=${colors[10]#?}
+bright2=${colors[11]#?}
+bright3=${colors[12]#?}
+bright4=${colors[13]#?}
+bright5=${colors[14]#?}
+bright6=${colors[15]#?}
+bright7=${colors[16]#?}
 EOF
+
+FILE="$THEME_LINK/fuzzel_colors.ini"
+cat << EOF > "$FILE"
+[colors]
+text       =${colors[8]}ff
+message    =${colors[8]}ff
+prompt     =${colors[8]}ff
+placeholder=${colors[8]}ff
+input      =${colors[8]}ff
+# selection:foreground at 40 alpha
+selection  =${colors[8]}40
+background =${colors[1]}ff
+# regular2
+match          =${colors[3]}ff
+selection-match=${colors[3]}ff
+# regular4
+border        =${colors[5]}ff
+counter       =${colors[5]}ff
+selection-text=${colors[5]}ff
+EOF
+
 
 FILE="$THEME_LINK/nvim.vim"
 cat << EOF > "$FILE"

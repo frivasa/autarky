@@ -57,4 +57,4 @@ function flush() {
 END {
     flush()
 }
-' | walker --dmenu --theme default -p 'Keybind Look-up Table'
+' | fuzzel --dmenu -p "" --mesg "Keybind Look-up" -l 25 -w 50

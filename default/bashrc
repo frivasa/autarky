@@ -2,6 +2,7 @@
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/autarky/default/bash/rc
 
+
 HISTFILE=~/.bash_history
 HISTSIZE=1000
 HISTFILESIZE=1000
@@ -12,6 +13,7 @@ shopt -s checkwinsize # recalculate window size
 # PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # Add your own exports, aliases, and functions here.
+alias n='NO_COLOR=1 nnn'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -31,10 +33,11 @@ function pixi_trim_ps1(){
 }
 # change image for fastfetch
 function fastfetch_switch_waifu(){
-  # defaults to sfw/neko
+  # defaults to sfw/non-animated
+  # n/sfw gif/nongif
   kind=${1:-sfw}
-  repo=${2:-neko}
-  source ~/.config/fastfetch/change_waifu.sh $kind $repo
+  animated=${2:-nongif}
+  source ~/.config/fastfetch/change_waifu.sh $kind $animated
 }
 
 # FZF testing
@@ -53,6 +56,7 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden --follow"
 export TEXMFHOME=/var/empty
 export TEXMFVAR=/var/empty
 export TEXMFCONFIG=/var/empty
+
 
 eval "$(starship init bash)"
 

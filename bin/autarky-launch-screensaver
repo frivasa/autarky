@@ -1,5 +1,5 @@
 #!/bin/bash
 
-pkill -f "kitty --class Screensaver" ||
-  kitty --class Screensaver --title Screensaver -o background=#000000 \
+pkill -f "foot --class Screensaver" ||
+  foot --class Screensaver --title Screensaver -o background=#000000 \
     ~/.local/share/autarky/bin/autarky-cmd-screensaver

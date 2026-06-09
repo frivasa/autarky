@@ -17,11 +17,10 @@ while IFS= read -r path; do
   fi
 done < <(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | sort)
 
-# Show Walker menu
-selection=$(printf '%s\n' "${themes[@]}" | walker --dmenu --theme default 2>/dev/null)
+selection=$(printf '%s\n' "${themes[@]}" | fuzzel --dmenu -l 10 -w 30 -p "" --mesg "Themes" 2>/dev/null)
 
 # Convert to lowercase and dash-separated: "Tokyo Night" -> "tokyo-night"
 selected_theme=$(echo "$selection" | /bin/tr '[:upper:]' '[:lower:]' | /bin/tr ' ' '-')
 
 # Apply the selected theme
-"$HOME/.local/share/autarky/bin/autarky-theme-set" "$selected_theme"
+# "$HOME/.local/share/autarky/bin/autarky-theme-set" "$selected_theme"

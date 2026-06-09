@@ -7,6 +7,6 @@ font=$(
     gum choose --header "Choose terminal font"
 )
 
-if [[ -n "$font" ]]; then
-  sed -i "s/font_family .*/font_family $font/g" ~/.config/kitty/kitty.conf
-fi
+# if [[ -n "$font" ]]; then
+#   sed -i "s/font_family .*/font_family $font/g" ~/.config/kitty/kitty.conf
+# fi

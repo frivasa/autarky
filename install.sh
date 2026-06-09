@@ -61,7 +61,6 @@ source $AUTARKY_INSTALL/desktop/desktop.sh
 source $AUTARKY_INSTALL/desktop/hyprlandia.sh
 source $AUTARKY_INSTALL/desktop/theme.sh
 source $AUTARKY_INSTALL/desktop/bluetooth.sh
-source $AUTARKY_INSTALL/desktop/asdcontrol.sh
 source $AUTARKY_INSTALL/desktop/fonts.sh
 source $AUTARKY_INSTALL/desktop/printer.sh
 

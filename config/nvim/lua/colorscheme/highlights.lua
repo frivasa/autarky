@@ -29,7 +29,7 @@ M.highlights = function(colors)
 		CursorColumn = { bg = colors.background },
 		ColorColumn = { bg = colors.background },
 		NormalFloat = { bg = colors.background },
-		Visual = { bg = colors.color1, fg = colors.foreground },
+		Visual = { bg = colors.color1, fg = colors.background },
 		VisualNOS = { bg = colors.background },
 		WarningMsg = { fg = colors.color3, bg = colors.background },
 		DiffAdd = { fg = colors.background, bg = colors.color4 },
@@ -49,8 +49,8 @@ M.highlights = function(colors)
 		SpecialKey = { fg = colors.color4 },
 		Title = { fg = colors.color4 },
 		ErrorMsg = { fg = colors.color11, bg = colors.background },
-		Search = { fg = colors.foreground, bg = colors.color1 },
-		IncSearch = { fg = colors.foreground, bg = colors.color1 },
+		Search = { fg = colors.background, bg = colors.color1 },
+		IncSearch = { fg = colors.background, bg = colors.color1 },
 		Substitute = { fg = colors.color1, bg = colors.color6 },
 		MoreMsg = { fg = colors.color5 },
 		Question = { fg = colors.color5 },
@@ -184,15 +184,6 @@ M.highlights = function(colors)
 		diffLine = { fg = colors.color1 },
 		diffIndexLine = { fg = colors.color6 },
 
-		-- Neogit
-		NeogitBranch = { fg = colors.color6 },
-		NeogitRemote = { fg = colors.color6 },
-		NeogitHunkHeader = { bg = colors.background, fg = colors.foreground },
-		NeogitHunkHeaderHighlight = { bg = colors.foreground, fg = colors.color7 },
-		NeogitDiffContextHighlight = { bg = colors.background, fg = colors.foreground },
-		NeogitDiffDeleteHighlight = { fg = colors.color11, bg = colors.color11 },
-		NeogitDiffAddHighlight = { fg = colors.color4, bg = colors.color4 },
-
 		-- GitGutter
 		GitGutterAdd = { fg = colors.color4 }, -- diff mode: Added line |diff.txt|
 		GitGutterChange = { fg = colors.color5 }, -- diff mode: Changed line |diff.txt|
@@ -224,33 +215,15 @@ M.highlights = function(colors)
 		NvimTreeSymlink = { fg = colors.color7 },
 		NvimTreeFolderIcon = { fg = colors.color2, bg = colors.background },
 		NvimTreeStatusLineNC = { bg = colors.background, fg = colors.background },
-
-		-- LspSaga
-		LspFloatWinNormal = { bg = colors.background },
-		LspFloatWinBorder = { fg = colors.foreground },
-		LspSagaBorderTitle = { fg = colors.color7 },
-		LspSagaHoverBorder = { fg = colors.color7 },
-		LspSagaRenameBorder = { fg = colors.color4 },
-		LspSagaDefPreviewBorder = { fg = colors.color4 },
-		LspSagaCodeActionBorder = { fg = colors.color7 },
-		LspSagaFinderSelection = { fg = colors.color1 },
-		LspSagaCodeActionTitle = { fg = colors.color7 },
-		LspSagaCodeActionContent = { fg = colors.color6 },
-		LspSagaSignatureHelpBorder = { fg = colors.color11 },
 		ReferencesCount = { fg = colors.color6 },
 		DefinitionCount = { fg = colors.color6 },
 		DefinitionIcon = { fg = colors.color7 },
 		ReferencesIcon = { fg = colors.color7 },
 		TargetWord = { fg = colors.color7 },
-
 		-- NeoVim
 		healthError = { fg = colors.color11 },
 		healthSuccess = { fg = colors.color4 },
 		healthWarning = { fg = colors.color5 },
-
-		-- BufferLine
-		BufferLineIndicatorSelected = { fg = colors.color5 },
-		BufferLineFill = { bg = colors.background },
 	}
 end
 

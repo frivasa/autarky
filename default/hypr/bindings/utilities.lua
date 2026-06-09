@@ -2,14 +2,14 @@ local HOME = os.getenv("HOME")
 local bindingsmenu = HOME .. "/.local/share/autarky/bin/autarky-menu-keybindings"
 local powermenu = HOME .. "/.local/share/autarky/bin/autarky-menu-power"
 local thememenu = HOME .. "/.local/share/autarky/bin/autarky-menu-themes"
-local menu = "walker"
+local menu = "fuzzel"
 local M = "SUPER + "
 local cmd = hl.dsp.exec_cmd
 
-hl.bind(M .. "S", cmd(menu), { description = "app menu (walker)" })
-hl.bind(M .. "SLASH", cmd(bindingsmenu), { description = "keymaps (walker)" })
-hl.bind(M .. "ESCAPE", cmd(powermenu), { description = "power (walker)" })
-hl.bind(M .. "SHIFT + T", cmd(thememenu), { description = "themes (walker)" })
+hl.bind(M .. "S", cmd(menu), { description = "app menu (fuzzel)" })
+hl.bind(M .. "SLASH", cmd(bindingsmenu), { description = "keymaps (fuzzel)" })
+hl.bind(M .. "ESCAPE", cmd(powermenu), { description = "power (fuzzel)" })
+hl.bind(M .. "SHIFT + T", cmd(thememenu), { description = "themes (fuzzel)" })
 
 hl.bind(M .. "SPACE", cmd("pkill -SIGUSR1 waybar"), { description = "toggle waybar" })
 hl.bind(
