@@ -2,7 +2,7 @@
 Type=Application
 Name=nnn
 Comment=Terminal file manager
-Exec=bash -lc "NO_COLOR=1 nnn"
+Exec=bash -lc "nnn -C"
 Terminal=true
 Icon=nnn
 MimeType=inode/directory

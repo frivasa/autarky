@@ -21,7 +21,7 @@ local colors = require("hyprland_colors")
 require("monitors")
 
 local terminal = "uwsm app -- foot "
-local fileManager = "uwsm app -- nautilus "
+local fileManager = "uwsm app -- foot -e nnn -C"
 local browser = "uwsm app -- zen-browser --new-window "
 local webapp = browser .. "--app "
 local seshpick = terminal .. HOME .. "/.local/share/autarky/bin/autarky-session-pick"
@@ -30,7 +30,7 @@ local M = "SUPER + "
 local cmd = hl.dsp.exec_cmd
 hl.bind(M .. "RETURN", cmd(seshpick), { description = "term (foot+tmux)" })
 hl.bind(M .. "T", cmd(seshpick), { description = "term (foot+tmux" })
-hl.bind(M .. "E", cmd(fileManager), { description = "file manager (nautilus)" })
+hl.bind(M .. "E", cmd(fileManager), { description = "file manager (nnn)" })
 hl.bind(M .. "B", cmd(browser), { description = "browser (zen)" })
 hl.bind(M .. "N", cmd(terminal .. " -e nvim"), { description = "god notepad (nvim)" })
 hl.bind(M .. "P", cmd(terminal .. " -e btop"), { description = "system monitor (btop)" })
