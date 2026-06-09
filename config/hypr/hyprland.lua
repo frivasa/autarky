@@ -20,7 +20,7 @@ local colors = require("hyprland_colors")
 -- "import" adjacent files (files living at or below hyprland.lua)
 require("monitors")
 
-local terminal = "uwsm app -- kitty "
+local terminal = "uwsm app -- foot "
 local fileManager = "uwsm app -- nautilus "
 local browser = "uwsm app -- zen-browser --new-window "
 local webapp = browser .. "--app "
@@ -28,8 +28,8 @@ local seshpick = terminal .. HOME .. "/.local/share/autarky/bin/autarky-session-
 
 local M = "SUPER + "
 local cmd = hl.dsp.exec_cmd
-hl.bind(M .. "RETURN", cmd(seshpick), { description = "term (kitty+tmux)" })
-hl.bind(M .. "T", cmd(seshpick), { description = "term (kitty+tmux" })
+hl.bind(M .. "RETURN", cmd(seshpick), { description = "term (foot+tmux)" })
+hl.bind(M .. "T", cmd(seshpick), { description = "term (foot+tmux" })
 hl.bind(M .. "E", cmd(fileManager), { description = "file manager (nautilus)" })
 hl.bind(M .. "B", cmd(browser), { description = "browser (zen)" })
 hl.bind(M .. "N", cmd(terminal .. " -e nvim"), { description = "god notepad (nvim)" })

@@ -65,7 +65,7 @@ hl.bind(
 
 -- toggle fullscreen window (not the app)
 hl.bind(
-	M .. "CTRL + SHIFT + K",
+	M .. "TAB",
 	hl.dsp.window.fullscreen({ internal = 2, client = 0, action = "toggle" }),
 	{ description = "toggle fullscreen" }
 )

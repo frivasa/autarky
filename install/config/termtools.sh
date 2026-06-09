@@ -3,8 +3,7 @@
 echo "Installing/Configuring keyd, Starship, and Tmux"
 
 # Install term utilities and related packages
-sudo pacman -S --noconfirm --needed starship tmux keyd
-yay -S --noconfirm --needed kitty
+sudo pacman -S --noconfirm --needed starship tmux keyd foot
 
 # enable plugins for tmux
 rm -rf ~/.tmux/plugins/tpm

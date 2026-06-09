@@ -36,10 +36,10 @@ ln -snf ~/.config/autarky/current/theme/backgrounds/02-fill-camera.png ~/.config
 wal --backend colorz -i ~/.config/autarky/current/background
 
 # Set specific app links for current theme
-# osc.conf includes current theme osc config, leaving these folder paths just in case
 mkdir -p ~/.config/mpv
 mkdir -p ~/.config/mpv/script-opts/
-# ln -snf ~/.config/autarky/current/theme/mpv.osc.conf osc.conf
+# include= does not wokr within script-opts
+ln -snf ~/.config/autarky/current/theme/mpv.osc.conf ~/.config/mpv/script-opts/osc.conf
 
 mkdir -p ~/.config/btop/themes
 ln -snf ~/.config/autarky/current/theme/btop.theme ~/.config/btop/themes/current.theme

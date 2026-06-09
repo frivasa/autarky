@@ -32,6 +32,12 @@ return { -- Standalone plugins other than snacks or mini
 			mode = "foreground",
 		},
 	},
+	{
+		"brenoprata10/nvim-highlight-colors",
+		opts = {
+			enable_hsl = true,
+		},
+	},
 	-- plugin deprecated due to vim.tbl_flatten being deprecated
 	-- { -- color highlighter
 	-- 	"norcalli/nvim-colorizer.lua",

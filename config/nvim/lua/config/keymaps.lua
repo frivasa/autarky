@@ -72,7 +72,7 @@ wk.add({
 	{ "<leader>so", "<CMD>Obsidian quick_switch<CR>", desc = "Search Vault Pages (Obsidian)", nor },
 	{ "<leader>sv", "<CMD>Obsidian search<CR>", desc = "Grep Vault (Obsidian)", nor },
 	{ "<leader>m", group = "Mvmt", icon = { icon = "󰜎 ", color = "purple" } },
-	{ "<leader>ml", "<CMD>Obsidian follow_link vsplit<CR>", desc = "Obsidian Follow Link", nor },
+	{ "<leader>ml", "<CMD>Obsidian follow_link <CR>", desc = "Obsidian Follow Link", nor },
 	{ "<leader>mu", fn.go_up, desc = "Move up in :pwd", nor },
 	{ "<leader>o", group = "Open/Splits", icon = { icon = "󰠜 ", color = "purple" } },
 	{ "<leader>on", "<CMD>Obsidian new<CR>", desc = "Open a New Page (Obsidian)", nor },
