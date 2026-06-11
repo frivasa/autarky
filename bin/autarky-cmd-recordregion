@@ -1,0 +1,26 @@
+#!/bin/bash
+
+PIDFILE="/tmp/record-region.pid"
+
+[[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
+OUTPUT_DIR="${AUTARKY_SCREENRECORD_DIR:-${XDG_VIDEOS_DIR:-$HOME/Videos}}"
+mkdir -p "$OUTPUT_DIR"
+
+filename="$OUTPUT_DIR/region-$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+
+# STOP if running
+if [[ -f "$PIDFILE" ]]; then
+  kill "$(cat "$PIDFILE")" 2>/dev/null
+  rm -f "$PIDFILE"
+  notify-send "Region recording stopped"
+  exit 0
+fi
+
+region="$(slurp)"
+[[ -z "$region" ]] && exit 0
+
+notify-send "Region recording started" -t 1000
+sleep 0.3
+
+wf-recorder -f "$filename" -g "$region" &
+echo $! > "$PIDFILE"

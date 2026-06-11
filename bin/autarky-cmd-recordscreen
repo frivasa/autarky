@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PIDFILE="/tmp/record-screen.pid"
+
+[[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
+OUTPUT_DIR="${AUTARKY_SCREENRECORD_DIR:-${XDG_VIDEOS_DIR:-$HOME/Videos}}"
+mkdir -p "$OUTPUT_DIR"
+
+filename="$OUTPUT_DIR/screen-$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+
+if [[ -f "$PIDFILE" ]]; then
+  kill "$(cat "$PIDFILE")" 2>/dev/null
+  rm -f "$PIDFILE"
+  notify-send "Screen recording stopped"
+  exit 0
+fi
+
+notify-send "Screen recording started" -t 1000
+sleep 0.3
+
+wf-recorder -f "$filename" &
+echo $! > "$PIDFILE"

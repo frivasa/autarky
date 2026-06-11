@@ -49,7 +49,7 @@
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "foot -e btop"
+    "on-click": "footclient -e btop"
   },
   "clock": {
     "format": "{:%b %d %H:%M}",
@@ -68,7 +68,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "nospacing": 1,
-    "on-click": "foot --class=Impala -e impala"
+    "on-click": "footclient --class=Impala -e impala"
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -101,7 +101,7 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "foot --class=Wiremix -e wiremix",
+    "on-click": "footclient --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,

@@ -13,7 +13,7 @@ xdg-mime default imv.desktop image/tiff
 xdg-mime default imv.desktop image/svg+xml
 xdg-mime default imv.desktop image/avif
 
-# Open PDFs with the Document Viewer
+# Open PDFs with zathura(mupdf backend)
 xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
 
 # Browser
@@ -24,6 +24,7 @@ xdg-mime default zen-browser.desktop x-scheme-handler/https
 # Open video files with mpv
 xdg-mime default mpv.desktop video/mp4
 xdg-mime default mpv.desktop video/x-msvideo
+xdg-mime default mpv.desktop video/avi
 xdg-mime default mpv.desktop video/x-matroska
 xdg-mime default mpv.desktop video/x-flv
 xdg-mime default mpv.desktop video/x-ms-wmv

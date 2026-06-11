@@ -2,7 +2,7 @@
 
 if [ -z "$AUTARKY_BARE" ]; then
   yay -S --noconfirm --needed \
-    gnome-calculator gnome-keyring vesktop-bin \
+    gnome-keyring vesktop-bin \
     obsidian-bin obs-studio kdenlive \
     xournalpp localsend-bin pinta
 
