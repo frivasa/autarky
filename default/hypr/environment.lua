@@ -14,7 +14,7 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
 hl.env("OZONE_PLATFORM", "wayland")
 
 -- Use XCompose file
-hl.env("XCOMPOSEFILE", "~/.XCompose")
+hl.env("XCOMPOSEFILE", "~/.config/XCompose")
 
 -- hyprland's former "autostart" with "exec-once"s
 hl.on("hyprland.start", function()
