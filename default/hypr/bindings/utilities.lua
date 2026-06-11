@@ -25,7 +25,6 @@ local dnd_notification = 'notify-send "Silenced notifications" || notify-send "E
 hl.bind(M .. "CTRL + COMMA", cmd(dnd .. " && " .. dnd_notification), { description = "silence notifications" })
 hl.bind(M .. "CTRL + I", cmd("~/.local/share/autarky/bin/autarky-toggle-idle"), { description = "toggle idle" })
 
--- these are hit or miss, check the scripts
 hl.bind(
 	"PRINT",
 	cmd("~/.local/share/autarky/bin/autarky-cmd-screenshot selection"),
