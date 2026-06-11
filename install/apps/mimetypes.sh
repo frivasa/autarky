@@ -1,22 +1,22 @@
 #!/bin/bash
 
-update-desktop-database ~/.local/share/applications
+# neovim reigns sup-meme
+xdg-mime default nvim.desktop text/plain
 
 # Open all images with imv
-xdg-mime default org.gnome.gThumb.desktop image/png
-xdg-mime default org.gnome.gThumb.desktop image/jpeg
-xdg-mime default org.gnome.gThumb.desktop image/gif
-xdg-mime default org.gnome.gThumb.desktop image/webp
-xdg-mime default org.gnome.gThumb.desktop image/bmp
-xdg-mime default org.gnome.gThumb.desktop image/tiff
+xdg-mime default imv.desktop image/png
+xdg-mime default imv.desktop image/jpeg
+xdg-mime default imv.desktop image/gif
+xdg-mime default imv.desktop image/webp
+xdg-mime default imv.desktop image/bmp
+xdg-mime default imv.desktop image/tiff
+xdg-mime default imv.desktop image/svg+xml
+xdg-mime default imv.desktop image/avif
 
 # Open PDFs with the Document Viewer
-xdg-mime default xreader.desktop application/pdf
+xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
 
-# Use Chromium as the default browser
-# xdg-settings set default-web-browser chromium.desktop
-# xdg-mime default chromium.desktop x-scheme-handler/http
-# xdg-mime default chromium.desktop x-scheme-handler/https
+# Browser
 xdg-settings set default-web-browser zen-browser.desktop
 xdg-mime default zen-browser.desktop x-scheme-handler/http
 xdg-mime default zen-browser.desktop x-scheme-handler/https
@@ -37,3 +37,5 @@ xdg-mime default mpv.desktop video/x-ms-asf
 xdg-mime default mpv.desktop video/x-ogm+ogg
 xdg-mime default mpv.desktop video/x-theora+ogg
 xdg-mime default mpv.desktop application/ogg
+
+update-desktop-database ~/.local/share/applications
