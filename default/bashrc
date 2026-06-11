@@ -2,7 +2,6 @@
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/autarky/default/bash/rc
 
-
 HISTFILE=~/.bash_history
 HISTSIZE=1000
 HISTFILESIZE=1000
@@ -13,7 +12,7 @@ shopt -s checkwinsize # recalculate window size
 # PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # Add your own exports, aliases, and functions here.
-alias n='NO_COLOR=1 nnn'
+# alias n='NO_COLOR=1 nnn'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -38,6 +37,18 @@ function fastfetch_switch_waifu(){
   kind=${1:-sfw}
   animated=${2:-nongif}
   source ~/.config/fastfetch/change_waifu.sh $kind $animated
+}
+
+n() {
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TRASH=trash-put
+
+    nnn -C "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+        . "$NNN_TMPFILE"
+        rm -f "$NNN_TMPFILE"
+    fi
 }
 
 # FZF testing

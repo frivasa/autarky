@@ -57,4 +57,4 @@ function flush() {
 END {
     flush()
 }
-' | fuzzel --dmenu -p "" --mesg "Keybind Look-up" -l 25 -w 50
+' | fuzzel --dmenu -p "" --mesg "Keybind Look-up" -l 17 -w 50

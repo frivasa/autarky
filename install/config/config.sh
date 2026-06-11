@@ -21,7 +21,7 @@ sudo chmod 644 /etc/gnupg/dirmngr.conf
 sudo gpgconf --kill dirmngr || true
 sudo gpgconf --launch dirmngr || true
 
-# lockout limit: 5, timeout: 4 minutes
+# Lockout limit: 5, timeout: 4 minutes
 sudo sed -i 's|^\(auth\s\+required\s\+pam_faillock.so\)\s\+preauth.*$|\1 preauth silent deny=5 unlock_time=240|' "/etc/pam.d/system-auth"
 sudo sed -i 's|^\(auth\s\+\[default=die\]\s\+pam_faillock.so\)\s\+authfail.*$|\1 authfail deny=5 unlock_time=240|' "/etc/pam.d/system-auth"
 

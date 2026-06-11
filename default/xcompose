@@ -1,5 +1,16 @@
 include "%L"
 
+# Easier Home (coléchancho)
+<Multi_key> <minus> <minus> : "~"
+
+# Spanish acentos
+<Multi_key> <a> <a> : "á"
+<Multi_key> <e> <e> : "é"
+<Multi_key> <i> <i> : "í"
+<Multi_key> <o> <o> : "ó"
+<Multi_key> <u> <u> : "ú"
+<Multi_key> <n> <n> : "ñ"
+
 # Emoji
 <Multi_key> <m> <s> : "😄" # smile
 <Multi_key> <m> <c> : "😂" # cry

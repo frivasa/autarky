@@ -2,7 +2,7 @@
 Name=Neovim
 GenericName=Text Editor
 Comment=Edit text files
-Exec=foot --app-id=nvim -e nvim -- %F
+Exec=footclient --app-id=nvim -e nvim -- %F
 Terminal=false
 Type=Application
 Keywords=Text;editor;

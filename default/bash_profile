@@ -3,17 +3,19 @@
 #
 
 # Configure nnn with environment variables
-export NNN_PLUG='o:fzopen;d:diffs;m:nmount;t:xdgdefault;k:pskill;u:umounttree;w:mtpmount'
-export NNN_FIFO=/tmp/nnn.fifo
-export NNN_TRASH=1
-export NNN_ARCHIVE="\.(7z|bz2|gz|tar|tgz|zip|rar)$"
-export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+# export NNN_PLUG='o:fzopen;d:diffs;m:nmount;t:xdgdefault;k:pskill;u:umounttree;w:mtpmount'
+# export NNN_FIFO=/tmp/nnn.fifo
+# export NNN_TRASH=trash-put
+# export NNN_ARCHIVE="\.(7z|bz2|gz|tar|tgz|zip|rar)$"
+# export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
+# For preview (with tmux/kitty etc.)
+# export NNN_PREVIEW=1
 # Bookmarks
-export NNN_BMS='d:~/Documents;D:~/Downloads;c:~/.config'
-
-export EDITOR=nvim
-export VISUAL=nvim
+# export NNN_BMS='d:~/Documents;D:~/Downloads;c:~/.config;h:/run/media/fdo/Hoyle'
+#
+# export EDITOR=nvim
+# export VISUAL=nvim
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 

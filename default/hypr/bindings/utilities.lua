@@ -26,28 +26,24 @@ hl.bind(M .. "CTRL + COMMA", cmd(dnd .. " && " .. dnd_notification), { descripti
 hl.bind(M .. "CTRL + I", cmd("~/.local/share/autarky/bin/autarky-toggle-idle"), { description = "toggle idle" })
 
 -- these are hit or miss, check the scripts
-hl.bind("PRINT", cmd("./~/.local/share/autarky/bin/autarky-cmd-screenshot"), { description = "screenshot (satty)" })
+hl.bind(
+	"PRINT",
+	cmd("~/.local/share/autarky/bin/autarky-cmd-screenshot selection"),
+	{ description = "screenshot (slurp+grim+satty)" }
+)
 hl.bind(
 	"SHIFT + PRINT",
-	cmd("./~/.local/share/autarky/bin/autarky-cmd-screenshot window"),
-	{ description = "screenshot window" }
+	cmd("~/.local/share/autarky/bin/autarky-cmd-screenshot screen"),
+	{ description = "screenshot whole screen (grim+satty)" }
+)
+hl.bind(
+	"ALT + PRINT",
+	cmd("~/.local/share/autarky/bin/autarky-cmd-recordregion"),
+	{ description = "record region (slurp+wf-record)" }
 )
 hl.bind(
 	"CTRL + PRINT",
-	cmd("~/.local/share/autarky/bin/autarky-cmd-screenshot output"),
-	{ description = "screenshot output" }
+	cmd("~/.local/share/autarky/bin/autarky-cmd-recordscreen"),
+	{ description = "record screen (wf-record)" }
 )
-hl.bind("ALT + PRINT", cmd("~/.local/share/autarky/bin/autarky-cmd-screenrecord"), { description = "record window" })
-hl.bind(
-	"CTRL + ALT + PRINT",
-	cmd("~/.local/share/autarky/bin/autarky-cmd-screenrecord output"),
-	{ description = "record output" }
-)
-
 hl.bind(M .. " + PRINT", cmd("hyprpicker -a"), { description = "check colors (hyprpicker)" })
--- something wrong with screensaver config T>T
-hl.bind(
-	M .. " + ALT + SPACE",
-	cmd("~/.local/share/autarky/bin/autarky-launch-screensaver"),
-	{ description = "screensaver" }
-)

@@ -28,12 +28,6 @@ hl.window_rule({
 	opacity = "1.0 1.0 1.0",
 })
 
--- Fullscreen screensaver
-hl.window_rule({
-	match = { class = "Screensaver" },
-	fullscreen = true,
-})
-
 -- Opacity rules
 hl.window_rule({
 	match = { class = ".*" },
