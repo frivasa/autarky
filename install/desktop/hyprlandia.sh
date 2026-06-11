@@ -5,4 +5,3 @@ yay -S --noconfirm --needed \
   libqalculate waybar mako swaybg swayosd \
   xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
 
-sudo pacman -S --noconfirm --needed fuzzel
