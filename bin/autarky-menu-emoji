@@ -1,0 +1,73 @@
+awk '
+BEGIN {
+    FS=":"
+    cols = 6
+    col_width = 21
+    i = 0
+}
+
+function trim(s) {
+    gsub(/^[ \t]+|[ \t]+$/, "", s)
+    return s
+}
+
+function emit_cell() {
+    if (combo != "" && emoji != "") {
+
+        if (desc == "") desc = "-"
+
+        cell = sprintf("%s %s (%s)", emoji, combo, desc)
+
+        row = row sprintf("%-" col_width "s", cell)
+        i++
+
+        if (i % cols == 0) {
+            print row
+            row = ""
+        }
+    }
+}
+
+function flush() {
+    if (row != "")
+        print row
+}
+
+/^#/ || /^[[:space:]]*$/ { next }
+
+{
+    if ($0 !~ /<Multi_key>/)
+        next
+
+    split($0, parts, ":")
+    lhs = parts[1]
+    rhs = parts[2]
+
+    emoji = ""
+    desc = ""
+
+    if (match(rhs, /"([^"]+)"/, m)) {
+        emoji = m[1]
+    }
+
+    if (match(rhs, /#(.*)$/, c)) {
+        desc = trim(c[1])
+    }
+
+    gsub(/[<>]/, " ", lhs)
+    gsub(/Multi_key/, "M", lhs)
+
+    combo = ""
+    n = split(lhs, keys, /[ \t]+/)
+    for (j = 1; j <= n; j++) {
+        if (keys[j] == "") continue
+        combo = combo (combo ? "+" : "") keys[j]
+    }
+
+    emit_cell()
+}
+
+END {
+    flush()
+}
+' ~/.config/XCompose | fuzzel --dmenu -l 17 -w 143 --mesg "XCompose Emoji Grid"

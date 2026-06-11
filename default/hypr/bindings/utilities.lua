@@ -1,5 +1,6 @@
 local HOME = os.getenv("HOME")
 local bindingsmenu = HOME .. "/.local/share/autarky/bin/autarky-menu-keybindings"
+local emojimenu = HOME .. "/.local/share/autarky/bin/autarky-menu-emoji"
 local powermenu = HOME .. "/.local/share/autarky/bin/autarky-menu-power"
 local thememenu = HOME .. "/.local/share/autarky/bin/autarky-menu-themes"
 local menu = "fuzzel"
@@ -8,6 +9,7 @@ local cmd = hl.dsp.exec_cmd
 
 hl.bind(M .. "S", cmd(menu), { description = "app menu (fuzzel)" })
 hl.bind(M .. "SLASH", cmd(bindingsmenu), { description = "keymaps (fuzzel)" })
+hl.bind(M .. "PERIOD", cmd(emojimenu), { description = "keymaps (fuzzel)" })
 hl.bind(M .. "ESCAPE", cmd(powermenu), { description = "power (fuzzel)" })
 hl.bind(M .. "SHIFT + T", cmd(thememenu), { description = "themes (fuzzel)" })
 
