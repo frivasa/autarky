@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Multiviewer
+Comment=Racing streaming app
+Exec=multiviewer
+Terminal=false
+Type=Application
+Icon=multiviewer
+StartupNotify=false
+

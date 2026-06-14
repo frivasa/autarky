@@ -10,7 +10,6 @@ mkdir -p ~/.local/share/applications
 cp ~/.local/share/autarky/applications/*.desktop ~/.local/share/applications/
 cp ~/.local/share/autarky/applications/hidden/*.desktop ~/.local/share/applications/
 
-# Only copy xtras if user is not in bare mode
 cp ~/.local/share/autarky/applications/xtras/*.desktop ~/.local/share/applications/
 
 update-desktop-database ~/.local/share/applications

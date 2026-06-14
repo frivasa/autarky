@@ -12,7 +12,6 @@ shopt -s checkwinsize # recalculate window size
 # PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # Add your own exports, aliases, and functions here.
-# alias n='NO_COLOR=1 nnn'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -20,8 +19,6 @@ alias t='tree -L 2'
 alias publicip="curl -4s ifconfig.me | awk '{print $1}'"
 # arch update mirror list
 alias update_mirrors='sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
-
-export PATH="$HOME/.cargo/bin:$PATH"
 
 function pixi_hook(){
   eval "$(pixi shell-hook)"

@@ -1,7 +1,7 @@
 include "%L"
 
 # Easier Home (coléchancho)
-<Multi_key> <minus> <minus> : "~"
+<Multi_key> <minus> <minus> : "~" # colechancho
 
 # Spanish acentos
 <Multi_key> <a> <a> : "á"
@@ -26,7 +26,7 @@ include "%L"
 <Multi_key> <m> <e> : "🙄" # eyeroll
 <Multi_key> <m> <d> : "🤤" # droll
 <Multi_key> <m> <m> : "💰" # money
-<Multi_key> <m> <x> : "🎉" # xellebrate
+<Multi_key> <m> <x> : "🎉" # celebrate
 <Multi_key> <m> <1> : "💯" # 100%
 <Multi_key> <m> <t> : "🥂" # toast
 <Multi_key> <m> <p> : "🙏" # pray

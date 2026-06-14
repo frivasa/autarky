@@ -1,0 +1,7 @@
+# master sourcing, this runs even before hyprland, so everybody will know these
+
+# Autarky functions and setup
+export AUTARKY_PATH="$HOME/.local/share/autarky"
+export PATH="./bin:$HOME/.local/bin:$HOME/.local/share/autarky/bin:$PATH"
+# Rust, Pixi, and Multiviewer binaries
+export PATH="$HOME/.cargo/bin:$HOME/.pixi/bin:$HOME/.multiviewer:$PATH"
