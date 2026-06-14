@@ -1,21 +1,9 @@
 #
 # ~/.bash_profile
+# only for login bash (can also use bash lang), anything else is .profile
 #
 
-# Configure nnn with environment variables
-# export NNN_PLUG='o:fzopen;d:diffs;m:nmount;t:xdgdefault;k:pskill;u:umounttree;w:mtpmount'
-# export NNN_FIFO=/tmp/nnn.fifo
-# export NNN_TRASH=trash-put
-# export NNN_ARCHIVE="\.(7z|bz2|gz|tar|tgz|zip|rar)$"
-# export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+[[ -f ~/.profile ]] && source ~/.profile
+[[ -f ~/.bashrc ]] && source ~/.bashrc
 
-# For preview (with tmux/kitty etc.)
-# export NNN_PREVIEW=1
-# Bookmarks
-# export NNN_BMS='d:~/Documents;D:~/Downloads;c:~/.config;h:/run/media/fdo/Hoyle'
-#
-# export EDITOR=nvim
-# export VISUAL=nvim
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
 

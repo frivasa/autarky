@@ -1,5 +1,4 @@
 # enable vim-mode
-# bindkey -v
 set -o vi
 
 if [[ -n "$BASH_VERSION" ]] && command -v fzf &> /dev/null; then
