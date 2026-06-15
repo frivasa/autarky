@@ -58,8 +58,8 @@ hl.window_rule({
 
 hl.window_rule({
 	match = { xwayland = true },
-	no_focus = true,
 	float = true,
+	center = true,
 	fullscreen = false,
 	pin = false,
 })

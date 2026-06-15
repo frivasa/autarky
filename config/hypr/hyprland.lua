@@ -38,7 +38,6 @@ hl.bind(M .. "D", cmd(terminal .. " -e lazydocker"), { description = "lazy docke
 hl.bind(M .. "O", cmd("uwsm app -- obsidian -disable-gpu"), { description = "obsidian" })
 hl.bind(M .. "SHIFT + P", cmd("uwsm app -- keepassxc"), { description = "keepassxc" })
 hl.bind(M .. "SHIFT + C", cmd(webapp .. "https://chatgpt.com/"), { description = "chatGPT" })
-hl.bind(M .. "SHIFT + A", cmd(webapp .. "https://apod.nasa.gov/apod/"), { description = "NASA's APOD" })
 hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { description = "chat (whatsapp)" })
 
 hl.config({
