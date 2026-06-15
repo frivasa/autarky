@@ -30,16 +30,20 @@ if [[ ! -f "$PYWAL_CACHE_COLORS" ]]; then
 fi
 
 # Read colors from the base colors from pywal (these are ordered)
-colors=()
-while IFS= read -r line || [[ -n "$line" ]]; do
-  # Skip empty lines and lines starting with #
-  [[ -z "$line" ]] && continue
-  # Trim whitespace
-  line="${line#"${line%%[![:space:]]*}"}"
-  line="${line%"${line##*[![:space:]]}"}"
-  # Add non-empty lines to colors array
-  [[ -n "$line" ]] && colors+=("$line")
-done < "$PYWAL_CACHE_COLORS"
+# 20260615: older zsh-ish version
+# colors=()
+# while IFS= read -r line || [[ -n "$line" ]]; do
+#   # Skip empty lines and lines starting with #
+#   [[ -z "$line" ]] && continue
+#   # Trim whitespace
+#   line="${line#"${line%%[![:space:]]*}"}"
+#   line="${line%"${line##*[![:space:]]}"}"
+#   # Add non-empty lines to colors array
+#   [[ -n "$line" ]] && colors+=("$line")
+# done < "$PYWAL_CACHE_COLORS"
+
+# Read colors from the base colors from pywal (these are ordered)
+mapfile -t colors < "$PYWAL_CACHE_COLORS"
 
 # Let's get dirty AF. We're gonna simply add every file structure 
 # and plug in the picked palette (mind that colors[0] is empty).
@@ -212,23 +216,23 @@ cat << EOF > "$FILE"
 foreground=${colors[8]#?}
 background=${colors[1]#?}
 
-regular0=${colors[1]#?}
-regular1=${colors[2]#?}
-regular2=${colors[3]#?}
-regular3=${colors[4]#?}
-regular4=${colors[5]#?}
-regular5=${colors[6]#?}
-regular6=${colors[7]#?}
-regular7=${colors[8]#?}
+regular0=${colors[0]#?}
+regular1=${colors[1]#?}
+regular2=${colors[2]#?}
+regular3=${colors[3]#?}
+regular4=${colors[4]#?}
+regular5=${colors[5]#?}
+regular6=${colors[6]#?}
+regular7=${colors[7]#?}
 
-bright0=${colors[9]#?}
-bright1=${colors[10]#?}
-bright2=${colors[11]#?}
-bright3=${colors[12]#?}
-bright4=${colors[13]#?}
-bright5=${colors[14]#?}
-bright6=${colors[15]#?}
-bright7=${colors[16]#?}
+bright0=${colors[8]#?}
+bright1=${colors[1]#?}
+bright2=${colors[2]#?}
+bright3=${colors[3]#?}
+bright4=${colors[4]#?}
+bright5=${colors[5]#?}
+bright6=${colors[6]#?}
+bright7=${colors[7]#?}
 EOF
 
 FILE="$THEME_LINK/fuzzel_colors.ini"
@@ -260,20 +264,20 @@ let background  = "${colors[1]}"
 let cursor      = "${colors[8]}"
 
 " Colors
-let color0   = "${colors[1]}"
-let color1   = "${colors[2]}"
-let color2   = "${colors[3]}"
-let color3   = "${colors[4]}"
-let color4   = "${colors[5]}"
-let color5   = "${colors[6]}"
-let color6   = "${colors[7]}"
-let color7   = "${colors[8]}"
-let color8   = "${colors[9]}"
-let color9   = "${colors[10]}"
-let color10  = "${colors[11]}"
-let color11  = "${colors[12]}"
-let color12  = "${colors[13]}"
-let color13  = "${colors[14]}"
-let color14  = "${colors[15]}"
-let color15  = "${colors[16]}"
+let color0   = "${colors[0]}"
+let color1   = "${colors[1]}"
+let color2   = "${colors[2]}"
+let color3   = "${colors[3]}"
+let color4   = "${colors[4]}"
+let color5   = "${colors[5]}"
+let color6   = "${colors[6]}"
+let color7   = "${colors[7]}"
+let color8   = "${colors[8]}"
+let color9   = "${colors[1]}"
+let color10  = "${colors[2]}"
+let color11  = "${colors[3]}"
+let color12  = "${colors[4]}"
+let color13  = "${colors[5]}"
+let color14  = "${colors[6]}"
+let color15  = "${colors[7]}"
 EOF

@@ -8,7 +8,7 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-THEMES_DIR="$HOME/.config/autarky/themes/"
+THEMES_DIR="$HOME/.local/share/autarky/themes/"
 CURRENT_THEME_DIR="$HOME/.config/autarky/current/theme"
 
 THEME_NAME="$1"
@@ -38,7 +38,8 @@ pkill -SIGUSR2 waybar
 pkill swayosd-server
 setsid uwsm app -- swayosd-server &>/dev/null &
 makoctl reload
+hyprctl eval 'hl.exec_cmd("pkill foot; uwsm app -- foot --server")'
 hyprctl reload
 
-# Set new background
+# Set new background (comme ci comme ca, generally I want to change the background by myself)
 # "$HOME/.local/share/autarky/bin/autarky-theme-bg-next"

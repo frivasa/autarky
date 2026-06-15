@@ -1,22 +1,6 @@
 #!/bin/bash
 
-THEMES_DIR="$HOME/.config/autarky/themes/"
-CURRENT_THEME_DIR="$HOME/.config/autarky/current/theme"
-CURRENT_THEME_NAME=$(basename "$(realpath "$CURRENT_THEME_DIR")")
-
-themes=()
-while IFS= read -r path; do
-  filename=$(/bin/basename "$path")
-  # Capitalise after start or hyphen, replace hyphen with space
-  display_name=$(echo "$filename" | /bin/sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')
-
-  if [[ "$filename" == "$CURRENT_THEME_NAME" ]]; then
-    continue
-  else
-    themes+=("$display_name")
-  fi
-done < <(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | sort)
-
+themes=$(autarky-theme-list)
 selection=$(printf '%s\n' "${themes[@]}" | fuzzel --dmenu -l 8 -w 30 -p "" --mesg "Themes" 2>/dev/null)
 
 # Convert to lowercase and dash-separated: "Tokyo Night" -> "tokyo-night"

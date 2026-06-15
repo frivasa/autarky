@@ -23,10 +23,6 @@ gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface icon-theme "HighContrast"
 gsettings set org.gnome.desktop.interface icon-theme "Suru++-Asprómauros"
 
-# Setup theme links
-mkdir -p ~/.config/autarky/themes
-for f in ~/.local/share/autarky/themes/*; do ln -nfs "$f" ~/.config/autarky/themes/; done
-
 # Set initial theme
 mkdir -p ~/.config/autarky/current
 ln -snf ~/.config/autarky/themes/master_camera ~/.config/autarky/current/theme
