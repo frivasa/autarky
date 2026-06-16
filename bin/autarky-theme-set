@@ -38,6 +38,7 @@ pkill -SIGUSR2 waybar
 pkill swayosd-server
 setsid uwsm app -- swayosd-server &>/dev/null &
 makoctl reload
+tmux source ~/.tmux.conf
 hyprctl eval 'hl.exec_cmd("pkill foot; uwsm app -- foot --server")'
 hyprctl reload
 

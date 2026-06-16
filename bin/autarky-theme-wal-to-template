@@ -214,7 +214,7 @@ FILE="$THEME_LINK/foot_colors.ini"
 cat << EOF > "$FILE"
 [colors-dark]
 foreground=${colors[8]#?}
-background=${colors[1]#?}
+background=${colors[0]#?}
 
 regular0=${colors[0]#?}
 regular1=${colors[1]#?}
@@ -255,6 +255,15 @@ counter       =${colors[5]}ff
 selection-text=${colors[5]}ff
 EOF
 
+FILE="$THEME_LINK/tmux.conf"
+cat << EOF > "$FILE"
+set -g @base-color fg=${colors[4]},bg=${colors[0]}
+set -g @flip-color fg=${colors[0]},bg=${colors[4]}
+
+set -g window-status-format '#[fg=${colors[0]},bg=${colors[4]}] #W #[default]'
+set -g window-status-current-format '#[fg=${colors[0]},bg=${colors[6]}] #(echo #W | tr '[:lower:]' '[:upper:]') #[default]'
+
+EOF
 
 FILE="$THEME_LINK/nvim.vim"
 cat << EOF > "$FILE"
@@ -280,4 +289,5 @@ let color12  = "${colors[4]}"
 let color13  = "${colors[5]}"
 let color14  = "${colors[6]}"
 let color15  = "${colors[7]}"
+
 EOF
