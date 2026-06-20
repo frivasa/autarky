@@ -60,8 +60,8 @@ EOF
 
 FILE="$THEME_LINK/hyprlock.conf"
 cat << EOF > "$FILE"
-\$color       = rgba($(hex_to_rgb "${colors[1]}"),1.0)
-\$inner_color = rgba($(hex_to_rgb "${colors[1]}"),0.8)
+\$color       = rgba($(hex_to_rgb "${colors[0]}"),1.0)
+\$inner_color = rgba($(hex_to_rgb "${colors[0]}"),0.8)
 \$outer_color = rgba($(hex_to_rgb "${colors[7]}"),1.0)
 \$font_color  = rgba($(hex_to_rgb "${colors[8]}"),1.0)
 \$check_color = rgba($(hex_to_rgb "${colors[2]}"),1.0)
@@ -71,7 +71,7 @@ FILE="$THEME_LINK/mako.ini"
 cat << EOF > "$FILE"
 text-color=${colors[8]}
 border-color=${colors[2]}
-background-color=${colors[1]}
+background-color=${colors[0]}
 width=420
 height=110
 padding=10
@@ -96,7 +96,7 @@ EOF
 
 FILE="$THEME_LINK/swayosd.css"
 cat << EOF > "$FILE"
-@define-color background-color ${colors[1]};
+@define-color background-color ${colors[0]};
 @define-color border-color ${colors[2]};
 @define-color label ${colors[8]};
 @define-color image ${colors[8]};
@@ -106,13 +106,13 @@ EOF
 FILE="$THEME_LINK/waybar.css"
 cat << EOF > "$FILE"
 @define-color foreground ${colors[2]};
-@define-color background ${colors[1]};
+@define-color background ${colors[0]};
 EOF
 
 FILE="$THEME_LINK/btop.theme"
 cat << EOF > "$FILE"
 # Main bg
-theme[main_bg]="${colors[1]}"
+theme[main_bg]="${colors[0]}"
 
 # Main text color
 theme[main_fg]="${colors[9]}"
@@ -198,7 +198,7 @@ EOF
 
 FILE="$THEME_LINK/mpv.osc.conf"
 cat << EOF > "$FILE"
-background_color=${colors[1]}
+background_color=${colors[0]}
 timecode_color=${colors[5]}
 title_color=${colors[5]}
 time_pos_color=${colors[5]}
@@ -207,13 +207,13 @@ small_buttonsL_color=${colors[6]}
 small_buttonsR_color=${colors[6]}
 top_buttons_color=${colors[6]}
 held_element_color=${colors[8]}
-time_pos_outline_color=${colors[1]}
+time_pos_outline_color=${colors[0]}
 EOF
 
 FILE="$THEME_LINK/foot_colors.ini"
 cat << EOF > "$FILE"
 [colors-dark]
-foreground=${colors[8]#?}
+foreground=${colors[2]#?}
 background=${colors[0]#?}
 
 regular0=${colors[0]#?}
@@ -245,7 +245,7 @@ placeholder=${colors[8]}ff
 input      =${colors[8]}ff
 # selection:foreground at 40 alpha
 selection  =${colors[8]}40
-background =${colors[1]}ff
+background =${colors[0]}ff
 # regular2
 match          =${colors[3]}ff
 selection-match=${colors[3]}ff
@@ -269,7 +269,7 @@ FILE="$THEME_LINK/nvim.vim"
 cat << EOF > "$FILE"
 " Special
 let foreground  = "${colors[8]}"
-let background  = "${colors[1]}"
+let background  = "${colors[0]}"
 let cursor      = "${colors[8]}"
 
 " Colors
