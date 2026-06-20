@@ -1,9 +1,9 @@
 #
 # ~/.bash_profile
-# only for login bash (can also use bash lang), anything else is .profile
+# only for login bash (can also use bash lang) other shells read .profile
+# or get env vars from uwsm
 #
 
-[[ -f ~/.profile ]] && source ~/.profile
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
 

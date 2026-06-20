@@ -1,3 +1,26 @@
+# this is readline's config (the ghost in the shell that loves you)
+set editing-mode vi
+
+# symbol for layer/mode
 set show-mode-in-prompt on
 set vi-ins-mode-string "\1\e[6 q\2  "
 set vi-cmd-mode-string "\1\e[2 q\2N "
+
+# single-tab complete and case-insensitive
+set completion-ignore-case on
+set show-all-if-ambiguous on
+
+# colored completions and paste avoids running before check
+# "no enter on paste"
+set colored-stats on
+set enable-bracketed-paste on
+
+# "smart history" look for comparable history
+# as in "ls " searches only for "ls something" in history
+# A/B = Up/Down arrow
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# nice, open any command in vim to edit (this is the default key)
+# set keymap vi-command
+# "v": edit-and-execute-command
