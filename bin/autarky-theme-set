@@ -39,8 +39,9 @@ pkill swayosd-server
 setsid uwsm app -- swayosd-server &>/dev/null &
 makoctl reload
 tmux source ~/.tmux.conf
-hyprctl eval 'hl.exec_cmd("pkill foot; uwsm app -- foot --server")'
 hyprctl reload
+# this kills the shell where this is ran. So keep it at last just in case
+hyprctl eval 'hl.exec_cmd("pkill foot; uwsm app -- foot --server")'
 
 # Set new background (comme ci comme ca, generally I want to change the background by myself)
 # "$HOME/.local/share/autarky/bin/autarky-theme-bg-next"

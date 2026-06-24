@@ -1,0 +1,14 @@
+# Configure nnn with environment variables
+export NNN_PLUG='o:fzopen;f:fzcd;m:nmount;t:xdgdefault;k:pskill;p:addtoplaylist'
+export NNN_FIFO=/tmp/nnn.fifo
+export NNN_TRASH=trash-put
+export NNN_ARCHIVE="\.(7z|bz2|gz|tar|tgz|zip|rar)$"
+export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+# export NNN_FCOLORS="$(< "$XDG_CONFIG_HOME/autarky/current/theme/nnn.ini")"
+# Bookmarks
+export NNN_BMS='t:~/.local/share/Trash/files;d:~/Downloads;h:/run/media/fdo/Hoyle'
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+exec /usr/bin/nnn -C "$@"

@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+
+COLOR_FILE="$HOME/.config/autarky/current/theme/foot_colors.ini"
+FSCOLORS="$HOME/.config/autarky/current/theme/nnn.ini"
+
+# ---- check file ----
+if [[ ! -f "$COLOR_FILE" ]]; then
+    echo "Error: File '$COLOR_FILE' not found." >&2
+    return 1 2>/dev/null || exit 1
+fi
+
+# ---- hex -> xterm-256 ----
+hex_to_256() {
+python3 - "$1" <<'EOF'
+import sys
+
+h = sys.argv[1].strip().lstrip("#")
+
+r = int(h[0:2], 16)
+g = int(h[2:4], 16)
+b = int(h[4:6], 16)
+
+levels = [0, 95, 135, 175, 215, 255]
+
+def nearest(v):
+    return min(range(6), key=lambda i: abs(levels[i] - v))
+
+ri, gi, bi = nearest(r), nearest(g), nearest(b)
+
+print(16 + 36*ri + 6*gi + bi)
+EOF
+}
+
+# ---- extract bright0-7 ----
+declare -A bright
+
+while IFS='=' read -r key value; do
+    key="${key//[[:space:]]/}"
+    value="${value//[[:space:]]/}"
+
+    case "$key" in
+        bright[0-7])
+            echo "$key = $value"
+            bright["$key"]="$value"
+            ;;
+    esac
+done < "$COLOR_FILE"
+
+to_xterm_hex() {
+    local c="$1"
+    local idx
+    idx=$(hex_to_256 "$c")
+    printf "%02x" "$idx"
+}
+
+# =========================
+# NNN_FCOLORS (8 slots)
+# =========================
+
+nnn_colors=(
+    "$(to_xterm_hex "${bright[bright7]:-c7c7c7}")"  # file
+    "$(to_xterm_hex "${bright[bright4]:-c7c7c7}")"  # dir
+    "$(to_xterm_hex "${bright[bright2]:-c7c7c7}")"  # exe
+    "$(to_xterm_hex "${bright[bright5]:-c7c7c7}")"  # selected/special
+    "$(to_xterm_hex "${bright[bright6]:-c7c7c7}")"  # symlink
+    "$(to_xterm_hex "${bright[bright3]:-c7c7c7}")"  # socket
+    "$(to_xterm_hex "${bright[bright1]:-c7c7c7}")"  # block
+    "$(to_xterm_hex "${bright[bright0]:-c7c7c7}")"  # char
+)
+
+NNN_FCOLORS=""
+for c in "${nnn_colors[@]}"; do
+    NNN_FCOLORS+="$c"
+done
+
+# =========================
+# LS_COLORS (core types)
+# =========================
+
+DIR=$(to_xterm_hex "${bright[bright4]:-c7c7c7}")
+FILE=$(to_xterm_hex "${bright[bright7]:-c7c7c7}")
+LINK=$(to_xterm_hex "${bright[bright6]:-c7c7c7}")
+EXEC=$(to_xterm_hex "${bright[bright2]:-c7c7c7}")
+SOCK=$(to_xterm_hex "${bright[bright5]:-c7c7c7}")
+PIPE=$(to_xterm_hex "${bright[bright3]:-c7c7c7}")
+BLOCK=$(to_xterm_hex "${bright[bright1]:-c7c7c7}")
+CHAR=$(to_xterm_hex "${bright[bright0]:-c7c7c7}")
+
+LS_COLORS="di=38;5;${DIR}:fi=38;5;${FILE}:ln=38;5;${LINK}:ex=38;5;${EXEC}:so=38;5;${SOCK}:pi=38;5;${PIPE}:bd=38;5;${BLOCK}:cd=38;5;${CHAR}"
+
+EXT_PDF="*.pdf=38;5;${FILE}"
+EXT_JSON="*.json=38;5;${FILE}"
+EXT_ZIP="*.zip=38;5;${FILE}"
+EXT_TAR="*.tar=38;5;${FILE}"
+EXT_GZ="*.gz=38;5;${FILE}"
+EXT_PNG="*.png=38;5;${FILE}"
+EXT_JPG="*.jpg=38;5;${FILE}"
+EXT_JPEG="*.jpeg=38;5;${FILE}"
+EXT_SVG="*.svg=38;5;${FILE}"
+EXT_MD="*.md=38;5;${FILE}"
+EXT_YML="*.yml=38;5;${FILE}"
+EXT_YAML="*.yaml=38;5;${FILE}"
+EXT_SH="*.sh=38;5;${EXEC}"
+EXT_PY="*.py=38;5;${EXEC}"
+EXT_JS="*.js=38;5;${FILE}"
+EXT_TS="*.ts=38;5;${FILE}"
+
+LS_COLORS="${LS_COLORS}:${EXT_PDF}:${EXT_JSON}:${EXT_ZIP}:${EXT_TAR}:${EXT_GZ}:${EXT_PNG}:${EXT_JPG}:${EXT_JPEG}:${EXT_SVG}:${EXT_MD}:${EXT_YML}:${EXT_YAML}:${EXT_SH}:${EXT_PY}:${EXT_JS}:${EXT_TS}"
+
+echo "\"$NNN_FCOLORS\""
+echo "\"$NNN_FCOLORS\"" > $FSCOLORS
+# echo "export LS_COLORS=\"$LS_COLORS\""

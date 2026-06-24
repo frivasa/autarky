@@ -59,12 +59,12 @@ hl.config({
 	dwindle = { preserve_split = true, force_split = 2 },
 	cursor = { inactive_timeout = 2.0 },
 	misc = {
-		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
+		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
 		focus_on_activate = false,
 		disable_splash_rendering = true,
 	},
-	xwayland = { force_zero_scaling = true },
+	xwayland = { force_zero_scaling = false },
 	ecosystem = { no_update_news = true },
 })
 
