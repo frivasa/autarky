@@ -7,11 +7,23 @@
 }
 
 tooltip {
-  padding: 2px;
+  padding: 0px;
+  margin: 0px;
+
+  border: 4px solid @foreground;
+  border-radius: 10px;
+  background-color: @background;
 }
 
+tooltip * {
+  padding: 8px;
+  font-size: 20px;
+  color: @foreground;
 
-#waybar,
+  background-color: transparent;
+  border: none;
+}
+
 .modules-left,
 .modules-center,
 .modules-right {
@@ -37,8 +49,10 @@ tooltip {
 #pulseaudio,
 #battery,
 #cpu {
-  margin: 0px 5px;
-  padding: 1px 4px;
+  margin: 1px 5px;
+  padding: 1px 8px;
+
+  font-size: 22px;
 }
 
 #tray{
@@ -71,17 +85,13 @@ tooltip {
   border: 0px solid @foreground;
 }
 
+
 #clock,
-#bluetooth,
-#network,
-#pulseaudio,
-#workspaces,
-#cpu {
-  font-size: 18px;
+#workspaces {
+  font-size: 25px;
 }
 
 #workspaces button {
-  font-size: 18px;
   padding: 4px;
   margin: 0 4px;
   border: none;
