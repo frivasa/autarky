@@ -4,7 +4,7 @@
   "exclusive": true,
   "passthrough": false,
   "spacing": 0,
-  "height": 30,
+  "height": 38,
   "modules-left": [
     "tray",
     "group/blob",
@@ -17,11 +17,11 @@
     "orientation": "horizontal",
     "align": "center",
     "modules": [
-      "network",
       "pulseaudio",
+      "network",
+      "bluetooth",
       "cpu",
-      "battery",
-      "bluetooth"
+      "battery"
     ]
   },
   "hyprland/workspaces": {
@@ -112,6 +112,7 @@
   },
 
   "tray": {
-    "spacing": 8
+    "spacing": 15,
+    "icon-size": 22
   }
 }
