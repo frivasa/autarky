@@ -23,24 +23,10 @@ PYWAL_CACHE_COLORS="$HOME/.cache/wal/colors"
 THEME_LINK="$HOME/.config/autarky/template"
 mkdir -p "$THEME_LINK"
 
-# Check if file exists
 if [[ ! -f "$PYWAL_CACHE_COLORS" ]]; then
     echo "Error: File '$PYWAL_CACHE_COLORS' not found." >&2
     return 1
 fi
-
-# Read colors from the base colors from pywal (these are ordered)
-# 20260615: older zsh-ish version
-# colors=()
-# while IFS= read -r line || [[ -n "$line" ]]; do
-#   # Skip empty lines and lines starting with #
-#   [[ -z "$line" ]] && continue
-#   # Trim whitespace
-#   line="${line#"${line%%[![:space:]]*}"}"
-#   line="${line%"${line##*[![:space:]]}"}"
-#   # Add non-empty lines to colors array
-#   [[ -n "$line" ]] && colors+=("$line")
-# done < "$PYWAL_CACHE_COLORS"
 
 # Read colors from the base colors from pywal (these are ordered)
 mapfile -t colors < "$PYWAL_CACHE_COLORS"
