@@ -3,6 +3,14 @@ alias l='eza --icons'
 alias ls='eza -lha --group-directories-first --icons=never'
 alias lt='eza --tree --header --level=2 --long --icons --git'
 alias lta='lt -a'
+
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias t='tree -L 2'
+alias publicip="curl -4s ifconfig.me | awk '{print $1}'"
+# arch update mirror list
+alias update_mirrors='sudo reflector --protocol https --verbose --latest 25 --sort rate --save /etc/pacman.d/mirrorlist'
 # "vimgrep for command line"
 # alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 

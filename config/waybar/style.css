@@ -44,20 +44,40 @@ tooltip * {
   margin-right: 300px;
 }
 
-#bluetooth,
-#network,
-#pulseaudio,
-#battery,
-#cpu {
+#pulseaudio {
   margin: 1px 5px;
-  padding: 1px 8px;
-
-  font-size: 22px;
+  /* pad is top-right-bot-left */
+  padding: 1px 8px 1px 0px;
+  font-size: 28px;
 }
 
-#tray{
-  margin: 0 1px;
-  padding: 0 1px;
+#network {
+  margin: 1px 5px;
+  padding: 1px 12px 1px 0px;
+  font-size: 24px;
+}
+
+#bluetooth {
+  font-size: 26px;
+  padding: 1px 8px 1px 8px;
+}
+
+#cpu {
+  margin: 1px 5px;
+  padding: 1px 12px 1px 1px;
+  font-size: 28px;
+}
+
+#battery {
+  margin: 1px 5px;
+  padding: 1px 8px 1px 1px;
+  font-size: 24px;
+}
+
+#tray {
+  margin: 0px 1px;
+  padding: 1px 12px 1px 1px;
+  /* icon-size: 18px; */
 }
 
 #blob {
