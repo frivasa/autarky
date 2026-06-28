@@ -15,9 +15,11 @@ yay -S --noconfirm --needed \
   zen-browser-bin chromium video-downloader
 
 # enable mpv-nnn playlist interaction (; p)
+mkdir -p ~/.local/bin
 sudo cp /usr/share/mpv/scripts/umpv ~/.local/bin/umpv
 sudo chmod +x ~/.local/bin/umpv
-cp --parents ~/.local/share/autarky/config/nnn/plugins/addtoplaylist ~/.config/nnn/plugins/addtoplaylist
+mkdir -p ~/.config/nnn/plugins
+cp ~/.local/share/autarky/config/nnn/plugins/addtoplaylist ~/.config/nnn/plugins/addtoplaylist
 sudo chmod +x ~/.config/nnn/plugins/addtoplaylist
 # this enables sending selected files to mpv playlist from nnn
 
