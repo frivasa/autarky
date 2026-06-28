@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # neovim reigns sup-meme
 xdg-mime default nvim.desktop text/plain
 
@@ -17,9 +18,9 @@ xdg-mime default imv.desktop image/avif
 xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
 
 # Browser
-xdg-settings set default-web-browser zen-browser.desktop
-xdg-mime default zen-browser.desktop x-scheme-handler/http
-xdg-mime default zen-browser.desktop x-scheme-handler/https
+xdg-settings set default-web-browser zen.desktop
+xdg-mime default zen.desktop x-scheme-handler/http
+xdg-mime default zen.desktop x-scheme-handler/https
 
 # Open video files with mpv
 xdg-mime default mpv.desktop video/mp4

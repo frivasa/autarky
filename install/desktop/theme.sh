@@ -25,11 +25,8 @@ gsettings set org.gnome.desktop.interface icon-theme "Suru++-Asprómauros"
 
 # Set initial theme
 mkdir -p ~/.config/autarky/current
-ln -snf ~/.config/autarky/themes/master_camera ~/.config/autarky/current/theme
-ln -snf ~/.config/autarky/current/theme/backgrounds/02-fill-camera.png ~/.config/autarky/current/background
-
-# init colorscheme for nvim and theme
-wal --backend colorz -i ~/.config/autarky/current/background
+ln -snf ~/.local/share/autarky/themes/master_camera ~/.config/autarky/current/theme
+ln -snf ~/.local/share/autarky/themes/master_camera/backgrounds/02-fill-camera.png ~/.config/autarky/current/background
 
 # Set specific app links for current theme
 mkdir -p ~/.config/mpv
