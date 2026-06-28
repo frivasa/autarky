@@ -1,5 +1,34 @@
+# FZF fuzzy finder
 
+# enable fzf shortcuts (C-T selects files, C-R selects commands, A-C fuzzy dir lookup)
 if [[ -n "$BASH_VERSION" ]] && command -v fzf &> /dev/null; then
   [[ -f /usr/share/fzf/completion.bash ]] && source /usr/share/fzf/completion.bash
   [[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash
 fi
+
+export FZF_COMPLETION_TRIGGER='**'
+export FZF_DEFAULT_OPTS="
+--layout reverse
+--border
+--color=fg:7,bg:0,fg+:0,bg+:7,hl:6,hl+:6,info:6,prompt:6,\
+pointer:5,marker:5,spinner:5,border:5,separator:0
+"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow"
+
+# bash "shell options (shopt)"
+shopt -s nullglob # get null instead of "*.JPG"
+shopt -s histappend # append instead of overwrite
+shopt -s checkwinsize # recalculate window size
+
+HISTFILE=~/.bash_history
+HISTSIZE=1000
+HISTFILESIZE=1000
+
+
+# arch handles latex, prevent quarto from installing tex packages
+export TEXMFHOME=/var/empty
+export TEXMFVAR=/var/empty
+export TEXMFCONFIG=/var/empty
+

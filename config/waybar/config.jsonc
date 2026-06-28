@@ -4,7 +4,7 @@
   "exclusive": true,
   "passthrough": false,
   "spacing": 0,
-  "height": 38,
+  "height": 41,
   "modules-left": [
     "tray",
     "group/blob",
@@ -113,6 +113,6 @@
 
   "tray": {
     "spacing": 15,
-    "icon-size": 22
+    "icon-size": 24
   }
 }

@@ -4,3 +4,4 @@ export SUDO_EDITOR="$EDITOR"
 
 # Ollama
 export OLLAMA_HOST=0.0.0.0:8090
+
