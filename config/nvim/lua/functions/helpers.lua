@@ -102,6 +102,20 @@ function M.save_scratch_to_dl()
 	print("Saved to " .. path)
 end
 
+local Path = require("plenary.path")
+
+function M.note_path_func(spec)
+	local current = vim.api.nvim_buf_get_name(0)
+	local filename = spec.title or spec.id
+	-- Remove the .md extension.
+	local parent_dir = current:sub(1, -4)
+
+	vim.fn.mkdir(parent_dir, "p")
+
+	return Path:new(parent_dir):joinpath(filename .. ".md")
+end
+
+-- QUARTO AUXILIARY FUNCTIONS FOR REPLing --
 --- Returns { lang, start_line (1-based), end_line (1-based) } or nil.
 function M.quarto_code_block_at_cursor()
 	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
