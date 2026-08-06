@@ -2,7 +2,8 @@
 sudo pacman -S --noconfirm --needed \
   trash-cli     nethogs dust \
   diff-so-fancy udisks2 usb_modeswitch \
-  exiftool      tree    reflector
+  exiftool      tree    reflector \
+  bash-completion
 
 yay -S --noconfirm --needed \
   wget      curl         unzip \

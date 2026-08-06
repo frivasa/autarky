@@ -1,10 +1,11 @@
 #!/bin/bash
-sudo pacman -S --noconfirm --needed keepassxc syncthing \
-  nodejs npm tree-sitter-cli unzip qbittorrent ollama \
-  python-json5 python-pywal \
-  hplip baobab android-file-transfer \
-  gnome-disk-utility nautilus nnn \
-  nwg-look inkscape gnumeric zathura zathura-pdf-mupdf evolution fuzzel
+sudo pacman -S --noconfirm --needed \
+  keepassxc syncthing nodejs npm \
+  tree-sitter-cli unzip python-json5 python-pywal \
+  baobab android-file-transfer gnome-disk-utility nautilus \
+  nnn qbittorrent inkscape gnumeric \
+  zathura zathura-pdf-mupdf evolution fuzzel \
+  obsidian
 
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer wiremix wireplumber \

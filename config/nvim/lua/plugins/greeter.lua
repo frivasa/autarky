@@ -56,6 +56,7 @@ return {
 			dashboard.button("o", "󰍉  Obsidian page search", ":Obsidian quick_switch <CR>"),
 			dashboard.button("f", "󰍉  Find file", ":Telescope find_files <CR>"),
 			dashboard.button("s", "  Search Sessions", ":AutoSession search<CR>"),
+			dashboard.button("r", "  Start Oil (rename files)", ":Oil <CR>"),
 			dashboard.button("l", "󰒲  Lazy Plugin Manager", ":Lazy<CR>"),
 			dashboard.button("m", "󰟾  Mason Package Manager", ":Mason<CR>"),
 			dashboard.button("q", "󰩈  Quit Neovim", ":qa<CR>"),

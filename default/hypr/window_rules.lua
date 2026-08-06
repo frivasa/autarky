@@ -51,7 +51,7 @@ hl.window_rule({
 
 hl.window_rule({
 	match = {
-		class = "^(zoom|mpv|org.kde.kdenlive|com.obsproject.Studio|com.github.PintaProject.Pinta|imv)$",
+		class = "^(rawtherapee|zoom|mpv|org.kde.kdenlive|com.obsproject.Studio|com.github.PintaProject.Pinta|imv)$",
 	},
 	opacity = "1.0 1.0 1.0",
 })

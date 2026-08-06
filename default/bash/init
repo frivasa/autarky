@@ -26,7 +26,6 @@ HISTFILE=~/.bash_history
 HISTSIZE=1000
 HISTFILESIZE=1000
 
-
 # arch handles latex, prevent quarto from installing tex packages
 export TEXMFHOME=/var/empty
 export TEXMFVAR=/var/empty
