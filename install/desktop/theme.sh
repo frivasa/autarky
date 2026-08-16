@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get cool icons
-yay -S --noconfirm suru-plus-aspromauros
+yay -S --noconfirm colloid-icon-theme-git
 
 # Use dark mode for QT apps too (like kdenlive)
 if ! yay -Q kvantum-qt5 &>/dev/null; then
@@ -21,7 +21,7 @@ git clone https://github.com/vinceliuice/Orchis-theme.git ~/.local/share/orchis-
 gsettings set org.gnome.desktop.interface gtk-theme "Systheme-Grey-Dark-Compact"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface icon-theme "HighContrast"
-gsettings set org.gnome.desktop.interface icon-theme "Suru++-Asprómauros"
+gsettings set org.gnome.desktop.interface icon-theme "Colloid"
 
 # Set initial theme
 mkdir -p ~/.config/autarky/current

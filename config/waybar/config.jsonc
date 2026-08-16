@@ -4,7 +4,7 @@
   "exclusive": true,
   "passthrough": false,
   "spacing": 0,
-  "height": 41,
+  "height": 38,
   "modules-left": [
     "tray",
     "group/blob",
@@ -52,7 +52,8 @@
     "on-click": "footclient -e btop"
   },
   "clock": {
-    "format": "{:%b %d %H:%M}",
+    "interval": 1,
+    "format": "{:%b %d %H:%M:%S}",
     "tooltip": false,
     "on-click": "zen-browser 'https://calendar.proton.me/'",
     "on-click-right": "~/.local/share/autarky/bin/autarky-cmd-tzupdate"
@@ -66,7 +67,7 @@
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
-    "interval": 3,
+    "interval": 5,
     "nospacing": 1,
     "on-click": "footclient --app-id=Impala -e impala"
   },
@@ -110,9 +111,8 @@
       "default": ["", "", ""]
     }
   },
-
   "tray": {
-    "spacing": 15,
+    "spacing": 18,
     "icon-size": 24
   }
 }
