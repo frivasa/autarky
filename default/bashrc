@@ -7,5 +7,11 @@ function pixi_hook(){
   eval "$(pixi shell-hook)"
 }
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/fdo/.lmstudio/bin"
+# End of LM Studio CLI section
+export PATH=/home/fdo/.opencode/bin:$PATH
+
 eval "$(starship init bash)"
 
+PROMPT_COMMAND+=('TMPDIR="$PWD"')

@@ -32,8 +32,8 @@ source $AUTARKY_INSTALL/preflight/presentation.sh
 show_logo beams 240
 show_subtext "Let's install Autarky! [1/5]"
 source $AUTARKY_INSTALL/config/identification.sh
-source $AUTARKY_INSTALL/config/termtools.sh
 source $AUTARKY_INSTALL/config/config.sh
+source $AUTARKY_INSTALL/config/termtools.sh
 source $AUTARKY_INSTALL/config/network.sh
 source $AUTARKY_INSTALL/config/power.sh
 source $AUTARKY_INSTALL/config/timezones.sh
@@ -44,11 +44,9 @@ source $AUTARKY_INSTALL/config/nvidia.sh
 show_logo decrypt 920
 show_subtext "Installing terminal tools [2/5]"
 source $AUTARKY_INSTALL/development/terminal.sh
-source $AUTARKY_INSTALL/development/development.sh
 source $AUTARKY_INSTALL/development/nvim.sh
 source $AUTARKY_INSTALL/development/docker.sh
 source $AUTARKY_INSTALL/development/firewall.sh
-source $AUTARKY_INSTALL/development/pixi.sh
 source $AUTARKY_INSTALL/development/latex.sh
 
 # Desktop

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # neovim reigns sup-meme
 xdg-mime default nvim.desktop text/plain
 
@@ -14,8 +13,8 @@ xdg-mime default imv.desktop image/tiff
 xdg-mime default imv.desktop image/svg+xml
 xdg-mime default imv.desktop image/avif
 
-# Open PDFs with zathura(mupdf backend)
-xdg-mime default org.pwmt.zathura-pdf-mupdf.desktop application/pdf
+# Open PDFs with okular
+xdg-mime default okularApplication_pdf.desktop application/pdf
 
 # Browser
 xdg-settings set default-web-browser zen.desktop

@@ -3,7 +3,7 @@
 # get cool icons
 yay -S --noconfirm colloid-icon-theme-git
 
-# Use dark mode for QT apps too (like kdenlive)
+# Use dark mode for QT apps too (KDE mostly uses QT)
 if ! yay -Q kvantum-qt5 &>/dev/null; then
   yay -S --noconfirm kvantum-qt5
 fi

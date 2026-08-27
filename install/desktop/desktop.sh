@@ -1,19 +1,18 @@
 #!/bin/bash
 sudo pacman -S --noconfirm --needed \
   keepassxc syncthing nodejs npm \
-  tree-sitter-cli unzip python-json5 python-pywal \
+  unzip python-json5 python-pywal \
   baobab android-file-transfer gnome-disk-utility nautilus \
-  nnn qbittorrent inkscape gnumeric \
-  zathura zathura-pdf-mupdf evolution fuzzel \
-  obsidian
+  nnn qbittorrent inkscape fuzzel \
+  obsidian blender libreoffice-still okular
 
 yay -S --noconfirm --needed \
-  brightnessctl playerctl pamixer wiremix wireplumber \
-  wl-clip-persist \
-  ffmpegthumbnailer python-pywalfox \
-  slurp satty \
-  mpv imv wf-recorder \
-  zen-browser-bin chromium video-downloader
+  brightnessctl playerctl pamixer \
+  wiremix wireplumber wl-clip-persist \
+  ffmpegthumbnailer python-pywalfox slurp \
+  satty mpv imv \
+  wf-recorder chromium video-downloader \
+  zen-browser-bin
 
 # enable mpv-nnn playlist interaction (; p)
 mkdir -p ~/.local/bin
