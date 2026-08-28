@@ -1,8 +1,6 @@
-# ~~Omarchy~~ Autarky
+# Autarky
 
-Blatant takeover of [Omarchy](https://github.com/basecamp/autarky). Removing most things while switching to ~~kitty~~ `foot` + `starship`. There's only one branch because nothing goes wrong ever! muahahaha!
-
-Read more at [omarchy.org](https://omarchy.org).
+`foot` + `starship`, then build from there...
 
 ## License
 
