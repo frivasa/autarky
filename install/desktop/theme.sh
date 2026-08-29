@@ -1,27 +1,10 @@
 #!/bin/bash
 
-# get cool icons
-yay -S --noconfirm colloid-icon-theme-git
-
-# Use dark mode for QT apps too (KDE mostly uses QT)
-if ! yay -Q kvantum-qt5 &>/dev/null; then
-  yay -S --noconfirm kvantum-qt5
-fi
-
-# Prefer dark mode everything
-if ! yay -Q gnome-themes-extra &>/dev/null; then
-  yay -S --noconfirm gnome-themes-extra # Adds Adwaita-dark theme
-fi
-
-# clone theme repo and init a neutral color
-rm -rf ~/.local/share/orchis-gtk-theme
-git clone https://github.com/vinceliuice/Orchis-theme.git ~/.local/share/orchis-gtk-theme
-~/.local/share/orchis-gtk-theme/install.sh -n Systheme -t grey
-
-gsettings set org.gnome.desktop.interface gtk-theme "Systheme-Grey-Dark-Compact"
+# gnome-themes-extra adds Adwaita-dark theme, kvantum-qt5 is dark?
+yay -S --noconfirm --needed kvantum-qt5 gnome-themes-extra
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface icon-theme "HighContrast"
-gsettings set org.gnome.desktop.interface icon-theme "Colloid"
 
 # Set initial theme
 mkdir -p ~/.config/autarky/current
