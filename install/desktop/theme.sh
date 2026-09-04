@@ -5,6 +5,7 @@ yay -S --noconfirm --needed kvantum-qt5 gnome-themes-extra
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface icon-theme "HighContrast"
+gsettings set org.gnome.desktop.privacy remember-recent-files false
 
 # Set initial theme
 mkdir -p ~/.config/autarky/current

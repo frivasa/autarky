@@ -52,8 +52,8 @@
     "on-click": "footclient -e btop"
   },
   "clock": {
-    "interval": 1,
-    "format": "{:%b %d %H:%M:%S}",
+    "interval": 60,
+    "format": "{:%a %b %d %H:%M}",
     "tooltip": false,
     "on-click": "zen-browser 'https://calendar.proton.me/'",
     "on-click-right": "~/.local/share/autarky/bin/autarky-cmd-tzupdate"
