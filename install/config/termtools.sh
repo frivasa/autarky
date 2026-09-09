@@ -3,7 +3,7 @@
 echo "Installing/Configuring keyd, Starship, and Tmux"
 
 # Install term utilities and related packages
-sudo pacman -S --noconfirm --needed starship tmux keyd foot
+sudo pacman -S --noconfirm --needed starship tmux keyd foot pacman-contrib
 
 # enable plugins for tmux
 rm -rf ~/.tmux/plugins/tpm
@@ -16,4 +16,7 @@ sudo cp ~/.local/share/autarky/default/default.conf /etc/keyd/default.conf
 if ! systemctl is-enabled keyd.service | grep -q enabled; then
   sudo systemctl enable keyd
 fi
+
+# copy pacman config (avoid extracting /docs and other locales)
+sudo cp ~/.local/share/autarky/default/pacman.conf /etc/pacman.conf
 

@@ -3,14 +3,14 @@ sudo pacman -S --noconfirm --needed \
   keepassxc syncthing nodejs npm \
   unzip python-json5 python-pywal \
   baobab android-file-transfer gnome-disk-utility nautilus \
-  nnn qbittorrent inkscape fuzzel \
-  obsidian blender libreoffice-still okular
+  nnn qbittorrent inkscape fuzzel qimgv-git \
+  obsidian libreoffice-still okular kdenlive
 
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer \
   wiremix wireplumber wl-clip-persist \
   ffmpegthumbnailer python-pywalfox slurp \
-  satty mpv imv \
+  satty mpv \
   wf-recorder chromium video-downloader \
   zen-browser-bin
 

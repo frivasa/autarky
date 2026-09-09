@@ -3,15 +3,15 @@
 # neovim reigns sup-meme
 xdg-mime default nvim.desktop text/plain
 
-# Open all images with imv
-xdg-mime default imv.desktop image/png
-xdg-mime default imv.desktop image/jpeg
-xdg-mime default imv.desktop image/gif
-xdg-mime default imv.desktop image/webp
-xdg-mime default imv.desktop image/bmp
-xdg-mime default imv.desktop image/tiff
-xdg-mime default imv.desktop image/svg+xml
-xdg-mime default imv.desktop image/avif
+# Open all images with qimgv
+xdg-mime default qimgv.desktop image/png
+xdg-mime default qimgv.desktop image/jpeg
+xdg-mime default qimgv.desktop image/gif
+xdg-mime default qimgv.desktop image/webp
+xdg-mime default qimgv.desktop image/bmp
+xdg-mime default qimgv.desktop image/tiff
+xdg-mime default qimgv.desktop image/svg+xml
+xdg-mime default qimgv.desktop image/avif
 
 # Open PDFs with okular
 xdg-mime default okularApplication_pdf.desktop application/pdf
