@@ -5,7 +5,7 @@ Comment=Manage Docker containers with LazyDocker
 Exec=footclient --app-id=Docker -e lazydocker
 Terminal=false
 Type=Application
-Icon=Docker
+Icon=docker
 Categories=GTK;
 StartupNotify=false
 

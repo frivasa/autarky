@@ -1,15 +1,13 @@
 #!/bin/bash
 
 # Copy and sync icon files
-mkdir -p ~/.local/share/icons/hicolor/48x48/apps/
-cp ~/.local/share/autarky/applications/icons/*.png ~/.local/share/icons/hicolor/48x48/apps/
+mkdir -p ~/.local/share/icons/hicolor/scalable/apps/
+cp ~/.local/share/autarky/applications/icons/*.svg ~/.local/share/icons/hicolor/scalable/apps/
 gtk-update-icon-cache ~/.local/share/icons/hicolor &>/dev/null
 
 # Copy .desktop declarations
 mkdir -p ~/.local/share/applications
 cp ~/.local/share/autarky/applications/*.desktop ~/.local/share/applications/
 cp ~/.local/share/autarky/applications/hidden/*.desktop ~/.local/share/applications/
-
-cp ~/.local/share/autarky/applications/xtras/*.desktop ~/.local/share/applications/
 
 update-desktop-database ~/.local/share/applications

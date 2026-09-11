@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=ChatGPT
+Comment=ChatGPT
+Exec=zen-browser --new-window --app="https://chatgpt.com/" --name="ChatGPT" --class="ChatGPT"
+Terminal=false
+Type=Application
+Icon=chatgpt
+StartupNotify=true

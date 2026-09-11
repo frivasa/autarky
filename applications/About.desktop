@@ -5,7 +5,7 @@ Comment=System information from Fastfetch
 Exec=footclient --app-id=About -e bash -c 'fastfetch; read -n 1 -s'
 Terminal=false
 Type=Application
-Icon=Arch
+Icon=arch-icon
 Categories=GTK;
 StartupNotify=false
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # gnome-themes-extra adds Adwaita-dark theme, kvantum-qt5 is dark?
-yay -S --noconfirm --needed kvantum-qt5 gnome-themes-extra
+yay -S --noconfirm --needed kvantum-qt5 gnome-themes-extra yamis-icon-theme-git
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface icon-theme "HighContrast"

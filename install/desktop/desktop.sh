@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo pacman -S --noconfirm --needed \
   keepassxc syncthing nodejs npm \
-  unzip python-json5 python-pywal \
+  unzip python-json5 \
   baobab android-file-transfer gnome-disk-utility nautilus \
   nnn qbittorrent inkscape fuzzel qimgv-git \
   obsidian libreoffice-still okular kdenlive
@@ -9,8 +9,8 @@ sudo pacman -S --noconfirm --needed \
 yay -S --noconfirm --needed \
   brightnessctl playerctl pamixer \
   wiremix wireplumber wl-clip-persist \
-  ffmpegthumbnailer python-pywalfox slurp \
-  satty mpv \
+  ffmpegthumbnailer slurp \
+  satty mpv python-pywal \
   wf-recorder chromium video-downloader \
   zen-browser-bin
 

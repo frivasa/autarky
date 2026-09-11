@@ -2,9 +2,9 @@
 Type=Application
 Name=nnn
 Comment=Terminal file manager
-Exec=bash -lc "nnn -C"
+Exec=nnn %f
 Terminal=true
-Icon=nnn
+Icon=system-file-manager
 MimeType=inode/directory
 Categories=System;FileTools;FileManager;ConsoleOnly
 Keywords=File;Manager;Management;Explorer;Launcher

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Hermes
+GenericName=Hermes Desktop
+Comment=Launch Hermes Desktop
+Exec=/home/fdo/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/bin/python3.11 /home/fdo/.hermes/hermes-agent/hermes desktop
+Icon=hermes
+Terminal=false
+Categories=Utility;
+StartupNotify=true
+StartupWMClass=Hermes
