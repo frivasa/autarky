@@ -10,9 +10,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("colorscheme.colorscheme").setup()
 require("lazy").setup("plugins")
 
 require("config.keymaps")
 require("config.commands")
 require("config.autocommands")
-require("colorscheme.colorscheme").setup()

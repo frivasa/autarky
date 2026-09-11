@@ -36,6 +36,7 @@ wk.add({
 	{ "<Space>", "<NOP>", mode = { "n", "v" }, opts },
 	{ "<leader>h", group = "Help", icon = { icon = "󰰀 ", color = "purple" } },
 	{ "<leader>hm", "<CMD>messages<CR>", desc = "Show Message History", nor },
+	{ "<leader>hn", "<CMD>Noice history<CR>", desc = "Show Noice Message History", nor },
 	{ "<leader>a", group = "Bots", icon = { icon = " ", color = "purple" } },
 	{ "<leader>r", group = "Replace", icon = { icon = "󰰞 ", color = "purple" } },
 	{

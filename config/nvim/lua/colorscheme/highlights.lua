@@ -16,6 +16,8 @@ M.highlights = function(colors)
 		NormalNC = { fg = colors.foreground, bg = colors.background },
 		Pmenu = { fg = colors.foreground, bg = colors.background },
 		PmenuSel = { fg = colors.background, bg = colors.color4 },
+		PmenuSBar = { fg = colors.background, bg = colors.color4 },
+		PmenuThumb = { fg = colors.background, bg = colors.color4 },
 		WildMenu = { fg = colors.color7, bg = colors.color4 },
 		CursorLineNr = { fg = colors.color1 },
 		Comment = { fg = colors.color8 },
@@ -28,7 +30,6 @@ M.highlights = function(colors)
 		CursorLine = { bg = colors.background },
 		CursorColumn = { bg = colors.background },
 		ColorColumn = { bg = colors.background },
-		NormalFloat = { bg = colors.background },
 		Visual = { bg = colors.color1, fg = colors.background },
 		VisualNOS = { bg = colors.background },
 		WarningMsg = { fg = colors.color3, bg = colors.background },
@@ -37,7 +38,6 @@ M.highlights = function(colors)
 		DiffDelete = { fg = colors.background, bg = colors.color11 },
 		QuickFixLine = { bg = colors.color2 },
 		PmenuSbar = { bg = colors.background },
-		PmenuThumb = { bg = colors.color2 },
 		MatchParen = { fg = colors.color4, bg = colors.background },
 		Cursor = { fg = colors.foreground, bg = colors.cursor },
 		lCursor = { fg = colors.foreground, bg = colors.cursor },
@@ -100,7 +100,40 @@ M.highlights = function(colors)
 		CmpItemAbbrMatchFuzzy = { fg = colors.color7, bg = colors.background },
 		CmpItemKind = { fg = colors.color4, bg = colors.background },
 		CmpItemMenu = { fg = colors.color2, bg = colors.background },
+		NormalFloat = { fg = colors.color2, bg = colors.background },
+		DiagnosticSignInfo = { fg = colors.color2, bg = colors.background },
+		DiagnosticSignWarn = { fg = colors.color2, bg = colors.background },
+		DiagnosticSignError = { fg = colors.color2, bg = colors.background },
+		DiagnosticVirtualTextInfo = { fg = colors.color2, bg = colors.background },
+		DiagnosticVirtualTextWarn = { fg = colors.color2, bg = colors.background },
+		DiagnosticVirtualTextError = { fg = colors.color2, bg = colors.background },
 
+		-- Notification colors (generally rare, noice uses them a lot)
+
+		NotifyERRORBorder = { fg = colors.color1 },
+		NotifyWARNBorder = { fg = colors.color3 },
+		NotifyINFOBorder = { fg = colors.color4 },
+		NotifyDEBUGBorder = { fg = colors.color8 },
+		NotifyTRACEBorder = { fg = colors.color8 },
+		NotifyERRORIcon = { fg = colors.color1 },
+		NotifyWARNIcon = { fg = colors.color3 },
+		NotifyINFOIcon = { fg = colors.color4 },
+		NotifyDEBUGIcon = { fg = colors.color8 },
+		NotifyTRACEIcon = { fg = colors.color8 },
+		NotifyERRORTitle = { fg = colors.color1 },
+		NotifyWARNTitle = { fg = colors.color3 },
+		NotifyINFOTitle = { fg = colors.color4 },
+		NotifyDEBUGTitle = { fg = colors.color8 },
+		NotifyTRACETitle = { fg = colors.color8 },
+
+		NotifyWARNTitle18 = { fg = colors.color3 },
+		NotifyWARNBorder18 = { fg = colors.color3 },
+		NotifyWARNBody18 = { fg = colors.color3, bg = colors.background },
+		NotifyWARNIcon18 = { fg = colors.color3 },
+		NotifyWARNTitle22 = { fg = colors.color4 },
+		NotifyWARNBorder22 = { fg = colors.color4 },
+		NotifyWARNBody22 = { fg = colors.color4, bg = colors.background },
+		NotifyWARNIcon22 = { fg = colors.color4 },
 		-- treesitter
 
 		-- These groups are for the neovim tree-sitter highlights.
@@ -220,10 +253,21 @@ M.highlights = function(colors)
 		DefinitionIcon = { fg = colors.color7 },
 		ReferencesIcon = { fg = colors.color7 },
 		TargetWord = { fg = colors.color7 },
+
 		-- NeoVim
 		healthError = { fg = colors.color11 },
 		healthSuccess = { fg = colors.color4 },
 		healthWarning = { fg = colors.color5 },
+
+		-- Noice
+		NoiceCmdlineIcon = { fg = colors.color11 },
+		NoiceCmdlinePopupBorder = { fg = colors.color11 },
+		NoiceCmdlinePopupBorderCmdline = { fg = colors.color11 },
+		NoiceCmdlinePopupBorderInput = { fg = colors.color11 },
+		NoiceCmdlinePopupBorderLua = { fg = colors.color11 },
+		NoiceCmdlinePopupBorderCalculator = { fg = colors.color11 },
+		NoiceCmdlinePopupBorderSearch = { fg = colors.color11 },
+		NoiceCmdlinePopupBorderFilter = { fg = colors.color11 },
 	}
 end
 
