@@ -30,7 +30,7 @@ source $AUTARKY_INSTALL/preflight/presentation.sh
 
 # Configuration
 show_logo beams 240
-show_subtext "Let's install Autarky! [1/5]"
+show_subtext "Installing base programs [1/4]"
 source $AUTARKY_INSTALL/config/identification.sh
 source $AUTARKY_INSTALL/config/config.sh
 source $AUTARKY_INSTALL/config/termtools.sh
@@ -42,7 +42,7 @@ source $AUTARKY_INSTALL/config/nvidia.sh
 
 # Development
 show_logo decrypt 920
-show_subtext "Installing terminal tools [2/5]"
+show_subtext "Installing terminal tools [2/4]"
 source $AUTARKY_INSTALL/development/terminal.sh
 source $AUTARKY_INSTALL/development/nvim.sh
 source $AUTARKY_INSTALL/development/docker.sh
@@ -51,24 +51,18 @@ source $AUTARKY_INSTALL/development/latex.sh
 
 # Desktop
 show_logo slice 60
-show_subtext "Installing desktop tools [3/5]"
+show_subtext "Installing desktop tools [3/4]"
 source $AUTARKY_INSTALL/desktop/desktop.sh
 source $AUTARKY_INSTALL/desktop/hyprlandia.sh
 source $AUTARKY_INSTALL/desktop/theme.sh
 source $AUTARKY_INSTALL/desktop/bluetooth.sh
 source $AUTARKY_INSTALL/desktop/fonts.sh
 source $AUTARKY_INSTALL/desktop/printer.sh
-
-# Apps
-show_logo expand
-show_subtext "Installing default applications [4/5]"
-source $AUTARKY_INSTALL/apps/webapps.sh
-source $AUTARKY_INSTALL/apps/xtras.sh
-source $AUTARKY_INSTALL/apps/mimetypes.sh
+source $AUTARKY_INSTALL/desktop/extras.sh
 
 # Updates
 show_logo highlight
-show_subtext "Updating system packages [5/5]"
+show_subtext "Updating system packages [4/4]"
 sudo updatedb
 sudo pacman -Syu --noconfirm
 

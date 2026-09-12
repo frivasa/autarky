@@ -1,5 +1,11 @@
 #!/bin/bash
 
+yay -S --noconfirm --needed \
+  gnome-keyring vesktop-bin obs-studio pinta
+
+# Copy over Autarky application references (.desktop files)
+source ~/.local/share/autarky/bin/autarky-refresh-applications || true
+
 # neovim reigns sup-meme
 xdg-mime default nvim.desktop text/plain
 
@@ -39,4 +45,5 @@ xdg-mime default mpv.desktop video/x-ogm+ogg
 xdg-mime default mpv.desktop video/x-theora+ogg
 xdg-mime default mpv.desktop application/ogg
 
+# tell system what's up
 update-desktop-database ~/.local/share/applications
