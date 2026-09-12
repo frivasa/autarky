@@ -2,13 +2,13 @@
 
 * {
   color: @foreground;
-  background-color: @background;
+  background-color: transparent;
   font-family: Iosevka NF;
 }
 
 tooltip {
-  padding: 0px;
-  margin: 0px;
+  padding: 1px;
+  margin: 1px;
 
   border: 4px solid @foreground;
   border-radius: 10px;
@@ -16,104 +16,93 @@ tooltip {
 }
 
 tooltip * {
-  padding: 8px;
-  font-size: 20px;
+  padding: 4px;
+  font-size: 15px;
   color: @foreground;
 
   background-color: transparent;
   border: none;
 }
 
-.modules-left,
-.modules-center,
-.modules-right {
-  margin-top: 0px;
-  /* background-color: transparent; */
-}
-
 .modules-left {
-  margin-left: 150px;
-  margin-right: 0;
-}
-
-.modules-center {
-  margin-right: 800px;
-}
-
-.modules-right {
-  margin-right: 300px;
+  margin: 300px 1px 1px 1px;
 }
 
 #pulseaudio {
-  margin: 1px 5px;
   /* pad is top-right-bot-left */
-  padding: 1px 8px 1px 0px;
-  font-size: 28px;
+  padding: 1px 6px 1px 1px;
+  font-size: 20px;
 }
 
 #network {
-  margin: 1px 5px;
-  padding: 1px 12px 1px 0px;
-  font-size: 24px;
+  padding: 1px 4px 1px 1px;
+  font-size: 20px;
 }
 
 #bluetooth {
-  font-size: 26px;
-  padding: 1px 8px 1px 8px;
+  padding: 1px 1px 1px 4px;
+  font-size: 22px;
 }
 
 #cpu {
-  margin: 1px 5px;
-  padding: 1px 12px 1px 1px;
-  font-size: 28px;
+  padding: 1px 6px 1px 1px;
+  font-size: 22px;
 }
 
 #battery {
   margin: 1px 5px;
-  padding: 1px 8px 1px 1px;
-  font-size: 24px;
+  padding: 1px;
+  font-size: 20px;
 }
 
 #tray {
-  margin: 0px 1px;
-  padding: 1px 12px 1px 1px;
-  /* icon-size: 18px; */
+  /* margin is "outside" the border, padding is within it */
+  margin: 0px 0px 10px 0px;
+  padding: 20px 6px 20px 6px;
+  border-radius: 8px;
+  background-color: @background;
+  border: 4px solid @foreground;
 }
 
 #blob {
-  margin: 0px 1px;
-  padding: 0px 1px;
+  margin: 0px 0px 10px 0px;
+  padding: 10px 1px 10px 1px;
   border-radius: 8px;
   background-color: @background;
-  border: 0px solid @foreground;
+  border: 4px solid @foreground;
 }
 
 .popup-menu {
-  margin: 0px 6px;
-  padding: 0px 10px;
+  margin: 1px 6px;
+  /* padding: 1px 10px; */
   border-radius: 10px;
   background-color: @background;
-  border: 5px solid @foreground;
+  border: 4px solid @foreground;
 }
 
 #clock {
-  padding: 4px 10px;
+  margin: 0px 0px 10px 0px;
+  padding: 10px 1px 10px 1px;
   border-radius: 10px;
   background-color: @background;
-  min-width: 12px;
-  margin: 0 6px;
-  border: 0px solid @foreground;
+  /* min-width: 12px; */
+  border: 4px solid @foreground;
+  font-size: 20px;
 }
 
-
-#clock,
 #workspaces {
-  font-size: 25px;
+  margin: 0px 0px 10px 0px;
+  padding: 10px 1px 10px 1px;
+  border-radius: 10px;
+  background-color: @background;
+  /* min-width: 12px; */
+  border: 4px solid @foreground;
+  font-size: 20px;
 }
 
 #workspaces button {
-  padding: 4px;
-  margin: 0 4px;
+  padding: 1px;
+  margin: 2px;
   border: none;
 }
 

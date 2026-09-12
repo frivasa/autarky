@@ -1,20 +1,23 @@
 {
   "reload_style_on_change": true,
-  "layer": "bottom",
-  "exclusive": true,
+  "layer": "top",
+  "exclusive": false,
   "passthrough": false,
-  "spacing": 0,
-  "height": 38,
+  "position": "left",
+  "spacing": 4,
+  "width": 30,
   "modules-left": [
     "tray",
     "group/blob",
-    "clock",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "clock"
   ],
-  "modules-center": [],
-  "modules-right": [],
+  "modules-center": [
+  ],
+  "modules-right": [
+  ],
   "group/blob": {
-    "orientation": "horizontal",
+    "orientation": "vertical",
     "align": "center",
     "modules": [
       "pulseaudio",
@@ -55,6 +58,7 @@
     "interval": 60,
     "format": "{:%a %b %d %H:%M}",
     "tooltip": false,
+    "rotate": 90,
     "on-click": "zen-browser 'https://calendar.proton.me/'",
     "on-click-right": "~/.local/share/autarky/bin/autarky-cmd-tzupdate"
   },
@@ -112,7 +116,7 @@
     }
   },
   "tray": {
-    "spacing": 18,
-    "icon-size": 24
+    "spacing": 15,
+    "icon-size":20
   }
 }
