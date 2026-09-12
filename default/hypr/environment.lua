@@ -1,21 +1,6 @@
--- Cursor size
-hl.env("XCURSOR_THEME", "Adwaita")
-hl.env("XCURSOR_SIZE", 24)
+-- only hyprland env vars here, everything else to .config/uwsm/env
 hl.env("HYPRCURSOR_SIZE", 24)
-
--- Force all apps to use Wayland
-hl.env("GDK_BACKEND", "wayland")
-hl.env("QT_QPA_PLATFORM", "wayland")
-hl.env("QT_STYLE_OVERRIDE", "kvantum")
-hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", 1)
-hl.env("QT_SCALE_FACTOR_ROUNDING_POLICY", "PassThrough")
-hl.env("MOZ_ENABLE_WAYLAND", 1)
-hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
-hl.env("OZONE_PLATFORM", "wayland")
-
--- Use XCompose file
-hl.env("XCOMPOSEFILE", "~/.config/XCompose")
-
+-- XCompose file is being handled by fcitx
 -- hyprland's former "autostart" with "exec-once"s
 hl.on("hyprland.start", function()
 	hl.exec_cmd("uwsm app -- hypridle")
@@ -24,6 +9,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("uwsm app -- swaybg -i ~/.config/autarky/current/background -m fill")
 	hl.exec_cmd("uwsm app -- swayosd-server")
 	hl.exec_cmd("uwsm app -- foot --server")
+	hl.exec_cmd("uwsm app -- fcitx5 -d")
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("wl-clip-persist --clipboard regular --all-mime-type-regex '^(?!x-kde-passwordManagerHint).+'")
 	hl.exec_cmd("hyprlock")

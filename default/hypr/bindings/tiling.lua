@@ -16,7 +16,7 @@ hl.bind("ALT + TAB", hl.dsp.window.cycle_next(), { description = "cycle window" 
 hl.bind("ALT + TAB", hl.dsp.window.bring_to_top(), { description = "cycle window" })
 
 hl.bind(M .. "W", hl.dsp.window.close(), { description = "close window" })
-hl.bind(M .. "R", hl.dsp.layout("togglesplit"), { description = "rotate split (dwindle)" }) -- dwindle only
+hl.bind(M .. "R", hl.dsp.layout("consume_or_expel prev"), { description = "eat/puke neighbors" }) -- dwindle only
 hl.bind(M .. "Y", function()
 	hl.dispatch(hl.dsp.window.pin({ action = "toggle" }))
 end, { description = "pin toggle" })
@@ -49,8 +49,8 @@ hl.bind(
 )
 hl.bind(
 	M .. "EQUAL",
-	hl.dsp.window.resize({ x = 100, y = 0, relative = true }),
-	{ repeating = true, description = "resize x right" }
+	hl.dsp.layout("colresize +conf"),
+	{ repeating = true, description = "iterate window widths (0.3, 0.5, 1.0)" }
 )
 hl.bind(
 	M .. "SHIFT + MINUS",

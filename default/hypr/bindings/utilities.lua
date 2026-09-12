@@ -9,7 +9,7 @@ local cmd = hl.dsp.exec_cmd
 
 hl.bind(M .. "S", cmd(menu), { description = "app menu (fuzzel)" })
 hl.bind(M .. "SLASH", cmd(bindingsmenu), { description = "keymaps (fuzzel)" })
-hl.bind(M .. "PERIOD", cmd(emojimenu), { description = "keymaps (fuzzel)" })
+hl.bind(M .. "PERIOD", cmd(emojimenu), { description = "emojis/xcompose (fuzzel)" })
 hl.bind(M .. "ESCAPE", cmd(powermenu), { description = "power (fuzzel)" })
 hl.bind(M .. "SHIFT + T", cmd(thememenu), { description = "themes (fuzzel)" })
 

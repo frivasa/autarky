@@ -43,20 +43,35 @@ hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { descript
 hl.config({
 	general = {
 		gaps_in = 0,
-		gaps_out = 0,
-		border_size = 5,
+		gaps_out = 5,
+		border_size = 6,
 		resize_on_border = false,
 		allow_tearing = false,
-		layout = "dwindle",
-		col = { active_border = colors.active_border, inactive_border = colors.inactive_border },
+		layout = "scrolling",
+		col = {
+			active_border = {
+				colors = { colors.active_border, colors.active_border, "rgba(1a1a1aee)" },
+				angle = 45,
+			},
+			inactive_border = {
+				colors = { colors.inactive_border, colors.inactive_border, "rgba(1a1a1aee)" },
+				angle = 45,
+			},
+		},
 	},
 	decoration = {
-		rounding = 8,
-		shadow = { enabled = true, range = 2, render_power = 3, color = "rgba(1a1a1aee)" },
+		rounding = 14,
+		shadow = { enabled = true, range = 8, render_power = 3, color = "rgba(1a1a1aee)" },
 		blur = { enabled = true, size = 3, passes = 1, vibrancy = 0.1696 },
 	},
 	animations = { enabled = false },
-	dwindle = { preserve_split = true, force_split = 2 },
+	dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
+	scrolling = {
+		column_width = 0.333333, -- new split size
+		fullscreen_on_one_column = true, -- use whole screen when there's only one thing
+		focus_fit_method = 1, -- center or just focus the current window
+		explicit_column_widths = "0.333, 0.5, 1.0",
+	},
 	cursor = { inactive_timeout = 2.0 },
 	misc = {
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
