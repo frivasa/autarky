@@ -4,8 +4,7 @@
   "exclusive": false,
   "passthrough": false,
   "position": "left",
-  "spacing": 4,
-  "width": 30,
+  "width": 38,
   "modules-left": [
     "tray",
     "group/blob",

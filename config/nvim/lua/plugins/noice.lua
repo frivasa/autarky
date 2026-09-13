@@ -7,9 +7,8 @@ return {
 	},
 	opts = {
 		cmdline = {
-			view = "cmdline",
+			view = "cmdline_popup", -- floating popup instead of bottom line
 		},
-		-- or use "cmdline" (classic bottom line) if you just want messages popup-ified
 		messages = {
 			enabled = true,
 			view = "notify",

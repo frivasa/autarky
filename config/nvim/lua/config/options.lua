@@ -27,7 +27,6 @@ vim.o.cursorline = false -- Highlight the current line (default: false)
 vim.o.splitbelow = true -- Force all horizontal splits to go below current window (default: false)
 vim.o.splitright = true -- Force all vertical splits to go to the right of current window (default: false)
 vim.o.hlsearch = false -- Set highlight on search (default: true)
-vim.o.showmode = false -- We don't need to see things like -- INSERT -- anymore (default: true)
 vim.opt.termguicolors = true -- Set termguicolors to enable highlight groups (default: false)
 vim.o.whichwrap = "bs<>[]hl" -- Which "horizontal" keys are allowed to travel to prev/next line (default: 'b,s')
 vim.o.numberwidth = 4 -- Set number column width to 2 {default 4}
@@ -37,7 +36,13 @@ vim.o.showtabline = 0 -- Always show tabs (default: 1)
 vim.o.pumheight = 10 -- Pop up menu height (default: 0)
 vim.o.encoding = "utf-8" -- The encoding written to a file (default: 'utf-8')
 vim.o.fileencoding = "utf-8" -- The encoding written to a file (default: 'utf-8')
-vim.o.cmdheight = 0 -- More space in the Neovim command line for displaying messages (default: 1)
+-- getting MOAR screen real estate
+vim.o.cmdheight = 0
+vim.o.laststatus = 0
+-- vim.o.showcmd = false
+-- vim.o.ruler = false
+-- vim.o.showmode = false
+--
 vim.o.inccommand = "split" -- preview substitutions live
 vim.o.breakindent = true -- Enable break indent (default: false)
 vim.o.updatetime = 1000 -- Decrease update time (default: 4000)
