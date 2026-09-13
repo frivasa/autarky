@@ -1,7 +1,7 @@
 #!/bin/bash
 
 themes=$(autarky-theme-list)
-selection=$(printf '%s\n' "${themes[@]}" | fuzzel --dmenu -l 8 -w 30 -p "" --mesg "Themes" 2>/dev/null)
+selection=$(printf '%s\n' "${themes[@]}" | fuzzel --dmenu -l 8 -w 19 -p "" --mesg "Themes" 2>/dev/null)
 
 # Convert to lowercase and dash-separated: "Tokyo Night" -> "tokyo-night"
 selected_theme=$(echo "$selection" | /bin/tr '[:upper:]' '[:lower:]' | /bin/tr ' ' '-')

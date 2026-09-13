@@ -43,26 +43,32 @@ hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { descript
 hl.config({
 	general = {
 		gaps_in = 0,
-		gaps_out = 4,
+		gaps_out = 0,
+		-- gaps_out = {
+		-- 	top = 8,
+		-- 	right = 0,
+		-- 	bottom = 8,
+		-- 	left = 0,
+		-- },
 		border_size = 4,
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "scrolling",
 		col = {
 			active_border = {
-				colors = { colors.active_border, colors.active_border, "rgba(1a1a1aee)" },
+				colors = { colors.active_border, colors.active_border, "rgba(ffffffff)" },
 				angle = 45,
 			},
 			inactive_border = {
-				colors = { colors.inactive_border, colors.inactive_border, "rgba(1a1a1aee)" },
+				colors = { colors.inactive_border, colors.inactive_border, "rgba(1a1a1aff)" },
 				angle = 45,
 			},
 		},
 	},
 	decoration = {
-		rounding = 14,
-		shadow = { enabled = true, range = 8, render_power = 3, color = "rgba(1a1a1aee)" },
-		blur = { enabled = true, size = 3, passes = 1, vibrancy = 0.1696 },
+		rounding = 10,
+		shadow = { enabled = true, range = 6, render_power = 2, color = "rgba(1a1a1aee)" },
+		blur = { enabled = false, size = 20, passes = 1 },
 	},
 	animations = { enabled = false },
 	-- dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },

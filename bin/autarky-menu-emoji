@@ -70,4 +70,4 @@ function flush() {
 END {
     flush()
 }
-' ~/.config/XCompose | fuzzel --dmenu -l 17 -w 143 --mesg "XCompose Emoji Grid"
+' ~/.config/XCompose | fuzzel --dmenu -l 17 -w 137 --mesg "XCompose Emoji Grid"

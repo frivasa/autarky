@@ -39,7 +39,7 @@ cat << EOF > "$FILE"
 local M = {}
 
 M.active_border = "rgba(${colors[5]:1}ff)"
-M.inactive_border = "rgba(${colors[2]:1}bf)"
+M.inactive_border = "rgba(${colors[2]:1}ff)"
 
 return M
 EOF
