@@ -1,10 +1,3 @@
--- windowrule = suppress_event maximize, match:class .*
-hl.window_rule({
-	name = "prevent maximize on all windows?",
-	match = { class = ".*" },
-	suppress_event = "maximize",
-})
-
 -- float auxiliary apps (bluetooth, wifi, sound)
 hl.window_rule({
 	match = { class = "^(blueberry.py|Impala|Wiremix|Autarky|About)$" },
