@@ -43,8 +43,8 @@ hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { descript
 hl.config({
 	general = {
 		gaps_in = 0,
-		gaps_out = 5,
-		border_size = 6,
+		gaps_out = 4,
+		border_size = 4,
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "scrolling",
@@ -65,14 +65,14 @@ hl.config({
 		blur = { enabled = true, size = 3, passes = 1, vibrancy = 0.1696 },
 	},
 	animations = { enabled = false },
-	dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
+	-- dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
 	scrolling = {
 		column_width = 0.333333, -- new split size
 		fullscreen_on_one_column = true, -- use whole screen when there's only one thing
 		focus_fit_method = 1, -- center or just focus the current window
 		explicit_column_widths = "0.333, 0.5, 1.0",
 	},
-	cursor = { inactive_timeout = 2.0 },
+	cursor = { inactive_timeout = 1.5 },
 	misc = {
 		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
@@ -104,3 +104,8 @@ hl.window_rule({
 	},
 	no_focus = true,
 })
+
+-- hl.curve("resorte", { type = "spring", mass = 1, stiffness = 40.0, dampening = 8.0 })
+-- hl.curve("bezito", { type = "bezier", points = { { 0.33, 1.00 }, { 0.68, 1.00 } } })
+-- hl.animation({ leaf = "windows", enabled = true, speed = 40, spring = "resorte", style = "popin" })
+-- hl.animation({ leaf = "windows", enabled = true, speed = 10, bezier = "bezito", style = "popin" })

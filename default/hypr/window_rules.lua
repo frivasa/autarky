@@ -31,8 +31,8 @@ hl.window_rule({
 -- Opacity rules
 hl.window_rule({
 	match = { class = ".*" },
-	-- opacity = "0.98 0.85 1.0",
-	opacity = "0.98 0.85 1.0",
+	-- focused, unfocused, fullscreen
+	opacity = "0.98 0.98 1.0",
 })
 hl.window_rule({
 	match = { class = "^(?i)(zen|zen-browser)$" },
