@@ -2,7 +2,7 @@
 Version=1.0
 Name=ProtonCalendar
 Comment=ProtonCalendar
-Exec=zen-browser --new-window --app="https://calendar.proton.me/" --name="ProtonCalendar" --class="ProtonCalendar"
+Exec=zen-browser --new-window --app=https://calendar.proton.me/ --name=ProtonCalendar --class=ProtonCalendar
 Terminal=false
 Type=Application
 Icon=calendar

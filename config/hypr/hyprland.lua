@@ -21,7 +21,7 @@ local colors = require("hyprland_colors")
 require("monitors")
 
 local terminal = "uwsm app -- footclient "
-local fileManager = terminal .. "-l nnn -C"
+local fileManager = "uwsm app -- nautilus -w "
 local browser = "uwsm app -- zen-browser --new-window "
 local webapp = browser .. "--app "
 local seshpick = terminal .. HOME .. "/.local/share/autarky/bin/autarky-session-pick"
@@ -34,7 +34,6 @@ hl.bind(M .. "E", cmd(fileManager), { description = "file manager (nautilus)" })
 hl.bind(M .. "B", cmd(browser), { description = "browser (zen)" })
 hl.bind(M .. "N", cmd(terminal .. " -e nvim"), { description = "god notepad (nvim)" })
 hl.bind(M .. "P", cmd(terminal .. " -e btop"), { description = "system monitor (btop)" })
-hl.bind(M .. "D", cmd(terminal .. " -e lazydocker"), { description = "lazy docker" })
 hl.bind(M .. "O", cmd("uwsm app -- obsidian -disable-gpu"), { description = "obsidian" })
 hl.bind(M .. "SHIFT + P", cmd("uwsm app -- keepassxc"), { description = "keepassxc" })
 hl.bind(M .. "SHIFT + C", cmd(webapp .. "https://chatgpt.com/"), { description = "chatGPT" })
@@ -42,39 +41,27 @@ hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { descript
 
 hl.config({
 	general = {
-		gaps_in = 0,
-		gaps_out = 0,
-		-- gaps_out = {
-		-- 	top = 8,
-		-- 	right = 0,
-		-- 	bottom = 8,
-		-- 	left = 0,
-		-- },
-		border_size = 4,
+		gaps_in = 4,
+		gaps_out = 16,
+		border_size = 3,
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "scrolling",
 		col = {
-			active_border = {
-				colors = { colors.active_border, colors.active_border, "rgba(ffffffff)" },
-				angle = 45,
-			},
-			inactive_border = {
-				colors = { colors.inactive_border, colors.inactive_border, "rgba(1a1a1aff)" },
-				angle = 45,
-			},
+			active_border = colors.active_border,
+			inactive_border = colors.inactive_border,
 		},
 	},
 	decoration = {
 		rounding = 10,
-		shadow = { enabled = true, range = 6, render_power = 2, color = "rgba(1a1a1aee)" },
+		shadow = { enabled = true, range = 10, render_power = 1, color = "rgba(1a1a1aff)" },
 		blur = { enabled = false, size = 20, passes = 1 },
 	},
 	animations = { enabled = false },
 	-- dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
 	scrolling = {
-		column_width = 0.333333, -- new split size
-		fullscreen_on_one_column = true, -- use whole screen when there's only one thing
+		column_width = 0.5, -- new split size
+		fullscreen_on_one_column = false, -- use whole screen when there's only one thing
 		focus_fit_method = 1, -- center or just focus the current window
 		explicit_column_widths = "0.333, 0.5, 1.0",
 	},

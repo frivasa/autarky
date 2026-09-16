@@ -10,64 +10,71 @@ tooltip {
   padding: 1px;
   margin: 1px;
 
-  border: 4px solid @foreground;
+  border: 3px solid @foreground;
   border-radius: 10px;
   background-color: @background;
 }
 
 tooltip * {
-  padding: 4px;
-  font-size: 15px;
+  padding: 3px;
+  font-size: 18px;
   color: @foreground;
   border: none;
 }
 
 .modules-left {
-  margin: 300px 1px 1px 1px;
+  margin: 300px 0px 0px -20px;
+  padding: 0px 3px 0px 10px;
+  border-radius: 8px;
+  border-top: 3px solid @foreground;
+  border-right: 3px solid @foreground;
+  border-bottom: 3px solid @foreground;
+  background-color: alpha(@background, 0.9);
 }
 
 #pulseaudio {
   /* pad is top-right-bot-left */
   padding: 1px 6px 1px 1px;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 #network {
   padding: 1px 4px 1px 1px;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 #bluetooth {
-  padding: 1px 1px 1px 4px;
-  font-size: 22px;
+  padding: 1px 1px 1px 3px;
+  font-size: 24px;
 }
 
 #cpu {
   padding: 1px 6px 1px 1px;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 #battery {
-  margin: 1px 5px;
-  padding: 1px;
-  font-size: 20px;
+  padding: 1px 6px 1px 1px;
+  font-size: 24px;
 }
 
 #tray {
   /* margin is "outside" the border, padding is within it */
-  margin: 0px 0px 10px 0px;
-  padding: 20px 6px 20px 6px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px 5px 0px 15px;
   border-radius: 8px;
-  background-color: @background;
-  border: 4px solid @foreground;
+  background-color: transparent;
+  /* border: 3px solid @foreground; */
+  border: 1px solid transparent;
 }
 
 #tray menu {
   background: @background;
   color: @foreground;
-  border: 4px solid @foreground;
+  border: 3px solid @foreground;
   border-radius: 8px;
   padding: 10px 10px 10px 10px;
+  font-size: 18px;
 }
 
 #tray menu menuitem:hover {
@@ -75,44 +82,34 @@ tooltip * {
 }
 
 #blob {
-  margin: 0px 0px 10px 0px;
-  padding: 10px 1px 10px 1px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px 5px 0px 10px;
   border-radius: 8px;
-  background-color: @background;
-  border: 4px solid @foreground;
+  background-color: transparent;
+  /* border: 3px solid @foreground; */
+  border: 1px solid transparent;
 }
 
 .popup-menu {
   margin: 1px 6px;
-  /* padding: 1px 10px; */
   border-radius: 10px;
   background-color: @background;
-  border: 4px solid @foreground;
-}
-
-#clock {
-  margin: 0px 0px 10px 0px;
-  padding: 10px 1px 10px 1px;
-  border-radius: 10px;
-  background-color: @background;
-  /* min-width: 12px; */
-  border: 4px solid @foreground;
-  font-size: 20px;
+  border: 3px solid @foreground;
 }
 
 #workspaces {
-  margin: 0px 0px 10px 0px;
-  padding: 10px 1px 10px 1px;
+  padding: 0px 0px 0px 0px;
+  margin: 20px 5px 0px 10px;
   border-radius: 10px;
-  background-color: @background;
-  /* min-width: 12px; */
-  border: 4px solid @foreground;
-  font-size: 20px;
+  background-color: transparent;
+  font-size: 24px;
+  /* border: 3px solid @foreground; */
+  border: 1px solid transparent;
 }
 
 #workspaces button {
-  padding: 1px;
-  margin: 2px;
+  padding: 2px;
+  margin: 1px;
   border: none;
 }
 
@@ -121,3 +118,12 @@ tooltip * {
   border: none;
   box-shadow: none;
 }
+
+#clock {
+  padding: 0px 0px 0px 0px;
+  margin: 20px 5px 20px 10px;
+  background-color: @background;
+  border: 1px solid transparent;
+  font-size: 24px;
+}
+

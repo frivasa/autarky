@@ -1,6 +1,6 @@
 local M = {}
 
-local OFFSET_LINES = 2
+local OFFSET_LINES = -2
 local FILENAME_SIZE = 60
 local overlay
 
