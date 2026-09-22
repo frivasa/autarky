@@ -54,16 +54,17 @@ hl.config({
 	},
 	decoration = {
 		rounding = 10,
-		shadow = { enabled = true, range = 10, render_power = 1, color = "rgba(1a1a1aff)" },
+		shadow = { enabled = false, range = 10, render_power = 1, color = "rgba(1a1a1aff)" },
 		blur = { enabled = false, size = 20, passes = 1 },
 	},
 	animations = { enabled = false },
 	-- dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
 	scrolling = {
-		column_width = 0.5, -- new split size
+		column_width = 0.334, -- new split size
 		fullscreen_on_one_column = false, -- use whole screen when there's only one thing
 		focus_fit_method = 1, -- center or just focus the current window
-		explicit_column_widths = "0.333, 0.5, 1.0",
+		explicit_column_widths = "0.333, 0.5, 0.666, 1.0",
+		direction = "right",
 	},
 	cursor = { inactive_timeout = 1.5 },
 	misc = {
