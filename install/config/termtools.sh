@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Installing/Configuring keyd, Starship, and Tmux"
+echo "Installing/Configuring keyd, fcitx5, tmux"
 
 # Install term utilities and related packages
-sudo pacman -S --noconfirm --needed starship tmux keyd foot pacman-contrib
+sudo pacman -S --noconfirm --needed tmux keyd foot pacman-contrib
 # handle xcompose and input handling
 sudo pacman -S --noconfirm --needed fcitx5 fcitx5-configtool fcitx5-gtk fcitx5-qt
 

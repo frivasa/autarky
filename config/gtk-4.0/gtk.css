@@ -3,14 +3,14 @@
 }
 
 .navigation-sidebar {
-  font-size: 14pt;
+  font-size: 13pt;
 }
 
 .navigation-sidebar image {
-    -gtk-icon-size: 20pt;
+    -gtk-icon-size: 18pt;
 }
 
 .nautilus-list-view {
-    font-size: 15pt;
+    font-size: 13pt;
 }
 

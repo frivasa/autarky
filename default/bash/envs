@@ -6,3 +6,114 @@ export SUDO_EDITOR="$EDITOR"
 # Ollama
 export OLLAMA_HOST=0.0.0.0:8090
 
+# Prompt styling (PS1)
+RESET=$'\e[0m'
+FG_BLACK=$'\e[30m'
+BG_CYAN=$'\e[46m'
+BG_GREEN=$'\e[42m'
+BG_RED=$'\e[41m'
+
+_directory_prompt() {
+  local path="$PWD"
+  local root
+  local max=4
+  local symbol='󱀝'
+
+  root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+  if [[ -n "$root" ]]; then
+    local relative="${PWD#"$root"}"
+    relative="${relative#/}"
+
+    if [[ -n "$relative" ]]; then
+      path="$relative"
+    else
+      path="$(basename "$root")"
+    fi
+  else
+    path="${PWD/#"$HOME"/\~}"
+  fi
+
+  local -a parts
+  IFS='/' read -ra parts <<< "$path"
+
+  if (( ${#parts[@]} > max )); then
+    local keep=$((max - 1))
+    path="$symbol/${parts[*]: -$keep}"
+    path="${path// /\/}"
+  fi
+
+  printf '\001%s\002 %s \001%s\002' \
+    "$BG_CYAN$FG_BLACK" \
+    "$path" \
+    "$RESET"
+}
+
+
+_git_prompt() {
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+
+  local branch
+  branch=$(git branch --show-current 2>/dev/null)
+
+  [[ -z "$branch" ]] && branch="detached"
+
+  local status
+  status=$(git status --porcelain=v1 2>/dev/null)
+
+  local staged=0 modified=0 untracked=0
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+
+    case "${line:0:2}" in
+      \?\?) ((untracked++)) ;;
+      *)
+        [[ "${line:0:1}" != " " ]] && ((staged++))
+        [[ "${line:1:1}" != " " ]] && ((modified++))
+        ;;
+    esac
+  done <<< "$status"
+
+  printf '\001%s%s\002  %s' \
+    "$BG_GREEN$FG_BLACK" \
+    '' \
+    "$branch"
+
+  ((staged > 0))    && printf ' +%d' "$staged"
+  ((modified > 0))  && printf ' !%d' "$modified"
+  ((untracked > 0)) && printf ' ?%d' "$untracked"
+
+  printf ' \001%s\002' "$RESET"
+}
+
+_pixi_prompt() {
+  local dir="$PWD"
+
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.pixi" ]]; then
+      break
+    fi
+
+    dir="${dir%/*}"
+    [[ -z "$dir" ]] && dir="/"
+  done
+
+  [[ ! -d "$dir/.pixi" ]] && {
+    printf ''
+    return
+  }
+
+  printf '\001%s\002 󰾡󰧲 ' "$BG_RED$FG_BLACK"
+
+  [[ -n "$PIXI_ENVIRONMENT_NAME" ]] &&
+    printf '%s' "$PIXI_ENVIRONMENT_NAME"
+
+  printf ' \001%s\002' "$RESET"
+}
+
+make_prompt() {
+  PS1='$(_directory_prompt)'
+  PS1+='$(_git_prompt)'
+  PS1+='$(_pixi_prompt)'
+  PS1+=' '
+}

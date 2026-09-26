@@ -3,12 +3,11 @@
 # Copy over Autarky configs
 cp -R ~/.local/share/autarky/config/* ~/.config/
 
-# bashrc, tmux.conf and starship.toml
+# bash tmux configs
 cp ~/.local/share/autarky/default/bashrc ~/.bashrc
 cp ~/.local/share/autarky/default/bash_profile ~/.bash_profile
 cp ~/.local/share/autarky/default/inputrc ~/.inputrc
 cp ~/.local/share/autarky/default/tmux.conf ~/.tmux.conf
-cp ~/.local/share/autarky/default/starship.toml ~/.config/starship.toml
 cp ~/.local/share/autarky/default/xcompose ~/.config/XCompose
 
 # Ensure application directory exists for update-desktop-database
