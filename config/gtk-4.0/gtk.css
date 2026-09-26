@@ -1,3 +1,16 @@
 * {
     font-family: "Iosevka NF";
 }
+
+.navigation-sidebar {
+  font-size: 14pt;
+}
+
+.navigation-sidebar image {
+    -gtk-icon-size: 20pt;
+}
+
+.nautilus-list-view {
+    font-size: 15pt;
+}
+

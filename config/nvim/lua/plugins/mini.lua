@@ -29,5 +29,74 @@ return {
 				n_lines = 3000,
 			},
 		})
+
+		local function glyph_map(filetypes, glyph, hl)
+			local result = {}
+
+			for _, ft in ipairs(filetypes) do
+				result[ft] = { glyph = glyph }
+
+				if hl then
+					result[ft].hl = hl
+				end
+			end
+
+			return result
+		end
+
+		local extension = {}
+		extension = vim.tbl_extend(
+			"force",
+			extension,
+			glyph_map({ "mp4", "mkv", "webm", "avi", "mov", "m4v", "mpeg", "mpg", "wmv" }, "", "MiniIconsGreen")
+		)
+		extension = vim.tbl_extend(
+			"force",
+			extension,
+			glyph_map({ "mp3", "flac", "ogg", "wav", "m4a", "aac", "wma" }, "", "MiniIconsOrange")
+		)
+		extension = vim.tbl_extend(
+			"force",
+			extension,
+			glyph_map({ "arw", "raw", "jpeg", "jpg", "png", "webp" }, "", "MiniIconsPurple")
+		)
+		extension = vim.tbl_extend(
+			"force",
+			extension,
+			glyph_map({ "pdf", "epub", "txt", "readme", "lua" }, "󰭤", "MiniIconsAzure")
+		)
+		extension = vim.tbl_extend(
+			"force",
+			extension,
+			glyph_map(
+				{ "md", "epub", "readme", "lua", "toml", "json", "yml", "css", "config", "html", "ini" },
+				"",
+				"MiniIconsAzure"
+			)
+		)
+		extension = vim.tbl_extend(
+			"force",
+			extension,
+			glyph_map({ "py", "rs", "qmd", "css", "c", "tex" }, "", "MiniIconsYellow")
+		)
+
+		require("mini.icons").setup({
+			directory = {
+				hl = "MiniIconsAzure",
+				Downloads = {
+					hl = "MiniIconsAzure",
+				},
+				Pictures = {
+					hl = "MiniIconsAzure",
+				},
+			},
+
+			extension = extension,
+			file = {
+				["README.md"] = { glyph = "" },
+				["Readme.md"] = { glyph = "" },
+				["readme.md"] = { glyph = "" },
+			},
+		})
 	end,
 }

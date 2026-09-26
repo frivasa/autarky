@@ -268,6 +268,9 @@ M.highlights = function(colors)
 		NoiceCmdlinePopupBorderCalculator = { fg = colors.color11 },
 		NoiceCmdlinePopupBorderSearch = { fg = colors.color11 },
 		NoiceCmdlinePopupBorderFilter = { fg = colors.color11 },
+
+		-- Oil/mini.icons
+		MiniIconsAzure = { link = "Normal" },
 	}
 end
 

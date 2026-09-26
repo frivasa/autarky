@@ -123,7 +123,7 @@ tooltip * {
 #clock {
   padding: 0px 0px 0px 0px;
   margin: 20px 5px 20px 10px;
-  background-color: @background;
+  background-color: transparent;
   border: 1px solid transparent;
   font-size: 24px;
 }

@@ -41,9 +41,9 @@ hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { descript
 
 hl.config({
 	general = {
-		gaps_in = 4,
-		gaps_out = 16,
-		border_size = 3,
+		gaps_in = 5,
+		gaps_out = 10,
+		border_size = 4,
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "scrolling",
@@ -54,13 +54,14 @@ hl.config({
 	},
 	decoration = {
 		rounding = 10,
-		shadow = { enabled = false, range = 10, render_power = 1, color = "rgba(1a1a1aff)" },
-		blur = { enabled = false, size = 20, passes = 1 },
+		shadow = { enabled = false, range = 5, render_power = 1, color = "rgba(1a1a1aff)" },
+		border_part_of_window = false,
+		glow = { enabled = true, range = 10, render_power = 2, color = "rgba(1a1a1aff)" },
 	},
 	animations = { enabled = false },
 	-- dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
 	scrolling = {
-		column_width = 0.334, -- new split size
+		column_width = 0.333, -- new split size
 		fullscreen_on_one_column = false, -- use whole screen when there's only one thing
 		focus_fit_method = 1, -- center or just focus the current window
 		explicit_column_widths = "0.333, 0.5, 0.666, 1.0",

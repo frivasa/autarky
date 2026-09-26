@@ -1,9 +1,17 @@
+-- base "all windows" rule
+hl.window_rule({
+	match = { class = ".*" },
+	-- focused, unfocused, fullscreen
+	opacity = "1.0 override 1.0 override 1.0 override",
+})
+
 -- float auxiliary apps (bluetooth, wifi, sound)
 hl.window_rule({
 	match = { class = "^(blueberry.py|Impala|Wiremix|Autarky|About)$" },
 	float = true,
 	center = true,
 	size = { 800, 600 },
+	opacity = "0.9 override 0.9 override 1.0 override",
 })
 
 -- Float and center file pickers
@@ -21,12 +29,6 @@ hl.window_rule({
 	opacity = "1.0 1.0 1.0",
 })
 
--- Opacity rules
-hl.window_rule({
-	match = { class = ".*" },
-	-- focused, unfocused, fullscreen
-	opacity = "0.98 0.98 1.0",
-})
 hl.window_rule({
 	match = { class = "^(?i)(zen|zen-browser)$" },
 	opacity = "1.0 1.0 1.0",
@@ -49,6 +51,7 @@ hl.window_rule({
 	opacity = "1.0 1.0 1.0",
 })
 
+-- treat non-wayland as popups
 hl.window_rule({
 	match = { xwayland = true },
 	float = true,
