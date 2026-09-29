@@ -41,8 +41,18 @@ hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { descript
 
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = 10,
+		gaps_in = {
+			left = 10,
+			right = 0,
+			top = 0,
+			bottom = 10,
+		},
+		gaps_out = {
+			left = 20,
+			right = 0,
+			top = 20,
+			bottom = 20,
+		},
 		border_size = 4,
 		resize_on_border = false,
 		allow_tearing = false,
@@ -61,7 +71,7 @@ hl.config({
 	animations = { enabled = false },
 	-- dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
 	scrolling = {
-		column_width = 0.333, -- new split size
+		column_width = 0.5, -- new split size
 		fullscreen_on_one_column = false, -- use whole screen when there's only one thing
 		focus_fit_method = 1, -- center or just focus the current window
 		explicit_column_widths = "0.333, 0.5, 0.666, 1.0",

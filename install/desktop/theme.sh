@@ -23,3 +23,7 @@ ln -snf ~/.config/autarky/current/theme/btop.theme ~/.config/btop/themes/current
 
 mkdir -p ~/.config/mako
 ln -snf ~/.config/autarky/current/theme/mako.ini ~/.config/mako/config
+
+# link a keyboard icon for fcitx5
+ln -s /usr/share/icons/yet-another-monochrome-icon-set/preferences/scalable/preferences-desktop-keyboard.svg ~/.local/share/icons/yet-another-monochrome-icon-set/devices/scalable/input-keyboard-symbolic.svg
+

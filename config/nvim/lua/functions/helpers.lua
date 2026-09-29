@@ -291,9 +291,6 @@ function M.quarto_send_cell()
 	end
 
 	M.send_block(block)
-	-- local lines = vim.api.nvim_buf_get_lines(0, block.start_line - 1, block.end_line, false)
-	-- local text = M.quarto_format_code(table.concat(lines, "\n"), block.lang)
-	-- vim.fn["slime#send"](text .. "\n")
 end
 
 function M.send_block(block)
@@ -332,6 +329,12 @@ function M.quarto_open_repl(lang)
 		vim.b.slime_config = { jobid = job_id }
 		vim.notify("REPL ready — <CR> in visual mode or <leader> qc to run")
 	end
+end
+
+-- dismiss Noice notification and highlighted search terms (:noh)
+function M.clear_screen()
+	require("noice").cmd("dismiss")
+	vim.cmd("nohlsearch")
 end
 
 return M

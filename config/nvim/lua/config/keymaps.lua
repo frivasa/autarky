@@ -13,11 +13,11 @@ wk.add({
 
 -- "local" keymaps
 wk.add({
+	{ "<ESC>", fn.clear_screen, desc = "Clear Highlights and Notifications", nor },
 	{ "<C-q>", "<CMD>q<CR>", desc = "Quit File", nor },
 	{ "<C-s>", "<CMD>w<CR>", desc = "Save File", nor },
 	{ "<S-Tab>", "<CMD>bprevious<CR>", desc = "Prev Buffer", nor },
 	{ "<Tab>", "<CMD>bnext<CR>", desc = "Next Buffer", nor },
-	{ "<ESC>", "<CMD>nohlsearch<CR>", desc = "Clear Search Highlights", nor },
 	{ "x", '"_x', desc = "Delete without copying", nor },
 	{ "n", "nzzzv", desc = "center word search", nor },
 	{ "N", "Nzzzv", desc = "center backwards word search", nor },
