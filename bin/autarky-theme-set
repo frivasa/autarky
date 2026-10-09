@@ -34,10 +34,10 @@ fi
 
 # Restart components to apply new theme
 pkill -SIGUSR2 btop
-pkill -SIGUSR2 waybar
-pkill swayosd-server
-setsid uwsm app -- swayosd-server &>/dev/null &
-makoctl reload
+# pkill -SIGUSR2 waybar
+# pkill swayosd-server
+# setsid uwsm app -- swayosd-server &>/dev/null &
+# makoctl reload
 tmux source ~/.tmux.conf
 hyprctl reload
 # this kills the shell where this is ran. So keep it at last just in case

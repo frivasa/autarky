@@ -57,4 +57,4 @@ function flush() {
 END {
     flush()
 }
-' | fuzzel --dmenu -p "" --mesg "Keybind Look-up" -l 17 -w 65
+' | noctalia dmenu -p "Keybind Search"

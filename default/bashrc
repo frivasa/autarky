@@ -7,6 +7,7 @@ function pixi_hook(){
   eval "$(pixi shell-hook)"
 }
 
+export FOOT_VER="$(foot --version | awk '{print $3}')"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/fdo/.lmstudio/bin"
 # End of LM Studio CLI section
@@ -14,4 +15,3 @@ export PATH=/home/fdo/.opencode/bin:$PATH
 
 PROMPT_COMMAND=make_prompt
 PROMPT_COMMAND+=('TMPDIR="$PWD"')
-

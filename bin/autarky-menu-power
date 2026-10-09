@@ -7,7 +7,7 @@ show_power_menu() {
 󰜉 Restart
 󰐥 Shutdown"
   local selection
-  selection=$(printf '%s\n' "$menu_options" | fuzzel --dmenu -w 15 -l 6 -p "" --mesg "Power Options" --hide-prompt )
+  selection=$(printf '%s\n' "$menu_options" | noctalia dmenu -p "Power Options")
   case "$selection" in
   *Lock*) hyprlock ;;
   *Suspend*) systemctl suspend ;;

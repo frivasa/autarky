@@ -42,18 +42,12 @@ hl.bind(M .. "SHIFT + W", cmd(webapp .. "https://web.whatsapp.com/"), { descript
 hl.config({
 	general = {
 		gaps_in = {
-			left = 10,
-			right = 0,
-			top = 0,
-			bottom = 10,
+			right = 5,
+			left = 5,
+			bottom = 2,
 		},
-		gaps_out = {
-			left = 20,
-			right = 0,
-			top = 20,
-			bottom = 20,
-		},
-		border_size = 4,
+		gaps_out = 8,
+		border_size = 3,
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "scrolling",
@@ -64,17 +58,21 @@ hl.config({
 	},
 	decoration = {
 		rounding = 10,
-		shadow = { enabled = false, range = 5, render_power = 1, color = "rgba(1a1a1aff)" },
-		border_part_of_window = false,
-		glow = { enabled = true, range = 10, render_power = 2, color = "rgba(1a1a1aff)" },
+		shadow = { enabled = true, range = 5, render_power = 2, color = "rgba(1a1a1aff)" },
+		glow = {
+			enabled = true,
+			range = 20,
+			render_power = 3,
+			color = "rgba(1a1a1aff)",
+		},
 	},
 	animations = { enabled = false },
 	-- dwindle = { preserve_split = true, force_split = 2, default_split_ratio = 0.8 },
 	scrolling = {
 		column_width = 0.5, -- new split size
-		fullscreen_on_one_column = false, -- use whole screen when there's only one thing
+		fullscreen_on_one_column = true, -- use whole screen when there's only one thing
 		focus_fit_method = 1, -- center or just focus the current window
-		explicit_column_widths = "0.333, 0.5, 0.666, 1.0",
+		explicit_column_widths = "0.333, 0.5",
 		direction = "right",
 	},
 	cursor = { inactive_timeout = 1.5 },
@@ -114,3 +112,6 @@ hl.window_rule({
 -- hl.curve("bezito", { type = "bezier", points = { { 0.33, 1.00 }, { 0.68, 1.00 } } })
 -- hl.animation({ leaf = "windows", enabled = true, speed = 40, spring = "resorte", style = "popin" })
 -- hl.animation({ leaf = "windows", enabled = true, speed = 10, bezier = "bezito", style = "popin" })
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()

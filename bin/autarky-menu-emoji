@@ -1,36 +1,9 @@
 awk '
-BEGIN {
-    FS=":"
-    cols = 6
-    col_width = 21
-    i = 0
-}
+BEGIN { FS = ":" }
 
 function trim(s) {
     gsub(/^[ \t]+|[ \t]+$/, "", s)
     return s
-}
-
-function emit_cell() {
-    if (combo != "" && emoji != "") {
-
-        if (desc == "") desc = "-"
-
-        cell = sprintf("%s %s (%s)", emoji, combo, desc)
-
-        row = row sprintf("%-" col_width "s", cell)
-        i++
-
-        if (i % cols == 0) {
-            print row
-            row = ""
-        }
-    }
-}
-
-function flush() {
-    if (row != "")
-        print row
 }
 
 /^#/ || /^[[:space:]]*$/ { next }
@@ -46,13 +19,11 @@ function flush() {
     emoji = ""
     desc = ""
 
-    if (match(rhs, /"([^"]+)"/, m)) {
+    if (match(rhs, /"([^"]+)"/, m))
         emoji = m[1]
-    }
 
-    if (match(rhs, /#(.*)$/, c)) {
+    if (match(rhs, /#(.*)$/, c))
         desc = trim(c[1])
-    }
 
     gsub(/[<>]/, " ", lhs)
     gsub(/Multi_key/, "M", lhs)
@@ -64,10 +35,9 @@ function flush() {
         combo = combo (combo ? "+" : "") keys[j]
     }
 
-    emit_cell()
+    if (combo != "" && emoji != "") {
+        if (desc == "") desc = "-"
+        printf "%s %s (%s)\n", emoji, combo, desc
+    }
 }
-
-END {
-    flush()
-}
-' ~/.config/XCompose | fuzzel --dmenu -l 17 -w 137 --mesg "XCompose Emoji Grid"
+' ~/.config/XCompose | noctalia dmenu -p "XCompose Emoji"
