@@ -1,6 +1,6 @@
 # File system
 alias l='eza --icons -1'
-alias ls='eza -lha --group-directories-first --icons=never'
+alias ls='eza -hola --group-directories-first --icons=never'
 alias lt='eza --tree --header --level=2 --long --icons --git'
 alias lta='lt -a'
 

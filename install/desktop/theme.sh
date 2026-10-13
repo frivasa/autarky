@@ -9,8 +9,9 @@ gsettings set org.gnome.desktop.privacy remember-recent-files false
 
 # Set initial theme
 mkdir -p ~/.config/autarky/current
-ln -snf ~/.local/share/autarky/themes/master_camera ~/.config/autarky/current/theme
-ln -snf ~/.local/share/autarky/themes/master_camera/backgrounds/02-fill-camera.png ~/.config/autarky/current/background
+ln -snf ~/.local/share/autarky/themes/diogenes ~/.config/autarky/current/theme
+ln -snf ~/.local/share/autarky/themes/diogenes/backgrounds/01-center-diogenes_JeanLeonGerome.jpg ~/.config/autarky/current/background
+ln -snf ~/.local/share/autarky/themes/diogenes/noctalia.json ~/.config/noctalia/palettes/Diogenes.json
 
 # Set specific app links for current theme
 mkdir -p ~/.config/mpv
