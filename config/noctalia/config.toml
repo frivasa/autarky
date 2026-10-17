@@ -24,54 +24,43 @@ order = [ "default" ]
     capsule = false
     capsule_border_width = 1.0
     capsule_fill = "surface_variant"
+    capsule_group = []
     capsule_opacity = 1.0
     capsule_padding = 0.0
     capsule_radius = 6.0
     capsule_thickness = 0.75999999046325684
-    center = [ "clock", "weather" ]
+    center = []
     compositor_blur = true
     concave_edge_corners = true
-    contact_shadow = false
+    contact_shadow = true
     enabled = true
-    end = [ "group:g1", "clipboard", "battery", "tray" ]
+    end = [ "workspaces" ]
     font_family = "Iosevka NFM"
     font_scale = 1.2999999523162842
     font_weight = 700
     hover_highlight = false
     layer = "top"
     margin_edge = 20
-    margin_ends = 800
+    margin_ends = 940
     margin_opposite_edge = 0
     padding = 24
     panel_overlap = 1
-    position = "top"
+    position = "bottom"
     radius = 20
     radius_bottom_left = 20
     radius_bottom_right = 20
     radius_top_left = 20
     radius_top_right = 20
     reserve_space = false
-    scale = 1.25
+    scale = 1.2999999523162842
     shadow = true
-    show_on_workspace_switch = false
+    show_on_workspace_switch = true
     smart_auto_hide = true
-    start = [ "workspaces" ]
-    thickness = 45
+    start = [ "clock", "weather", "network", "battery", "tray" ]
+    thickness = 60
     widget_spacing = 7
 
         [bar.default.dead_zone]
-
-        [[bar.default.capsule_group]]
-        accordion = true
-        accordion_direction = "start"
-        border_width = 1.0
-        enabled = true
-        fill = "surface_variant"
-        id = "g1"
-        members = [ "toggle", "theme-switcher" ]
-        opacity = 0.0
-        padding = 0.0
-        radius = 6.0
 
 [battery]
 warning_threshold = 10
@@ -95,7 +84,7 @@ refresh_minutes = 15
     use_event_reminders = true
 
 [control_center]
-hidden_tabs = []
+hidden_tabs = [ "power" ]
 show_session_button = true
 show_shortcut_labels = true
 sidebar = "compact"
@@ -263,33 +252,33 @@ sunset = ""
 
 [lockscreen]
 allow_empty_password = false
-blur_intensity = 0.68999999761581421
+blur_intensity = 0.39999997615814209
 blurred_desktop = false
 edge_smoothness = 0.30000001192092896
 enabled = true
-fingerprint = true
+fingerprint = false
 lock_before_suspend = true
 monitors = []
-tint_intensity = 0.30000001192092896
-transition = [ "honeycomb", "wipe" ]
-transition_duration = 1500.0
+tint_intensity = 0.29999998211860657
+transition = [ "wipe" ]
+transition_duration = 2000.0
 wallpaper = ""
 
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
+widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-widget-0000000000000001", "lockscreen-widget-0000000000000009" ]
 
     [lockscreen_widgets.grid]
-    cell_size = 16
+    cell_size = 64
     major_interval = 4
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
-    box_height = 196.0
-    box_width = 810.0
+    box_height = 70.0
+    box_width = 400.0
     cx = 1280.0
-    cy = 1258.0
+    cy = 813.0
     enabled = true
     output = "HDMI-A-2"
     placement_height = 1440.0
@@ -298,20 +287,62 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
+        background_color = "on_primary"
+        background_opacity = 0.59999999999999998
+        background_radius = 15.0
+        center_password_text = true
+        input_opacity = 0.80000000000000004
+        input_radius = 15.0
+        layout = "compact"
         show_caps_lock = true
         show_keyboard_layout = true
-        show_login_button = true
+        show_login_button = false
         show_media = true
         show_session_buttons = true
-        show_unlock_hint = true
+        show_unlock_hint = false
         show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 64.0
+    box_width = 512.0
+    cx = 1280.0
+    cy = 720.0
+    enabled = true
+    output = "HDMI-A-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background_color = "on_primary"
+        background_opacity = 0.59999999999999998
+        background_padding = 6
+        background_radius = 15
+        clock_style = "digital"
+        color = "primary"
+        format = "{:%Y-%m-%-d %A %H:%M}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000009]
+    box_height = 128.0
+    box_width = 320.0
+    cx = 1280.0
+    cy = 592.0
+    enabled = true
+    output = "HDMI-A-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "media_player"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000009.settings]
+        background_color = "on_primary"
+        background_opacity = 0.59999999999999998
+        background_padding = 6
+        background_radius = 15
+        color = "primary"
+        hide_when_no_media = true
+        layout = "horizontal"
 
 [nightlight]
 enabled = false
@@ -394,8 +425,8 @@ enabled = [ "decksters-lab/palette-creator", "theblackdon/theme-switcher" ]
 [shell]
 app_icon_colorize = false
 avatar_path = ""
-button_borders = true
-card_borders = true
+button_borders = false
+card_borders = false
 clipboard_auto_paste = "auto"
 clipboard_confirm_clear_history = true
 clipboard_enabled = true
@@ -414,7 +445,7 @@ niri_overview_type_to_launch_enabled = false
 offline_mode = false
 password_style = "default"
 polkit_agent = false
-popup_borders = true
+popup_borders = false
 popup_shadows = true
 readline_shortcuts = false
 screen_time_enabled = false
@@ -450,7 +481,32 @@ umbriel_overview_type_to_launch_enabled = false
     show_icons = true
     sort_by_usage = true
 
-        [shell.launcher.dmenu]
+        [shell.launcher.dmenu.entry.keys]
+        command = "autarky-menu-keybindings"
+        exec = ""
+        freeform = false
+        global = false
+        glyph = "alt"
+        label = "Keybinds"
+        prefix = "keybinds"
+
+        [shell.launcher.dmenu.entry.themes]
+        command = "autarky-theme-list"
+        exec = "input=$(printf '%s' \"{selection}\" | tr '[:upper:]' '[:lower:]' | tr ' ' '-'); autarky-theme-set \"$input\"; noctalia msg color-scheme-set custom \"$input\"; noctalia msg notification-show \"Theme set to: {selection}\""
+        freeform = false
+        global = false
+        glyph = "paint"
+        label = "Themes"
+        prefix = "themes"
+
+        [shell.launcher.dmenu.entry.xcompose]
+        command = "autarky-menu-customkeys"
+        exec = ""
+        freeform = false
+        global = false
+        glyph = "alt"
+        label = "Xcompose customs"
+        prefix = "xemo"
 
         [shell.launcher.panels]
         ignored = [ "polkit", "setup-wizard", "test", "launcher" ]
@@ -476,7 +532,7 @@ umbriel_overview_type_to_launch_enabled = false
     floating_offset = 10
     launcher_placement = "floating"
     launcher_position = "center"
-    list_item_background = true
+    list_item_background = false
     open_near_click_clipboard = false
     open_near_click_control_center = false
     open_near_click_launcher = false
@@ -487,7 +543,7 @@ umbriel_overview_type_to_launch_enabled = false
     session_placement = "floating"
     session_position = "auto"
     shadow = true
-    transparency_mode = "solid"
+    transparency_mode = "glass"
     wallpaper_placement = "floating"
     wallpaper_position = "auto"
 
@@ -630,7 +686,7 @@ swap_pct_critical_threshold = 80.0
 [theme]
 builtin = "Noctalia"
 community_palette = "Oxocarbon"
-custom_palette = "Diogenes"
+custom_palette = "diogenes"
 mode = "dark"
 pure_black_dark = false
 shell_mode = "dark"
@@ -688,6 +744,7 @@ width = 55
 
 [widget.battery]
 color = "secondary"
+enabled = false
 icon_color = "secondary"
 type = "battery"
 
@@ -700,6 +757,9 @@ type = "clipboard"
 color = "secondary"
 format = "{:%Y-%m-%-d %A %H:%M}"
 type = "clock"
+
+    [widget.clock.actions]
+    right = "panel-open control-center"
 
 [widget.cpu]
 stat = "cpu_usage"
@@ -731,6 +791,10 @@ max_length = 220.0
 min_length = 80.0
 title_scroll = "none"
 type = "media"
+
+[widget.network]
+enabled = false
+type = "network"
 
 [widget.network_rx]
 stat = "net_rx"
@@ -771,10 +835,13 @@ type = "decksters-lab/palette-creator:toggle"
 
 [widget.tray]
 color = "secondary"
+detached_panel = true
 drawer = true
-drawer_columns = 1
+drawer_columns = 2
 drawer_item_size = 24.0
+hidden = [ "Fcitx" ]
 icon_color = "secondary"
+match_adjacent_spacing = true
 pinned = []
 type = "tray"
 
@@ -792,11 +859,13 @@ show_condition = false
 type = "weather"
 
 [widget.workspaces]
-active_pill_size = 1.0
+active_pill_size = 1.7000000000000002
 change_color_on_hover = false
-empty_color = "on_secondary"
-focused_color = "secondary"
+empty_color = "secondary"
+focused_color = "tertiary"
 font_scale = 1.0
-hide_when_empty = true
+hide_when_empty = false
 occupied_color = "primary"
+scale = 1.2
 type = "workspaces"
+urgent_color = "on_surface"

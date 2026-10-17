@@ -53,48 +53,6 @@ cat << EOF > "$FILE"
 \$check_color = rgba($(hex_to_rgb "${colors[2]}"),1.0)
 EOF
 
-FILE="$THEME_LINK/mako.ini"
-cat << EOF > "$FILE"
-text-color=${colors[8]}
-border-color=${colors[2]}
-background-color=${colors[0]}
-width=420
-height=110
-padding=10
-border-size=5
-font=Liberation Sans 11
-anchor=top-right
-outer-margin=20
-default-timeout=5000
-max-icon-size=32
-border-radius=10
-
-[app-name=Spotify]
-invisible=1
-
-[mode=do-not-disturb]
-invisible=true
-
-[mode=do-not-disturb app-name=notify-send]
-invisible=false
-
-EOF
-
-FILE="$THEME_LINK/swayosd.css"
-cat << EOF > "$FILE"
-@define-color background-color ${colors[0]};
-@define-color border-color ${colors[2]};
-@define-color label ${colors[8]};
-@define-color image ${colors[8]};
-@define-color progress ${colors[8]};
-EOF
-
-FILE="$THEME_LINK/waybar.css"
-cat << EOF > "$FILE"
-@define-color foreground ${colors[2]};
-@define-color background ${colors[0]};
-EOF
-
 FILE="$THEME_LINK/btop.theme"
 cat << EOF > "$FILE"
 # Main bg
@@ -221,26 +179,6 @@ bright6=${colors[6]#?}
 bright7=${colors[7]#?}
 EOF
 
-FILE="$THEME_LINK/fuzzel_colors.ini"
-cat << EOF > "$FILE"
-[colors]
-text       =${colors[8]}ff
-message    =${colors[8]}ff
-prompt     =${colors[8]}ff
-placeholder=${colors[8]}ff
-input      =${colors[8]}ff
-# selection:foreground at 40 alpha
-selection  =${colors[8]}40
-background =${colors[0]}ff
-# regular2
-match          =${colors[3]}ff
-selection-match=${colors[3]}ff
-# regular4
-border        =${colors[5]}ff
-counter       =${colors[5]}ff
-selection-text=${colors[5]}ff
-EOF
-
 FILE="$THEME_LINK/tmux.conf"
 cat << EOF > "$FILE"
 set -g @base-color fg=${colors[4]},bg=${colors[0]}
@@ -248,6 +186,9 @@ set -g @flip-color fg=${colors[0]},bg=${colors[4]}
 
 set -g window-status-format '#[fg=${colors[0]},bg=${colors[4]}] #W #[default]'
 set -g window-status-current-format '#[fg=${colors[0]},bg=${colors[6]}] #(echo #W | tr '[:lower:]' '[:upper:]') #[default]'
+
+set -g pane-border-style fg=${colors[6]}
+set -g pane-active-border-style fg=${colors[4]}
 
 EOF
 

@@ -9,6 +9,7 @@ gsettings set org.gnome.desktop.privacy remember-recent-files false
 
 # Set initial theme
 mkdir -p ~/.config/autarky/current
+mkdir -p ~/.conifg/noctalia/palettes
 ln -snf ~/.local/share/autarky/themes/diogenes ~/.config/autarky/current/theme
 ln -snf ~/.local/share/autarky/themes/diogenes/backgrounds/01-center-diogenes_JeanLeonGerome.jpg ~/.config/autarky/current/background
 ln -snf ~/.local/share/autarky/themes/diogenes/noctalia.json ~/.config/noctalia/palettes/Diogenes.json

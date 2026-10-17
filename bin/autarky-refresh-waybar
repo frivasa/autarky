@@ -1,7 +1,0 @@
-#!/bin/bash
-
-autarky-refresh-config waybar/config.jsonc
-autarky-refresh-config waybar/style.css
-
-# Restart waybar
-pkill -SIGUSR2 waybar

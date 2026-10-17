@@ -40,4 +40,4 @@ function trim(s) {
         printf "%s %s (%s)\n", emoji, combo, desc
     }
 }
-' ~/.config/XCompose | noctalia dmenu -p "XCompose Emoji"
+' ~/.config/XCompose

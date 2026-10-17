@@ -34,6 +34,14 @@ for i = 1, 10 do
 	)
 end
 
+-- make five workspaces persistent for cosmetics (rarely you use more than 4)
+for i = 1, 5 do
+	hl.workspace_rule({
+		workspace = tostring(i),
+		persistent = true,
+	})
+end
+
 -- Scroll through existing workspaces with M + scroll
 hl.bind(M .. "mouse_down", hl.dsp.focus({ workspace = "e+1" }), { description = "scroll workspace down" })
 hl.bind(M .. "mouse_up", hl.dsp.focus({ workspace = "e-1" }), { description = "scroll workspace up" })

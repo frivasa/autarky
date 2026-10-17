@@ -1,18 +1,28 @@
-local HOME = os.getenv("HOME")
-local bindingsmenu = HOME .. "/.local/share/autarky/bin/autarky-menu-keybindings"
-local emojimenu = HOME .. "/.local/share/autarky/bin/autarky-menu-emoji"
-local powermenu = HOME .. "/.local/share/autarky/bin/autarky-menu-power"
-local thememenu = HOME .. "/.local/share/autarky/bin/autarky-menu-themes"
 local M = "SUPER + "
 local cmd = hl.dsp.exec_cmd
 
 hl.bind(M .. "S", cmd("noctalia msg panel-toggle launcher"), {
 	description = "app menu (Noctalia)",
 })
-hl.bind(M .. "SLASH", cmd(bindingsmenu), { description = "keymaps (noctalia)" })
-hl.bind(M .. "PERIOD", cmd(emojimenu), { description = "emojis/xcompose (noctalia)" })
-hl.bind(M .. "SHIFT + ESCAPE", cmd(powermenu), { description = "power (noctalia)" })
-hl.bind(M .. "SHIFT + T", cmd(thememenu), { description = "themes (noctalia)" })
+hl.bind(M .. "C", cmd("noctalia msg panel-open clipboard"), {
+	description = "open Clipboard (Noctalia)",
+})
+hl.bind(M .. "SLASH", cmd('noctalia msg panel-toggle launcher "/keybinds "'), { description = "keymaps (noctalia)" })
+hl.bind(
+	M .. "PERIOD",
+	cmd('noctalia msg panel-toggle launcher "/xemo "'),
+	{ description = "xcompose customs (noctalia)" }
+)
+hl.bind(
+	M .. "SHIFT + ESCAPE",
+	cmd('noctalia msg panel-toggle launcher "/session "'),
+	{ description = "power (noctalia)" }
+)
+hl.bind(
+	M .. "SHIFT + T",
+	cmd('noctalia msg panel-toggle launcher "/themes "'),
+	{ description = "change theme (noctalia)" }
+)
 
 hl.bind(M .. "SPACE", cmd("noctalia msg bar-toggle"), {
 	description = "toggle Noctalia bar",

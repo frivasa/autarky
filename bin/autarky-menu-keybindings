@@ -57,4 +57,4 @@ function flush() {
 END {
     flush()
 }
-' | noctalia dmenu -p "Keybind Search"
+'

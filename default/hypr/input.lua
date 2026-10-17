@@ -4,9 +4,6 @@ hl.gesture({
 	action = "workspace",
 })
 
--- scroll faster in terminal
--- hl.window_rule({ match = { class = "kitty" }, scroll_touchpad = 2.0 })
-
 hl.config({
 	input = {
 		kb_layout = "us",
