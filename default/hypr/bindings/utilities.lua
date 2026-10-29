@@ -4,28 +4,34 @@ local cmd = hl.dsp.exec_cmd
 hl.bind(M .. "S", cmd("noctalia msg panel-toggle launcher"), {
 	description = "app menu (Noctalia)",
 })
+hl.bind(M .. "A", cmd("noctalia msg panel-toggle control-center"), {
+	description = "config menu (Noctalia)",
+})
+hl.bind(M .. "Z", cmd("noctalia msg panel-toggle tray-drawer"), {
+	description = "Open Tray (Noctalia)",
+})
 hl.bind(M .. "C", cmd("noctalia msg panel-open clipboard"), {
 	description = "open Clipboard (Noctalia)",
 })
-hl.bind(M .. "SLASH", cmd('noctalia msg panel-toggle launcher "/keybinds "'), { description = "keymaps (noctalia)" })
+hl.bind(
+	M .. "SLASH",
+	cmd('noctalia msg panel-toggle launcher "/keys "'),
+	{ description = "keymaps/keybinds (noctalia)" }
+)
 hl.bind(
 	M .. "PERIOD",
-	cmd('noctalia msg panel-toggle launcher "/xemo "'),
+	cmd('noctalia msg panel-toggle launcher "/xcom "'),
 	{ description = "xcompose customs (noctalia)" }
 )
-hl.bind(
-	M .. "SHIFT + ESCAPE",
-	cmd('noctalia msg panel-toggle launcher "/session "'),
-	{ description = "power (noctalia)" }
-)
+hl.bind(M .. "SHIFT + ESCAPE", cmd("noctalia msg panel-toggle session"), { description = "power (noctalia)" })
 hl.bind(
 	M .. "SHIFT + T",
-	cmd('noctalia msg panel-toggle launcher "/themes "'),
+	cmd('noctalia msg panel-toggle launcher "/colo "'),
 	{ description = "change theme (noctalia)" }
 )
 
 hl.bind(M .. "SPACE", cmd("noctalia msg bar-toggle"), {
-	description = "toggle Noctalia bar",
+	description = "toggle taskbar (noctalia)",
 })
 hl.bind(
 	M .. "SHIFT + CTRL + SPACE",

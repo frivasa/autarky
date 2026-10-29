@@ -184,7 +184,7 @@ cat << EOF > "$FILE"
 set -g @base-color fg=${colors[4]},bg=${colors[0]}
 set -g @flip-color fg=${colors[0]},bg=${colors[4]}
 
-set -g window-status-format '#[fg=${colors[0]},bg=${colors[4]}] #W #[default]'
+set -g window-status-format '#[fg=${colors[0]},bg=${colors[4]}] #W#{?@pane_agent,[#(tmux show -t #{pane_id} -pv @pane_status)],} #[default]'
 set -g window-status-current-format '#[fg=${colors[0]},bg=${colors[6]}] #(echo #W | tr '[:lower:]' '[:upper:]') #[default]'
 
 set -g pane-border-style fg=${colors[6]}

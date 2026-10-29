@@ -3,8 +3,12 @@ high_contrast = false
 ui_scale = 1.0
 
 [audio]
+enable_notification_sounds = true
 enable_overdrive = false
+enable_power_sounds = true
+enable_screenshot_sounds = true
 enable_sounds = false
+enable_volume_sounds = true
 sound_theme = "freedesktop"
 sound_volume = 0.5
 
@@ -18,6 +22,7 @@ order = [ "default" ]
 
     [bar.default]
     auto_hide = false
+    auto_hide_delay_ms = 0
     background_opacity = 0.62000000476837158
     border = "primary"
     border_width = 3.0
@@ -40,12 +45,12 @@ order = [ "default" ]
     font_weight = 700
     hover_highlight = false
     layer = "top"
-    margin_edge = 20
+    margin_edge = 200
     margin_ends = 940
     margin_opposite_edge = 0
     padding = 24
     panel_overlap = 1
-    position = "bottom"
+    position = "top"
     radius = 20
     radius_bottom_left = 20
     radius_bottom_right = 20
@@ -55,6 +60,7 @@ order = [ "default" ]
     scale = 1.2999999523162842
     shadow = true
     show_on_workspace_switch = true
+    show_tooltip = true
     smart_auto_hide = true
     start = [ "clock", "weather", "network", "battery", "tray" ]
     thickness = 60
@@ -72,6 +78,8 @@ minimum_brightness = 0.0
 sync_all_monitors = false
 
 [calendar]
+dedupe_events = false
+dedupe_ignore_patterns = []
 enabled = false
 event_date_format = "%A %e %B"
 event_time_format = "%H:%M"
@@ -84,12 +92,12 @@ refresh_minutes = 15
     use_event_reminders = true
 
 [control_center]
-hidden_tabs = [ "power" ]
+hidden_tabs = [ "media", "power" ]
 show_session_button = true
 show_shortcut_labels = true
 sidebar = "compact"
 sidebar_section = "compact"
-width = 700
+width = 800
 
     [control_center.calendar]
     show_events_card = false
@@ -99,22 +107,10 @@ width = 700
     type = "caffeine"
 
     [[control_center.shortcuts]]
-    type = "bluetooth"
-
-    [[control_center.shortcuts]]
-    type = "wifi"
-
-    [[control_center.shortcuts]]
-    type = "nightlight"
-
-    [[control_center.shortcuts]]
     type = "notification"
 
-    [[control_center.shortcuts]]
-    type = "power_profile"
-
 [desktop_widgets]
-enabled = false
+enabled = true
 schema_version = 2
 
     [desktop_widgets.grid]
@@ -141,23 +137,22 @@ launcher_custom_image = ""
 launcher_custom_image_colorize = false
 launcher_icon = "grid-dots"
 launcher_position = "none"
-layer = "top"
+layer = "overlay"
 magnification = true
 magnification_scale = 1.4500000476837158
 main_axis_padding = 16
 margin_edge = 0
 margin_ends = 0
-monitors = []
 pinned = []
-position = "bottom"
+position = "left"
 radius = 16
 radius_bottom_left = 16
 radius_bottom_right = 16
 radius_top_left = 16
 radius_top_right = 16
-reserve_space = true
+reserve_space = false
 shadow = true
-show_dots = false
+show_dots = true
 show_instance_count = true
 show_running = true
 smart_auto_hide = false
@@ -257,6 +252,7 @@ blurred_desktop = false
 edge_smoothness = 0.30000001192092896
 enabled = true
 fingerprint = false
+grace_period_seconds = 0
 lock_before_suspend = true
 monitors = []
 tint_intensity = 0.29999998211860657
@@ -404,11 +400,14 @@ scale = 1.0
     volume_output = true
     wifi = true
 
-[plugin_settings]
+[plugin_settings."noctalia/wallpaper_depth"]
+feather = 24
+manager_placement = "floating"
+threshold = 40
 
 [plugins]
-auto_update = "all"
-enabled = [ "decksters-lab/palette-creator", "theblackdon/theme-switcher" ]
+auto_update = "official"
+enabled = []
 
     [[plugins.source]]
     enabled = true
@@ -425,7 +424,7 @@ enabled = [ "decksters-lab/palette-creator", "theblackdon/theme-switcher" ]
 [shell]
 app_icon_colorize = false
 avatar_path = ""
-button_borders = false
+button_borders = true
 card_borders = false
 clipboard_auto_paste = "auto"
 clipboard_confirm_clear_history = true
@@ -454,6 +453,7 @@ settings_show_advanced = true
 settings_window_translucent = false
 setup_wizard_enabled = true
 shared_gl_context = true
+show_close_buttons = true
 show_location = true
 telemetry_enabled = false
 time_format = "{:%H:%M}"
@@ -472,14 +472,22 @@ umbriel_overview_type_to_launch_enabled = false
     app_grid = false
     auto_paste = "auto"
     categories = false
+    category_icons_only = false
     compact = true
+    default_view = "categories"
     fetch_exchange_rates = true
+    layout = "simple"
     pinned = []
     provider_prefix = "/"
+    search_position = "bottom"
     show_app_actions = false
     show_app_origin_indicator = false
     show_icons = true
+    show_session_button = false
+    show_settings_button = false
     sort_by_usage = true
+    track_usage = true
+    width = 760
 
         [shell.launcher.dmenu.entry.keys]
         command = "autarky-menu-keybindings"
@@ -488,7 +496,7 @@ umbriel_overview_type_to_launch_enabled = false
         global = false
         glyph = "alt"
         label = "Keybinds"
-        prefix = "keybinds"
+        prefix = "keys"
 
         [shell.launcher.dmenu.entry.themes]
         command = "autarky-theme-list"
@@ -497,16 +505,16 @@ umbriel_overview_type_to_launch_enabled = false
         global = false
         glyph = "paint"
         label = "Themes"
-        prefix = "themes"
+        prefix = "colo"
 
         [shell.launcher.dmenu.entry.xcompose]
         command = "autarky-menu-customkeys"
         exec = ""
         freeform = false
         global = false
-        glyph = "alt"
+        glyph = "tilde"
         label = "Xcompose customs"
-        prefix = "xemo"
+        prefix = "xcom"
 
         [shell.launcher.panels]
         ignored = [ "polkit", "setup-wizard", "test", "launcher" ]
@@ -519,19 +527,24 @@ umbriel_overview_type_to_launch_enabled = false
         global = false
         prefix = ""
 
+        [shell.launcher.providers.session]
+        prefix = ""
+
     [shell.mpris]
     blacklist = []
 
     [shell.panel]
-    borders = false
+    border_color = "outline"
+    border_width = 1.0
+    borders = true
     clipboard_placement = "floating"
-    clipboard_position = "center"
+    clipboard_position = "auto"
     control_center_placement = "floating"
     control_center_position = "auto"
     floating_layer = "overlay"
-    floating_offset = 10
+    floating_offset = 100
     launcher_placement = "floating"
-    launcher_position = "center"
+    launcher_position = "auto"
     list_item_background = false
     open_near_click_clipboard = false
     open_near_click_control_center = false
@@ -545,7 +558,8 @@ umbriel_overview_type_to_launch_enabled = false
     shadow = true
     transparency_mode = "glass"
     wallpaper_placement = "floating"
-    wallpaper_position = "auto"
+    wallpaper_position = "center"
+    wallpaper_show_names = true
 
     [shell.privacy]
     cam_filter_regex = ""
@@ -567,6 +581,7 @@ umbriel_overview_type_to_launch_enabled = false
     freeze_screen = true
     pipe_command = ""
     pipe_to_command = false
+    region_modifier = "none"
     remember_last_region = false
     save_to_file = true
     show_cursor = false
@@ -691,6 +706,7 @@ mode = "dark"
 pure_black_dark = false
 shell_mode = "dark"
 source = "custom"
+sync_color_scheme = true
 wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
@@ -698,6 +714,18 @@ wallpaper_scheme = "m3-tonal-spot"
     community_ids = []
     enable_builtin_templates = true
     enable_community_templates = true
+
+        [theme.templates.user.palette_creator_live]
+        compare_to = ""
+        enabled = true
+        hook_async = true
+        index = 0
+        input_path = "~/.local/state/noctalia/plugins/materialized/community/palette-creator/templates/live-snapshot.tpl"
+        output_path = [ "~/.local/state/noctalia/plugin-data/kyle-palette-creator/live-snapshot.json" ]
+        output_path_dynamic = ""
+        post_action = ""
+        post_hook = ""
+        pre_hook = ""
 
 [wallpaper]
 directory = "~/.local/share/autarky/themes"
@@ -755,7 +783,7 @@ type = "clipboard"
 
 [widget.clock]
 color = "secondary"
-format = "{:%Y-%m-%-d %A %H:%M}"
+format = "{:%Y-%m-%-d %a %H:%M}"
 type = "clock"
 
     [widget.clock.actions]
@@ -837,9 +865,10 @@ type = "decksters-lab/palette-creator:toggle"
 color = "secondary"
 detached_panel = true
 drawer = true
-drawer_columns = 2
-drawer_item_size = 24.0
-hidden = [ "Fcitx" ]
+drawer_columns = 4
+drawer_item_size = 48.0
+hidden = []
+hide_passive = false
 icon_color = "secondary"
 match_adjacent_spacing = true
 pinned = []
@@ -868,4 +897,4 @@ hide_when_empty = false
 occupied_color = "primary"
 scale = 1.2
 type = "workspaces"
-urgent_color = "on_surface"
+urgent_color = "tertiary"
