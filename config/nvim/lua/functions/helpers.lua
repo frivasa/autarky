@@ -296,7 +296,7 @@ end
 function M.send_block(block)
 	local lines = vim.api.nvim_buf_get_lines(0, block.start_line - 1, block.end_line, false)
 	local text = M.quarto_format_code(table.concat(lines, "\n"), block.lang)
-	vim.fn["slime#send"](text .. "\n")
+	vim.fn["slime#send"](text .. "\r")
 end
 
 function M.send_region()
@@ -335,6 +335,103 @@ end
 function M.clear_screen()
 	require("noice").cmd("dismiss")
 	vim.cmd("nohlsearch")
+end
+
+-- folder picker for greeter
+function M.pick_folder_from_home()
+	local home = vim.fn.expand("~")
+
+	require("telescope.pickers")
+		.new({}, {
+			prompt_title = "Find Path",
+			finder = require("telescope.finders").new_oneshot_job({
+				"find",
+				home,
+				"-type",
+				"d",
+			}, {
+				cwd = home,
+				entry_maker = function(line)
+					local display = vim.fn.fnamemodify(line, ":~")
+					display = display:gsub("^~/", "")
+
+					return {
+						value = line,
+						display = display,
+						ordinal = display,
+					}
+				end,
+			}),
+			sorter = require("telescope.config").values.generic_sorter({}),
+			previewer = require("telescope.config").values.file_previewer({}),
+			attach_mappings = function(prompt_bufnr, map)
+				local actions = require("telescope.actions")
+				local state = require("telescope.actions.state")
+
+				local function select_project()
+					local entry = state.get_selected_entry()
+					actions.close(prompt_bufnr)
+
+					if not entry then
+						return
+					end
+
+					vim.cmd.cd(vim.fn.fnameescape(entry.value))
+					vim.notify("Project: " .. entry.value)
+				end
+
+				map("i", "<CR>", select_project)
+				map("n", "<CR>", select_project)
+
+				return true
+			end,
+		})
+		:find()
+end
+
+-- git commit drafting
+function M.popup_git_commit_draft()
+	local result = vim.system({ "git", "rev-parse", "--git-dir" }, { text = true }):wait()
+
+	if result.code ~= 0 then
+		vim.notify("No Git repository found; commit draft unavailable.", vim.log.levels.INFO)
+		return
+	end
+
+	local git_dir = vim.trim(result.stdout)
+	local draft = vim.fn.fnamemodify(git_dir, ":p") .. "/COMMIT_DRAFT"
+
+	-- Create the draft if it doesn't exist.
+	if vim.fn.filereadable(draft) == 0 then
+		vim.fn.writefile({}, draft)
+	end
+
+	-- Create floating window.
+	local width = math.floor(vim.o.columns * 0.65)
+	local height = math.floor(vim.o.lines * 0.55)
+
+	local buf = vim.fn.bufadd(draft)
+	vim.fn.bufload(buf)
+
+	vim.api.nvim_open_win(buf, true, {
+		relative = "editor",
+		width = width,
+		height = height,
+		row = math.floor((vim.o.lines - height) / 2),
+		col = math.floor((vim.o.columns - width) / 2),
+		style = "minimal",
+		border = "rounded",
+		title = " Commit draft ",
+		title_pos = "center",
+	})
+
+	vim.bo[buf].filetype = "gitcommit"
+	vim.bo[buf].bufhidden = "hide"
+
+	vim.keymap.set("n", "q", "<cmd>close<CR>", {
+		buffer = buf,
+		silent = true,
+	})
 end
 
 return M

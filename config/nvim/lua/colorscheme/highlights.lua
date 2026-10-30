@@ -33,9 +33,6 @@ M.highlights = function(colors)
 		Visual = { bg = colors.color1, fg = colors.background },
 		VisualNOS = { bg = colors.background },
 		WarningMsg = { fg = colors.color3, bg = colors.background },
-		DiffAdd = { fg = colors.background, bg = colors.color4 },
-		DiffChange = { fg = colors.background, bg = colors.color5 },
-		DiffDelete = { fg = colors.background, bg = colors.color11 },
 		QuickFixLine = { bg = colors.color2 },
 		PmenuSbar = { bg = colors.background },
 		MatchParen = { fg = colors.color4, bg = colors.background },
@@ -207,7 +204,10 @@ M.highlights = function(colors)
 		illuminatedWord = { bg = colors.foreground },
 		illuminatedCurWord = { bg = colors.foreground },
 
-		-- diff
+		-- Diff and DiffViewer
+		DiffAdd = { fg = colors.background, bg = colors.color4 },
+		DiffChange = { fg = colors.background, bg = colors.color5 },
+		DiffDelete = { fg = colors.background, bg = colors.color11 },
 		diffAdded = { fg = colors.color4 },
 		diffRemoved = { fg = colors.color11 },
 		diffChanged = { fg = colors.color5 },
@@ -216,6 +216,43 @@ M.highlights = function(colors)
 		diffFile = { fg = colors.color7 },
 		diffLine = { fg = colors.color1 },
 		diffIndexLine = { fg = colors.color6 },
+		DiffviewNormal = { fg = colors.foreground, bg = colors.background },
+		DiffviewNormalNC = { fg = colors.foreground, bg = colors.background },
+
+		DiffviewFilePanelTitle = { fg = colors.color4 },
+		DiffviewFilePanelCounter = { fg = colors.color5 },
+		DiffviewFilePanelFileName = { fg = colors.foreground },
+		DiffviewFilePanelPath = { fg = colors.color8 },
+		DiffviewFilePanelRootPath = { fg = colors.color6 },
+		DiffviewFilePanelSelected = { fg = colors.color4, bg = colors.background },
+
+		DiffviewFolderName = { fg = colors.color6 },
+		DiffviewFolderSign = { fg = colors.color1 },
+		DiffviewFilePanelInsertions = { fg = colors.color4 },
+		DiffviewFilePanelDeletions = { fg = colors.color11 },
+
+		DiffviewStatusAdded = { fg = colors.color4 },
+		DiffviewStatusModified = { fg = colors.color5 },
+		DiffviewStatusRenamed = { fg = colors.color6 },
+		DiffviewStatusCopied = { fg = colors.color6 },
+		DiffviewStatusUnmerged = { fg = colors.color3 },
+		DiffviewStatusDeleted = { fg = colors.color11 },
+		DiffviewStatusBroken = { fg = colors.color11 },
+		DiffviewStatusUnknown = { fg = colors.color8 },
+
+		DiffviewDiffAdd = { fg = colors.foreground, bg = colors.background },
+		DiffviewDiffAddAsDelete = { fg = colors.foreground, bg = colors.background },
+		DiffviewDiffDelete = { fg = colors.foreground, bg = colors.background },
+		DiffviewDiffDeleteDim = { fg = colors.color8, bg = colors.background },
+
+		DiffviewDiffAddSign = { fg = colors.color4 },
+		DiffviewDiffDeleteSign = { fg = colors.color11 },
+
+		DiffviewReference = { fg = colors.color6 },
+		DiffviewPrimary = { fg = colors.color4 },
+		DiffviewSecondary = { fg = colors.color5 },
+		DiffviewDim1 = { fg = colors.color8 },
+		DiffviewDim2 = { fg = colors.color1 },
 
 		-- GitGutter
 		GitGutterAdd = { fg = colors.color4 }, -- diff mode: Added line |diff.txt|
@@ -236,23 +273,23 @@ M.highlights = function(colors)
 		IndentBlanklineChar = { fg = colors.color1, bg = colors.background },
 
 		-- NvimTree
-		NvimTreeNormal = { fg = colors.foreground, bg = colors.background },
-		NvimTreeNormalNC = { fg = colors.foreground, bg = colors.background },
-		NvimTreeRootFolder = { fg = colors.color1 },
-		NvimTreeGitDirty = { fg = colors.color5 },
-		NvimTreeGitNew = { fg = colors.color4 },
-		NvimTreeGitDeleted = { fg = colors.color11 },
-		NvimTreeSpecialFile = { fg = colors.color6 },
-		NvimTreeIndentMarker = { fg = colors.foreground },
-		NvimTreeImageFile = { fg = colors.foreground },
-		NvimTreeSymlink = { fg = colors.color7 },
-		NvimTreeFolderIcon = { fg = colors.color2, bg = colors.background },
-		NvimTreeStatusLineNC = { bg = colors.background, fg = colors.background },
-		ReferencesCount = { fg = colors.color6 },
-		DefinitionCount = { fg = colors.color6 },
-		DefinitionIcon = { fg = colors.color7 },
-		ReferencesIcon = { fg = colors.color7 },
-		TargetWord = { fg = colors.color7 },
+		-- NvimTreeNormal = { fg = colors.foreground, bg = colors.background },
+		-- NvimTreeNormalNC = { fg = colors.foreground, bg = colors.background },
+		-- NvimTreeRootFolder = { fg = colors.color1 },
+		-- NvimTreeGitDirty = { fg = colors.color5 },
+		-- NvimTreeGitNew = { fg = colors.color4 },
+		-- NvimTreeGitDeleted = { fg = colors.color11 },
+		-- NvimTreeSpecialFile = { fg = colors.color6 },
+		-- NvimTreeIndentMarker = { fg = colors.foreground },
+		-- NvimTreeImageFile = { fg = colors.foreground },
+		-- NvimTreeSymlink = { fg = colors.color7 },
+		-- NvimTreeFolderIcon = { fg = colors.color2, bg = colors.background },
+		-- NvimTreeStatusLineNC = { bg = colors.background, fg = colors.background },
+		-- ReferencesCount = { fg = colors.color6 },
+		-- DefinitionCount = { fg = colors.color6 },
+		-- DefinitionIcon = { fg = colors.color7 },
+		-- ReferencesIcon = { fg = colors.color7 },
+		-- TargetWord = { fg = colors.color7 },
 
 		-- NeoVim
 		healthError = { fg = colors.color11 },
@@ -269,8 +306,16 @@ M.highlights = function(colors)
 		NoiceCmdlinePopupBorderSearch = { fg = colors.color11 },
 		NoiceCmdlinePopupBorderFilter = { fg = colors.color11 },
 
-		-- Oil/mini.icons
+		-- Diffview/Oil/MiniIcons(mini.icons)
 		MiniIconsAzure = { link = "Normal" },
+		MiniIconsBlue = { fg = colors.color4 },
+		MiniIconsCyan = { fg = colors.color6 },
+		MiniIconsGreen = { fg = colors.color2 },
+		MiniIconsGrey = { fg = colors.color8 },
+		MiniIconsOrange = { fg = colors.color3 },
+		MiniIconsPurple = { fg = colors.color5 },
+		MiniIconsRed = { fg = colors.color11 },
+		MiniIconsYellow = { fg = colors.color10 },
 	}
 end
 

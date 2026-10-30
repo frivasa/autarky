@@ -3,7 +3,7 @@
 # dev and some tuis
 sudo pacman -S --noconfirm --needed \
   rust          clang   llvm \
-  imagemagick   lazygit lazydocker \
+  imagemagick   lazydocker \
   trash-cli     nethogs dust \
   diff-so-fancy udisks2 usb_modeswitch \
   exiftool      tree    reflector \

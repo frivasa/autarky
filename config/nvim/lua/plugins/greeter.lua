@@ -53,8 +53,14 @@ return {
 				-- ":enew | setlocal buftype=nofile bufhidden=hide noswapfile | startinsert <CR>"
 				":enew | setlocal buftype=nofile bufhidden=hide noswapfile <CR>"
 			),
-			dashboard.button("o", "󰍉  Obsidian page search", ":Obsidian quick_switch <CR>"),
-			dashboard.button("f", "󰍉  Find file", ":Telescope find_files <CR>"),
+			dashboard.button("o", "󰍉  Obsidian Page Search", ":Obsidian quick_switch <CR>"),
+			dashboard.button("f", "󰍉  Find File", ":Telescope find_files <CR>"),
+			dashboard.button(
+				"p",
+				"  Switch Folder",
+				"<CMD>lua require('functions.helpers').pick_folder_from_home()<CR>"
+			),
+			dashboard.button("g", "  Open Diff (Git)", ":DiffviewOpen <CR>"),
 			dashboard.button("s", "  Search Sessions", ":AutoSession search<CR>"),
 			dashboard.button("r", "  Start Oil (rename files)", ":Oil <CR>"),
 			dashboard.button("l", "󰒲  Lazy Plugin Manager", ":Lazy<CR>"),

@@ -28,9 +28,10 @@ alias g='git'
 alias d='docker'
 
 # Git
-alias gcm='git commit -m'
-alias gcam='git commit -a -m'
-alias gcad='git commit -a --amend'
+alias gitstat='git status'
+alias gitadd='git add -A'
+alias gitcomm='git commit -F "$(git rev-parse --git-path COMMIT_DRAFT)" && rm "$(git rev-parse --git-path COMMIT_DRAFT)"'
+alias gitfixcomm='git commit --amend'
 
 # Find packages without leaving the terminal
 alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
