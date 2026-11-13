@@ -46,6 +46,12 @@ hl.bind(M .. "CTRL + COMMA", cmd("noctalia msg notification-dnd-toggle"), {
 })
 hl.bind(M .. "CTRL + I", cmd("~/.local/share/autarky/bin/autarky-toggle-idle"), { description = "toggle idle" })
 
+hl.bind(M .. "SHIFT + M", function()
+	hl.timer(function()
+		hl.dispatch(hl.dsp.dpms({ action = "toggle" }))
+	end, { timeout = 50, type = "oneshot" })
+end, { description = "Turn monitor off/on" })
+
 hl.bind(
 	"PRINT",
 	cmd("~/.local/share/autarky/bin/autarky-cmd-screenshot selection"),

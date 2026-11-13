@@ -1,5 +1,4 @@
 #!/bin/bash
 
-yay -S --noconfirm --needed ttf-iosevka-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk
-# relic here to remember the older font: jetbrains-mono-nerd
+yay -S --noconfirm --needed ttf-d2coding-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk
 

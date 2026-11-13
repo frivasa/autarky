@@ -72,7 +72,7 @@ hl.config({
 		column_width = 0.5, -- new split size
 		fullscreen_on_one_column = true, -- use whole screen when there's only one thing
 		focus_fit_method = 1, -- center or just focus the current window
-		explicit_column_widths = "0.333, 0.5",
+		explicit_column_widths = "0.333, 0.5, 0.666",
 		direction = "right",
 	},
 	cursor = { inactive_timeout = 1.5 },
